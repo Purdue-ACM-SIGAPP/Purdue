@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.animoto.android.views.DraggableGridView;
 
 
 public class MainMenuActivity extends Activity {
@@ -12,6 +15,11 @@ public class MainMenuActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        DraggableGridView dgv = ((DraggableGridView)findViewById(R.id.draggable_grid_view));
+        TextView tv = new TextView(this);
+        tv.setText("Hello world!");
+        dgv.addView(tv);
     }
 
 
