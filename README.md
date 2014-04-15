@@ -6,6 +6,8 @@ Official Purdue Application
 Potential library for drag and drop menu:
 http://www.androidviews.net/2012/12/pageddragdropgrid/
 
+**Before debugging the application on your phone, ensure you uninstall the old Purdue App if you have it installed. This app shares the same package name and that could cause conflicts if you have the old one installed**
+
 Project Owner/Coordinator
 -------------------------
 Martin Sickafoose
