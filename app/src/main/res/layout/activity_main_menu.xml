@@ -1,14 +1,20 @@
 
-
-<com.animoto.android.views.DraggableGridView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/draggable_grid_view"
-    android:layout_height="fill_parent"
-    android:layout_width="fill_parent"
-    android:layout_alignParentTop="true"
-    android:layout_alignParentLeft="true" >
+    android:layout_height="match_parent"
+    android:layout_width="match_parent" >
+
+    <edu.purdue.app.DraggableGridView
+        android:id="@+id/draggable_grid_view"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true" >
 
 
 
+    </edu.purdue.app.DraggableGridView>
 
-</com.animoto.android.views.DraggableGridView>
+
+</RelativeLayout>
+

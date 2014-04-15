@@ -6,8 +6,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.animoto.android.views.DraggableGridView;
-
 
 public class MainMenuActivity extends Activity {
 
@@ -16,10 +14,27 @@ public class MainMenuActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        DraggableGridView dgv = ((DraggableGridView)findViewById(R.id.draggable_grid_view));
-        TextView tv = new TextView(this);
-        tv.setText("Hello world!");
-        dgv.addView(tv);
+        DraggableGridView dgv = ((DraggableGridView) findViewById(R.id.draggable_grid_view));
+
+        TextView tv1 = new TextView(this);
+        tv1.setText("one");
+        dgv.addView(tv1);
+
+        TextView tv2 = new TextView(this);
+        tv2.setText("two");
+        dgv.addView(tv2);
+
+        TextView tv3 = new TextView(this);
+        tv3.setText("three");
+        dgv.addView(tv3);
+
+        TextView tv4 = new TextView(this);
+        tv4.setText("four");
+        dgv.addView(tv4);
+
+        TextView tv5 = new TextView(this);
+        tv5.setText("five");
+        dgv.addView(tv5);
     }
 
 
