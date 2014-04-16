@@ -290,7 +290,8 @@ public class DraggableGridView extends ViewGroup implements View.OnTouchListener
                     lastTarget = -1;
                     dragged = -1;
                 } else {
-                    Toast.makeText(context, "You clicked a thingy", Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(context, "You clicked " + getChildAt(getIndexFromCoor(lastX, lastY)), Toast.LENGTH_SHORT).show();
                 }
                 touching = false;
                 break;

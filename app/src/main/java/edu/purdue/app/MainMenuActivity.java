@@ -55,6 +55,7 @@ public class MainMenuActivity extends Activity {
             bu.setImageDrawable(getResources().getDrawable(R.drawable.ic_launcher));
             bu.setLayoutParams(new ViewGroup.LayoutParams(75, 75));
             bu.setFocusable(false);
+            bu.setId(i);
             dgv.addView(bu);
         }
 
