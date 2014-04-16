@@ -1,7 +1,6 @@
-//TO DO:
-//
-// - improve timer performance (especially on Eee Pad)
-// - improve child rearranging
+/** This class is derived from
+ *      https://github.com/thquinn/DraggableGridView/
+ *  and modified to fit our needs. It is licensed under the Apache license. */
 
 package edu.purdue.app;
 
@@ -27,6 +26,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class DraggableGridView extends ViewGroup implements View.OnTouchListener, View.OnClickListener, View.OnLongClickListener {
     //layout vars
@@ -45,9 +45,12 @@ public class DraggableGridView extends ViewGroup implements View.OnTouchListener
     protected OnClickListener secondaryOnClickListener;
     private OnItemClickListener onItemClickListener;
 
+    private Context context;
+
     //CONSTRUCTOR AND HELPERS
     public DraggableGridView (Context context, AttributeSet attrs) {
         super(context, attrs);
+        this.context = context;
         setListeners();
         handler.removeCallbacks(updateTask);
         handler.postAtTime(updateTask, SystemClock.uptimeMillis() + 500);
@@ -226,6 +229,8 @@ public class DraggableGridView extends ViewGroup implements View.OnTouchListener
         }
         return false;
     }
+
+    @Override
     public boolean onTouch(View view, MotionEvent event)
     {
         int action = event.getAction();
@@ -284,6 +289,8 @@ public class DraggableGridView extends ViewGroup implements View.OnTouchListener
                         ((ImageView)v).setAlpha(255);
                     lastTarget = -1;
                     dragged = -1;
+                } else {
+                    Toast.makeText(context, "You clicked a thingy", Toast.LENGTH_SHORT).show();
                 }
                 touching = false;
                 break;
