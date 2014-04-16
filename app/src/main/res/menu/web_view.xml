@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="edu.purdue.app.WebViewActivity" >
+
+
+    <item
+        android:id="@+id/web_actionbar_refresh"
+        android:showAsAction="always"
+        android:icon="@drawable/ic_action_refresh"
+        android:title="Refresh"/>
+
+    <item
+        android:id="@+id/web_actionbar_browser"
+        android:showAsAction="always"
+        android:icon="@drawable/ic_action_web_site"
+        android:title="Open In Browser"/>
+
+</menu>
