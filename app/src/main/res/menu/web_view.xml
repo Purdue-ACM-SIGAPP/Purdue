@@ -4,6 +4,18 @@
 
 
     <item
+        android:id="@+id/web_actionbar_back"
+        android:showAsAction="always"
+        android:icon="@drawable/ic_action_back_disabled"
+        android:title="Back"/>
+
+    <item
+        android:id="@+id/web_actionbar_forward"
+        android:showAsAction="always"
+        android:icon="@drawable/ic_action_forward_disabled"
+        android:title="Forward"/>
+
+    <item
         android:id="@+id/web_actionbar_refresh"
         android:showAsAction="always"
         android:icon="@drawable/ic_action_refresh"
