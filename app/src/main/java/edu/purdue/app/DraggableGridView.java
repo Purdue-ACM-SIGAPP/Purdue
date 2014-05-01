@@ -28,48 +28,55 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-public class DraggableGridView extends ViewGroup implements View.OnTouchListener, View.OnClickListener, View.OnLongClickListener {
-    //layout vars
+public class DraggableGridView extends ViewGroup
+        implements View.OnTouchListener, View.OnClickListener, View.OnLongClickListener {
+
+    // Layout Variables
     public static float childRatio = .9f;
     protected int colCount, childSize, padding, dpi, scroll = 0;
     protected float lastDelta = 0;
     protected Handler handler = new Handler();
-    //dragging vars
+
+    // Dragging Variables
     protected int dragged = -1, lastX = -1, lastY = -1, lastTarget = -1;
     protected boolean enabled = true, touching = false;
-    //anim vars
+
+    // Animation Variables
     public static int animT = 150;
     protected ArrayList<Integer> newPositions = new ArrayList<Integer>();
-    //listeners
+
+    // Listeners
     protected OnRearrangeListener onRearrangeListener;
     protected OnClickListener secondaryOnClickListener;
     private OnItemClickListener onItemClickListener;
 
-    private Context context;
-
-    //CONSTRUCTOR AND HELPERS
+    /** Constructor */
     public DraggableGridView (Context context, AttributeSet attrs) {
         super(context, attrs);
-        this.context = context;
         setListeners();
         handler.removeCallbacks(updateTask);
         handler.postAtTime(updateTask, SystemClock.uptimeMillis() + 500);
         setChildrenDrawingOrderEnabled(true);
-
         DisplayMetrics metrics = new DisplayMetrics();
         ((Activity)context).getWindowManager().getDefaultDisplay().getMetrics(metrics);
         dpi = metrics.densityDpi;
     }
-    protected void setListeners()
-    {
+
+    /** Set the various listeners the class uses internally */
+    protected void setListeners() {
         setOnTouchListener(this);
         super.setOnClickListener(this);
         setOnLongClickListener(this);
     }
+
+
     @Override
+    /** Sets a secondary on click listener for the view */
     public void setOnClickListener(OnClickListener l) {
         secondaryOnClickListener = l;
     }
+
+    /** Update task which, when engaged, handles scrolling the view and refreshing the layout */
     protected Runnable updateTask = new Runnable() {
         public void run()
         {
@@ -94,20 +101,23 @@ public class DraggableGridView extends ViewGroup implements View.OnTouchListener
         }
     };
 
-    //OVERRIDES
+
     @Override
+    /** Adds a view to the Grid View. This has to be called for every view you want to add to the grid view */
     public void addView(View child) {
         super.addView(child);
         newPositions.add(-1);
-    };
+    }
+
     @Override
+    /** Removes the view at a given index */
     public void removeViewAt(int index) {
         super.removeViewAt(index);
         newPositions.remove(index);
-    };
+    }
 
-    //LAYOUT
     @Override
+    /** Refreshes the layout of the view, determining view sizes for children and laying them out into the grid */
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         //compute width of view, in dp
         float w = (r - l) / (dpi / 160f);
@@ -135,6 +145,7 @@ public class DraggableGridView extends ViewGroup implements View.OnTouchListener
                 getChildAt(i).layout(xy.x, xy.y, xy.x + childSize, xy.y + childSize);
             }
     }
+
     @Override
     protected int getChildDrawingOrder(int childCount, int i) {
         if (dragged == -1)
@@ -145,6 +156,7 @@ public class DraggableGridView extends ViewGroup implements View.OnTouchListener
             return i + 1;
         return i;
     }
+
     public int getIndexFromCoor(int x, int y)
     {
         int col = getColOrRowFromCoor(x), row = getColOrRowFromCoor(y + scroll);
@@ -291,7 +303,7 @@ public class DraggableGridView extends ViewGroup implements View.OnTouchListener
                     dragged = -1;
                 } else {
 
-                    Toast.makeText(context, "You clicked " + getChildAt(getIndexFromCoor(lastX, lastY)), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "You clicked " + getChildAt(getIndexFromCoor(lastX, lastY)), Toast.LENGTH_SHORT).show();
                 }
                 touching = false;
                 break;
