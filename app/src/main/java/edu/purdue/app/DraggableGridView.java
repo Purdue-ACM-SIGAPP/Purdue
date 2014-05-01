@@ -4,10 +4,6 @@
 
 package edu.purdue.app;
 
-import java.util.Collections;
-import java.util.ArrayList;
-
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Point;
@@ -15,18 +11,20 @@ import android.os.Handler;
 import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class DraggableGridView extends ViewGroup
         implements View.OnTouchListener, View.OnClickListener, View.OnLongClickListener {
