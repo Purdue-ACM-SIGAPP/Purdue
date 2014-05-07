@@ -300,7 +300,7 @@ public class DraggableGridView extends ViewGroup
                     dragged = -1;
                 } else {
 
-                    Toast.makeText(context, "You clicked " + getChildAt(getIndexFromCoor(lastX, lastY)), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "You clicked " + getChildAt(getIndexFromCoor(lastX, lastY)), Toast.LENGTH_SHORT).show();
                 }
                 touching = false;
                 break;
