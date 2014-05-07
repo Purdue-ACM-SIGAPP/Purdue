@@ -4,7 +4,6 @@
 
 package edu.purdue.app;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Point;
 import android.os.Handler;
@@ -55,8 +54,8 @@ public class DraggableGridView extends ViewGroup
         handler.removeCallbacks(updateTask);
         handler.postAtTime(updateTask, SystemClock.uptimeMillis() + 500);
         setChildrenDrawingOrderEnabled(true);
-        DisplayMetrics metrics = new DisplayMetrics();
-        ((Activity)context).getWindowManager().getDefaultDisplay().getMetrics(metrics);
+
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
         dpi = metrics.densityDpi;
     }
 
@@ -301,7 +300,7 @@ public class DraggableGridView extends ViewGroup
                     dragged = -1;
                 } else {
 
-                    Toast.makeText(getContext(), "You clicked " + getChildAt(getIndexFromCoor(lastX, lastY)), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "You clicked " + getChildAt(getIndexFromCoor(lastX, lastY)), Toast.LENGTH_SHORT).show();
                 }
                 touching = false;
                 break;
