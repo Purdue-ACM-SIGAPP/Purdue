@@ -1,11 +1,15 @@
 package edu.purdue.app;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public class MainMenuActivity extends Activity {
@@ -16,6 +20,19 @@ public class MainMenuActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        // TODO: Below is a sample test of the web view. Should be removed later.
+        Button testButton = ((Button) findViewById(R.id.webViewButton));
+        final TextView testTextView = ((TextView) findViewById(R.id.urlTextField));
+        testButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = testTextView.getText().toString();
+                Intent webViewIntent = new Intent(getBaseContext(), WebViewActivity.class);
+                webViewIntent.putExtra("URL_ENDPOINT", url);
+                startActivity(webViewIntent);
+            }
+        });
 
         dgv = ((DraggableGridView) findViewById(R.id.draggable_grid_view));
         setWidgets();
