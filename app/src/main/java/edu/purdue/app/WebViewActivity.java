@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebSettings;
@@ -18,6 +17,13 @@ public class WebViewActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_view);
+
+        // Retrieve the url from the calling activity via the intent's extras bundle
+        Bundle extras = getIntent().getExtras();
+        String url = null;
+        if (extras != null) {
+            url = extras.getString("URL_ENDPOINT");
+        }
 
         WebView webView = (WebView) findViewById(R.id.webView);
         WebSettings webSettings = webView.getSettings();
@@ -33,7 +39,9 @@ public class WebViewActivity extends Activity {
             }
         });
 
-        webView.loadUrl("https://mymail.purdue.edu/");
+        if (url != null) {
+            webView.loadUrl(url);
+        }
     }
 
 
