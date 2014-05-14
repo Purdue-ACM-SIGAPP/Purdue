@@ -106,9 +106,11 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
 
         gridView.setOnItemClickListener(new OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainMenuActivity.this, parent.getAdapter().getItem(position).toString(),
-                        Toast.LENGTH_SHORT).show();
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String url = gridItems.get(view.getId()).url;
+                Intent webViewIntent = new Intent(getBaseContext(), WebViewActivity.class);
+                webViewIntent.putExtra("URL_ENDPOINT", url);
+                startActivity(webViewIntent);
             }
         });
     }
