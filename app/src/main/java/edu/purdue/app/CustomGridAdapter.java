@@ -14,9 +14,9 @@ import java.util.List;
 /**
  * Created by david on 5/14/14 for Purdue
  */
-public class CustomGridAdapter extends BaseDynamicGridAdapter {
+public class CustomGridAdapter<T extends CustomMenuItem> extends BaseDynamicGridAdapter<T> {
 
-    public CustomGridAdapter(Context context, List<?> items, int columnCount) {
+    public CustomGridAdapter(Context context, List<T> items, int columnCount) {
         super(context, items, columnCount);
     }
 
@@ -30,7 +30,7 @@ public class CustomGridAdapter extends BaseDynamicGridAdapter {
         } else {
             holder = (CustomViewHolder) convertView.getTag();
         }
-        holder.build(getItem(position).toString());
+        holder.build(getItem(position));
         return convertView;
     }
 
@@ -43,9 +43,9 @@ public class CustomGridAdapter extends BaseDynamicGridAdapter {
             image = (ImageView) view.findViewById(R.id.item_img);
         }
 
-        void build(String title) {
-            titleText.setText(title);
-            image.setImageResource(R.drawable.ic_launcher);
+        void build(CustomMenuItem item) {
+            titleText.setText(item.getName());
+            image.setImageDrawable(item.getDrawable());
         }
     }
 }

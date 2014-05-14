@@ -1,13 +1,12 @@
 package edu.purdue.app;
 
-import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainMenuItem {
+public class MainMenuItem implements CustomMenuItem {
     public final Drawable icon;
     public final String name;
     public final String url;
@@ -29,5 +28,15 @@ public class MainMenuItem {
         toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_bus), "Bus Routes", "http://citybus.doublemap.com/map/"));
         //TODO: Add the rest of the icons
         return toReturn;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public Drawable getDrawable() {
+        return icon;
     }
 }

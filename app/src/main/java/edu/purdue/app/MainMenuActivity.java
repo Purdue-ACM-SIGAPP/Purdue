@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,10 +16,8 @@ import android.widget.Toast;
 import org.askerov.dynamicgid.BaseDynamicGridAdapter;
 import org.askerov.dynamicgid.DynamicGridView;
 import org.json.JSONArray;
-import org.json.JSONException;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -46,12 +43,6 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
 
         assignGridListeners();
 
-        gridItems = new HashMap<Integer, MainMenuItem>();
-        List<MainMenuItem> menuItems = MainMenuItem.getDefaultMainMenuItems(this.getResources());
-        for(int i = 0; i < menuItems.size(); i++) {
-            gridItems.put(i, menuItems.get(i));
-        }
-
         CustomGridAdapter adapter = prepareAdapter();
         gridView.setAdapter(adapter);
 
@@ -59,7 +50,7 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
     }
 
     private CustomGridAdapter prepareAdapter() {
-        SharedPreferences prefs = getSharedPreferences("grid_locations", 0);
+        /*SharedPreferences prefs = getSharedPreferences("grid_locations", 0);
         if(prefs.contains("grid_items"))
         {
             String itemsJson = prefs.getString("grid_items", null);
@@ -76,13 +67,19 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
                 Log.e("MainMenuActivity", "JSON from Shared Prefs was not valid");
             }
 
-            return new CustomGridAdapter(this,
-                    new ArrayList<String>(items), 3);
+            return new CustomGridAdapter<MainMenuItem>(this,
+                    new ArrayList<MainMenuItem>(items), 3);
 
-        } else
+        } else*/
         {
-            return new CustomGridAdapter(this,
-                    new ArrayList<String>(Arrays.asList(icons)), 3);
+            gridItems = new HashMap<Integer, MainMenuItem>();
+            List<MainMenuItem> menuItems = MainMenuItem.getDefaultMainMenuItems(this.getResources());
+            for(int i = 0; i < menuItems.size(); i++) {
+                gridItems.put(i, menuItems.get(i));
+            }
+
+            return new CustomGridAdapter<MainMenuItem>(this,
+                    new ArrayList<MainMenuItem>(menuItems), 3);
         }
     }
 

@@ -10,10 +10,10 @@ import java.util.List;
  * Date: 9/7/13
  * Time: 10:49 PM
  */
-public abstract class BaseDynamicGridAdapter extends AbstractDynamicGridAdapter {
+public abstract class BaseDynamicGridAdapter<T> extends AbstractDynamicGridAdapter {
     private Context mContext;
 
-    private ArrayList<Object> mItems = new ArrayList<Object>();
+    private ArrayList<T> mItems = new ArrayList<T>();
     private int mColumnCount;
 
     protected BaseDynamicGridAdapter(Context context, int columnCount) {
@@ -21,19 +21,19 @@ public abstract class BaseDynamicGridAdapter extends AbstractDynamicGridAdapter 
         this.mColumnCount = columnCount;
     }
 
-    public BaseDynamicGridAdapter(Context context, List<?> items, int columnCount) {
+    public BaseDynamicGridAdapter(Context context, List<T> items, int columnCount) {
         mContext = context;
         mColumnCount = columnCount;
         init(items);
     }
 
-    private void init(List<?> items) {
+    private void init(List<T> items) {
         addAllStableId(items);
         this.mItems.addAll(items);
     }
 
 
-    public void set(List<?> items) {
+    public void set(List<T> items) {
         clear();
         init(items);
         notifyDataSetChanged();
@@ -45,21 +45,21 @@ public abstract class BaseDynamicGridAdapter extends AbstractDynamicGridAdapter 
         notifyDataSetChanged();
     }
 
-    public void add(Object item) {
+    public void add(T item) {
         addStableId(item);
         mItems.add(item);
         notifyDataSetChanged();
     }
 
 
-    public void add(List<?> items) {
+    public void add(List<T> items) {
         addAllStableId(items);
         this.mItems.addAll(items);
         notifyDataSetChanged();
     }
 
 
-    public void remove(Object item) {
+    public void remove(T item) {
         mItems.remove(item);
         removeStableID(item);
         notifyDataSetChanged();
@@ -72,7 +72,7 @@ public abstract class BaseDynamicGridAdapter extends AbstractDynamicGridAdapter 
     }
 
     @Override
-    public Object getItem(int position) {
+    public T getItem(int position) {
         return mItems.get(position);
     }
 
