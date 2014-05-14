@@ -44,52 +44,13 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
 
         gridView = (DynamicGridView) findViewById(R.id.dynamic_grid);
 
-        CustomGridAdapter adapter;
-        SharedPreferences prefs = getSharedPreferences("grid_locations", 0);
-        if(prefs.contains("grid_items"))
-        {
-            String itemsJson = prefs.getString("grid_items", null);
-            JSONArray jsonArray = null;
-            List<String> items = null;
-            try {
-                jsonArray = new JSONArray(itemsJson);
-                items = new ArrayList<String>();
-                for (int i = 0; i < jsonArray.length(); i++)
-                {
-                    items.add(jsonArray.get(i).toString());
-                }
-            } catch (JSONException e) {
-                Log.e("MainMenuActivity", "JSON from Shared Prefs was not valid");
-            }
-
-            adapter = new CustomGridAdapter(this,
-                    new ArrayList<String>(items), 3);
-
-        } else
-        {
-            adapter = new CustomGridAdapter(this,
-                    new ArrayList<String>(Arrays.asList(icons)), 3);
-        }
-
+        CustomGridAdapter adapter = prepareAdapter();
         gridView.setAdapter(adapter);
-//        add callback to stop edit mode if needed
-//        gridView.setOnDropListener(new DynamicGridView.OnDropListener()
-//        {
-//            @Override
-//            public void onActionDrop()
-//            {
-//                gridView.stopEditMode();
-//            }
-//        });
 
         gridView.setOnDropListener(new DynamicGridView.OnDropListener() {
             @Override
             public void onActionDrop() {
-                BaseDynamicGridAdapter dga = (BaseDynamicGridAdapter) gridView.getAdapter();
-                List<String> items = dga.getItems();
-                JSONArray jarr = new JSONArray(items);
-                SharedPreferences prefs = getSharedPreferences("grid_locations", Context.MODE_PRIVATE);
-                prefs.edit().putString("grid_items", jarr.toString()).apply();
+                saveGridState();
 
                 gridView.stopEditMode();
 
@@ -127,6 +88,42 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
                 startActivity(webViewIntent);
             }
         });
+    }
+
+    private void saveGridState() {
+        BaseDynamicGridAdapter dga = (BaseDynamicGridAdapter) gridView.getAdapter();
+        List<String> items = dga.getItems();
+        JSONArray jarr = new JSONArray(items);
+        SharedPreferences prefs = getSharedPreferences("grid_locations", Context.MODE_PRIVATE);
+        prefs.edit().putString("grid_items", jarr.toString()).apply();
+    }
+
+    private CustomGridAdapter prepareAdapter() {
+        SharedPreferences prefs = getSharedPreferences("grid_locations", 0);
+        if(prefs.contains("grid_items"))
+        {
+            String itemsJson = prefs.getString("grid_items", null);
+            JSONArray jsonArray = null;
+            List<String> items = null;
+            try {
+                jsonArray = new JSONArray(itemsJson);
+                items = new ArrayList<String>();
+                for (int i = 0; i < jsonArray.length(); i++)
+                {
+                    items.add(jsonArray.get(i).toString());
+                }
+            } catch (JSONException e) {
+                Log.e("MainMenuActivity", "JSON from Shared Prefs was not valid");
+            }
+
+            return new CustomGridAdapter(this,
+                    new ArrayList<String>(items), 3);
+
+        } else
+        {
+            return new CustomGridAdapter(this,
+                    new ArrayList<String>(Arrays.asList(icons)), 3);
+        }
     }
 
     @Override
