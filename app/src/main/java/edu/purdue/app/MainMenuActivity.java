@@ -44,58 +44,18 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
 
         gridView = (DynamicGridView) findViewById(R.id.dynamic_grid);
 
+        assignGridListeners();
+
+        gridItems = new HashMap<Integer, MainMenuItem>();
+        List<MainMenuItem> menuItems = MainMenuItem.getDefaultMainMenuItems(this.getResources());
+        for(int i = 0; i < menuItems.size(); i++) {
+            gridItems.put(i, menuItems.get(i));
+        }
+
         CustomGridAdapter adapter = prepareAdapter();
         gridView.setAdapter(adapter);
 
-        gridView.setOnDropListener(new DynamicGridView.OnDropListener() {
-            @Override
-            public void onActionDrop() {
-                saveGridState();
-
-                gridView.stopEditMode();
-
-                Toast.makeText(MainMenuActivity.this, "Item was dropped",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        gridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                gridView.startEditMode();
-                return false;
-            }
-        });
-
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainMenuActivity.this, parent.getAdapter().getItem(position).toString(),
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
-        // TODO: Below is a sample test of the web view. Should be removed later.
-        Button testButton = ((Button) findViewById(R.id.webViewButton));
-        final TextView testTextView = ((TextView) findViewById(R.id.urlTextField));
-        testButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String url = testTextView.getText().toString();
-                Intent webViewIntent = new Intent(getBaseContext(), WebViewActivity.class);
-                webViewIntent.putExtra("URL_ENDPOINT", url);
-                startActivity(webViewIntent);
-            }
-        });
-    }
-
-    private void saveGridState() {
-        BaseDynamicGridAdapter dga = (BaseDynamicGridAdapter) gridView.getAdapter();
-        List<String> items = dga.getItems();
-        JSONArray jarr = new JSONArray(items);
-        SharedPreferences prefs = getSharedPreferences("grid_locations", Context.MODE_PRIVATE);
-        prefs.edit().putString("grid_items", jarr.toString()).apply();
+        prepTestButton();
     }
 
     private CustomGridAdapter prepareAdapter() {
@@ -124,6 +84,59 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
             return new CustomGridAdapter(this,
                     new ArrayList<String>(Arrays.asList(icons)), 3);
         }
+    }
+
+    private void assignGridListeners() {
+        gridView.setOnDropListener(new DynamicGridView.OnDropListener() {
+            @Override
+            public void onActionDrop() {
+                saveGridState();
+
+                gridView.stopEditMode();
+
+                Toast.makeText(MainMenuActivity.this, "Item was dropped",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        gridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                gridView.startEditMode();
+                return false;
+            }
+        });
+
+        gridView.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainMenuActivity.this, parent.getAdapter().getItem(position).toString(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void prepTestButton() {
+        // TODO: Below is a sample test of the web view. Should be removed later.
+        Button testButton = ((Button) findViewById(R.id.webViewButton));
+        final TextView testTextView = ((TextView) findViewById(R.id.urlTextField));
+        testButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = testTextView.getText().toString();
+                Intent webViewIntent = new Intent(getBaseContext(), WebViewActivity.class);
+                webViewIntent.putExtra("URL_ENDPOINT", url);
+                startActivity(webViewIntent);
+            }
+        });
+    }
+
+    private void saveGridState() {
+        BaseDynamicGridAdapter dga = (BaseDynamicGridAdapter) gridView.getAdapter();
+        List<String> items = dga.getItems();
+        JSONArray jarr = new JSONArray(items);
+        SharedPreferences prefs = getSharedPreferences("grid_locations", Context.MODE_PRIVATE);
+        prefs.edit().putString("grid_items", jarr.toString()).apply();
     }
 
     @Override
