@@ -7,14 +7,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static android.widget.AdapterView.OnItemClickListener;
 
 
-public class MainMenuActivity extends Activity {
+public class MainMenuActivity extends Activity implements OnItemClickListener {
 
     private DraggableGridView dgv;
+    private HashMap<Integer, MainMenuItem> gridItems; //Key is the view ID. Access with view.getID()
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +44,14 @@ public class MainMenuActivity extends Activity {
         });
 
         dgv = ((DraggableGridView) findViewById(R.id.draggable_grid_view));
+        dgv.setOnItemClickListener(this);
+
+        gridItems = new HashMap<Integer, MainMenuItem>();
+        List<MainMenuItem> menuItems = MainMenuItem.getDefaultMainMenuItems(this.getResources());
+        for(int i = 0; i < menuItems.size(); i++) {
+            gridItems.put(i, menuItems.get(i));
+        }
+
         setWidgets();
     }
 
@@ -59,19 +76,21 @@ public class MainMenuActivity extends Activity {
     }
 
     private void setWidgets() {
-
         // Create all of the widgets that will display on the screen
-        int NUM_BUTTONS = 9;
-        for (int i = 0; i < NUM_BUTTONS; i++) {
+        for(Map.Entry<Integer, MainMenuItem> entry : gridItems.entrySet()) {
             ImageView bu = new ImageView(this);
-            bu.setImageDrawable(getResources().getDrawable(R.drawable.ic_launcher));
+            bu.setImageDrawable(entry.getValue().icon);
             bu.setLayoutParams(new ViewGroup.LayoutParams(75, 75));
             bu.setFocusable(false);
-            bu.setId(i);
+            bu.setId(entry.getKey());
             dgv.addView(bu);
         }
-
-
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        String url = gridItems.get(view.getId()).url;
+        Intent webViewIntent = new Intent(getBaseContext(), WebViewActivity.class);
+        webViewIntent.putExtra("URL_ENDPOINT", url);
+        startActivity(webViewIntent);    }
 }
