@@ -1,7 +1,9 @@
 package edu.purdue.app;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.Map;
 import static android.widget.AdapterView.OnItemClickListener;
 
 
-public class MainMenuActivity extends Activity implements OnItemClickListener {
+public class MainMenuActivity extends Activity implements OnItemClickListener, OnRearrangeListener {
 
     private DraggableGridView dgv;
     private HashMap<Integer, MainMenuItem> gridItems; //Key is the view ID. Access with view.getID()
@@ -76,6 +77,7 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
     }
 
     private void setWidgets() {
+
         // Create all of the widgets that will display on the screen
         for(Map.Entry<Integer, MainMenuItem> entry : gridItems.entrySet()) {
             ImageView bu = new ImageView(this);
@@ -88,9 +90,22 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
     }
 
     @Override
+    public void onRearrange(int oldIndex, int newIndex) {
+
+    }
+
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+        SharedPreferences prefs = getSharedPreferences("grid_state", Context.MODE_PRIVATE);
+    }
+
+    @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         String url = gridItems.get(view.getId()).url;
         Intent webViewIntent = new Intent(getBaseContext(), WebViewActivity.class);
         webViewIntent.putExtra("URL_ENDPOINT", url);
-        startActivity(webViewIntent);    }
+        startActivity(webViewIntent);
+    }
 }
