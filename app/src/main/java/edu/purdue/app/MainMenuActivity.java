@@ -1,7 +1,9 @@
 package edu.purdue.app;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,11 +13,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.askerov.dynamicgid.BaseDynamicGridAdapter;
 import org.askerov.dynamicgid.DynamicGridView;
+import org.json.JSONArray;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 import static android.widget.AdapterView.OnItemClickListener;
 
@@ -45,6 +50,23 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
 //                gridView.stopEditMode();
 //            }
 //        });
+
+        gridView.setOnDropListener(new DynamicGridView.OnDropListener() {
+            @Override
+            public void onActionDrop() {
+                BaseDynamicGridAdapter dga = (BaseDynamicGridAdapter) gridView.getAdapter();
+                List<String> items = dga.getItems();
+                JSONArray jarr = new JSONArray(items);
+                SharedPreferences prefs = getSharedPreferences("grid_locations", Context.MODE_PRIVATE);
+                prefs.edit().putString("grid_items", jarr.toString()).apply();
+
+                gridView.stopEditMode();
+
+                Toast.makeText(MainMenuActivity.this, "Item was dropped",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
         gridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {

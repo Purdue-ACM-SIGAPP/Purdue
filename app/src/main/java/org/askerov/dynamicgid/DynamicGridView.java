@@ -383,13 +383,13 @@ public class DynamicGridView extends GridView {
                 break;
             case MotionEvent.ACTION_UP:
                 touchEventsEnded();
-                if (mDropListener != null) {
+                if (mDropListener != null && isEditMode()) {
                     mDropListener.onActionDrop();
                 }
                 break;
             case MotionEvent.ACTION_CANCEL:
                 touchEventsCancelled();
-                if (mDropListener != null) {
+                if (mDropListener != null && isEditMode()) {
                     mDropListener.onActionDrop();
                 }
                 break;
