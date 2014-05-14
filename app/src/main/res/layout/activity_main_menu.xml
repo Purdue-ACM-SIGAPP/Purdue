@@ -4,16 +4,12 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent" >
 
-    <edu.purdue.app.DraggableGridView
-        android:id="@+id/draggable_grid_view"
-        android:layout_height="fill_parent"
-        android:layout_width="fill_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true" >
-
-
-
-    </edu.purdue.app.DraggableGridView>
+    <org.askerov.dynamicgid.DynamicGridView
+        android:id="@+id/dynamic_grid"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:numColumns="3"
+        />
 
     <EditText
         android:layout_width="wrap_content"

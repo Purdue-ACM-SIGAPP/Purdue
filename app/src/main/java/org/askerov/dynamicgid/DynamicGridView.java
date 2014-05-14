@@ -1,6 +1,11 @@
 package org.askerov.dynamicgid;
 
-import android.animation.*;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.animation.TypeEvaluator;
+import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -23,6 +28,8 @@ import android.widget.ListAdapter;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
+import edu.purdue.app.R;
 
 /**
  * Author: alex askerov

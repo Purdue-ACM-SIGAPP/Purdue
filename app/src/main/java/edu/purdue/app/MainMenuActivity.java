@@ -1,35 +1,66 @@
 package edu.purdue.app;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import org.askerov.dynamicgid.DynamicGridView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import static android.widget.AdapterView.OnItemClickListener;
 
 
-public class MainMenuActivity extends Activity implements OnItemClickListener, OnRearrangeListener {
+public class MainMenuActivity extends Activity implements OnItemClickListener {
 
     private DraggableGridView dgv;
     private HashMap<Integer, MainMenuItem> gridItems; //Key is the view ID. Access with view.getID()
+
+    private DynamicGridView gridView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        gridView = (DynamicGridView) findViewById(R.id.dynamic_grid);
+        gridView.setAdapter(new CustomGridAdapter(this,
+                new ArrayList<String>(Arrays.asList(new String[] { "Hello", "This", "is", "the", "New", "grid", "view"})),
+                3));
+//        add callback to stop edit mode if needed
+//        gridView.setOnDropListener(new DynamicGridView.OnDropListener()
+//        {
+//            @Override
+//            public void onActionDrop()
+//            {
+//                gridView.stopEditMode();
+//            }
+//        });
+        gridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                gridView.startEditMode();
+                return false;
+            }
+        });
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainMenuActivity.this, parent.getAdapter().getItem(position).toString(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
         // TODO: Below is a sample test of the web view. Should be removed later.
         Button testButton = ((Button) findViewById(R.id.webViewButton));
@@ -43,17 +74,6 @@ public class MainMenuActivity extends Activity implements OnItemClickListener, O
                 startActivity(webViewIntent);
             }
         });
-
-        dgv = ((DraggableGridView) findViewById(R.id.draggable_grid_view));
-        dgv.setOnItemClickListener(this);
-
-        gridItems = new HashMap<Integer, MainMenuItem>();
-        List<MainMenuItem> menuItems = MainMenuItem.getDefaultMainMenuItems(this.getResources());
-        for(int i = 0; i < menuItems.size(); i++) {
-            gridItems.put(i, menuItems.get(i));
-        }
-
-        setWidgets();
     }
 
     @Override
@@ -76,36 +96,23 @@ public class MainMenuActivity extends Activity implements OnItemClickListener, O
         return super.onOptionsItemSelected(item);
     }
 
-    private void setWidgets() {
-
-        // Create all of the widgets that will display on the screen
-        for(Map.Entry<Integer, MainMenuItem> entry : gridItems.entrySet()) {
-            ImageView bu = new ImageView(this);
-            bu.setImageDrawable(entry.getValue().icon);
-            bu.setLayoutParams(new ViewGroup.LayoutParams(75, 75));
-            bu.setFocusable(false);
-            bu.setId(entry.getKey());
-            dgv.addView(bu);
+    @Override
+    public void onBackPressed() {
+        if (gridView.isEditMode()) {
+            gridView.stopEditMode();
+        } else {
+            super.onBackPressed();
         }
     }
 
     @Override
-    public void onRearrange(int oldIndex, int newIndex) {
-
-    }
-
-    @Override
-    public void onPause()
-    {
-        super.onPause();
-        SharedPreferences prefs = getSharedPreferences("grid_state", Context.MODE_PRIVATE);
-    }
-
-    @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        String url = gridItems.get(view.getId()).url;
+        Toast.makeText(MainMenuActivity.this, adapterView.getAdapter().getItem(i).toString(),
+                Toast.LENGTH_SHORT).show();
+
+        /*String url = gridItems.get(view.getId()).url;
         Intent webViewIntent = new Intent(getBaseContext(), WebViewActivity.class);
         webViewIntent.putExtra("URL_ENDPOINT", url);
-        startActivity(webViewIntent);
+        startActivity(webViewIntent);*/
     }
 }
