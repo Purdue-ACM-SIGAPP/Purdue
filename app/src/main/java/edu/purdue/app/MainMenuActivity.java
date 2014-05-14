@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import org.askerov.dynamicgid.BaseDynamicGridAdapter;
 import org.askerov.dynamicgid.DynamicGridView;
 import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,15 +34,44 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
 
     private DynamicGridView gridView;
 
+    private String[] icons = new String[] { "Hello", "This", "is", "the", "New", "grid", "view"};
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
         gridView = (DynamicGridView) findViewById(R.id.dynamic_grid);
-        gridView.setAdapter(new CustomGridAdapter(this,
-                new ArrayList<String>(Arrays.asList(new String[] { "Hello", "This", "is", "the", "New", "grid", "view"})),
-                3));
+
+        CustomGridAdapter adapter;
+        SharedPreferences prefs = getSharedPreferences("grid_locations", 0);
+        if(prefs.contains("grid_items"))
+        {
+            String itemsJson = prefs.getString("grid_items", null);
+            JSONArray jsonArray = null;
+            List<String> items = null;
+            try {
+                jsonArray = new JSONArray(itemsJson);
+                items = new ArrayList<String>();
+                for (int i = 0; i < jsonArray.length(); i++)
+                {
+                    items.add(jsonArray.get(i).toString());
+                }
+            } catch (JSONException e) {
+                Log.e("MainMenuActivity", "JSON from Shared Prefs was not valid");
+            }
+
+            adapter = new CustomGridAdapter(this,
+                    new ArrayList<String>(items), 3);
+
+        } else
+        {
+            adapter = new CustomGridAdapter(this,
+                    new ArrayList<String>(Arrays.asList(icons)), 3);
+        }
+
+        gridView.setAdapter(adapter);
 //        add callback to stop edit mode if needed
 //        gridView.setOnDropListener(new DynamicGridView.OnDropListener()
 //        {
