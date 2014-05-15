@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainMenuItem implements CustomMenuItem {
-    public final Drawable icon;
-    public final String name;
-    public final String url;
-    public final float id;
+    private final Drawable icon;
+    private final String name;
+    private final String url;
+    private final float id;
 
     public MainMenuItem(Drawable icon, String name, String url, float id) {
         this.icon = icon;
@@ -42,8 +42,13 @@ public class MainMenuItem implements CustomMenuItem {
         return icon;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
     @Override
     public float getId() {
         return id;
     }
+
 }
