@@ -57,7 +57,7 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
 
         menuItems = MainMenuItem.getDefaultMainMenuItems(this.getResources());
         CustomGridAdapter ada = new CustomGridAdapter<MainMenuItem>(this,
-                new ArrayList<MainMenuItem>(menuItems), 3);
+                new ArrayList<MainMenuItem>(menuItems), 4);
         Log.d("GridState", "Loading grid...");
 
         SharedPreferences prefs = getSharedPreferences("grid_locations", 0);

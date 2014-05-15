@@ -14,7 +14,10 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:padding="10dp"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:src="@drawable/ic_bus"
         />
 
     <TextView
@@ -24,6 +27,7 @@
         android:singleLine="true"
         android:ellipsize="end"
         android:padding="1dp"
+        android:text="Bus"
         android:gravity="center"
         />
 
