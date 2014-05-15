@@ -31,19 +31,6 @@ public class MainMenuActivity extends Activity implements OnItemClickListener, O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        // TODO: Below is a sample test of the web view. Should be removed later.
-        Button testButton = ((Button) findViewById(R.id.webViewButton));
-        final TextView testTextView = ((TextView) findViewById(R.id.urlTextField));
-        testButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String url = testTextView.getText().toString();
-                Intent webViewIntent = new Intent(getBaseContext(), WebViewActivity.class);
-                webViewIntent.putExtra("URL_ENDPOINT", url);
-                startActivity(webViewIntent);
-            }
-        });
-
         dgv = ((DraggableGridView) findViewById(R.id.draggable_grid_view));
         dgv.setOnItemClickListener(this);
 
