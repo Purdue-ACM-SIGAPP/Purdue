@@ -17,6 +17,7 @@ import android.widget.Toast;
 import org.askerov.dynamicgid.BaseDynamicGridAdapter;
 import org.askerov.dynamicgid.DynamicGridView;
 import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,34 +56,34 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
     private CustomGridAdapter prepareAdapter() {
 
         menuItems = MainMenuItem.getDefaultMainMenuItems(this.getResources());
+        CustomGridAdapter ada = new CustomGridAdapter<MainMenuItem>(this,
+                new ArrayList<MainMenuItem>(menuItems), 3);
+        Log.d("GridState", "Loading grid...");
 
-        /*SharedPreferences prefs = getSharedPreferences("grid_locations", 0);
+        SharedPreferences prefs = getSharedPreferences("grid_locations", 0);
         if(prefs.contains("grid_items"))
         {
+            Log.d("GridState", "Old data exists");
             String itemsJson = prefs.getString("grid_items", null);
+            Log.d("GridState", "The raw data: " + itemsJson);
             JSONArray jsonArray = null;
-            List<String> items = null;
+            ArrayList<Integer> items = null;
             try {
                 jsonArray = new JSONArray(itemsJson);
-                items = new ArrayList<String>();
+                items = new ArrayList<Integer>();
                 for (int i = 0; i < jsonArray.length(); i++)
                 {
-                    items.add(jsonArray.get(i).toString());
+                    items.add(jsonArray.getInt(i));
                 }
             } catch (JSONException e) {
                 Log.e("MainMenuActivity", "JSON from Shared Prefs was not valid");
             }
 
-            return new CustomGridAdapter<MainMenuItem>(this,
-                    new ArrayList<MainMenuItem>(items), 3);
-
-        } else*/
-        {
-
-
-            return new CustomGridAdapter<MainMenuItem>(this,
-                    new ArrayList<MainMenuItem>(menuItems), 3);
+            Log.d("GridState", "Assigning locations...");
+            if(items != null)
+                ada.setLocations(items);
         }
+        return ada;
     }
 
     private void assignGridListeners() {
@@ -125,6 +126,8 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
         });
     }
 
+
+
     private void prepTestButton() {
         // TODO: Below is a sample test of the web view. Should be removed later.
         Button testButton = ((Button) findViewById(R.id.webViewButton));
@@ -141,9 +144,14 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
     }
 
     private void saveGridState() {
+        Log.d("GridState", "Saving...");
         BaseDynamicGridAdapter dga = (BaseDynamicGridAdapter) gridView.getAdapter();
-        List<String> items = dga.getItems();
+        ArrayList<Integer> items = dga.getLocations();
+        for(Integer i : items)
+            Log.d("GridState", "Saving location: " + i);
+
         JSONArray jarr = new JSONArray(items);
+        Log.d("GridState", "JSONArray: " + jarr.toString());
         SharedPreferences prefs = getSharedPreferences("grid_locations", Context.MODE_PRIVATE);
         prefs.edit().putString("grid_items", jarr.toString()).apply();
     }
