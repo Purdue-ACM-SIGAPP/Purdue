@@ -9,4 +9,5 @@ public interface CustomMenuItem {
 
     public String getName();
     public Drawable getDrawable();
+    public float getId();
 }

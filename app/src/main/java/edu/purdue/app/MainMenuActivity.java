@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,7 +19,6 @@ import org.askerov.dynamicgid.DynamicGridView;
 import org.json.JSONArray;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import static android.widget.AdapterView.OnItemClickListener;
@@ -27,9 +27,11 @@ import static android.widget.AdapterView.OnItemClickListener;
 public class MainMenuActivity extends Activity implements OnItemClickListener {
 
     private DraggableGridView dgv;
-    private HashMap<Integer, MainMenuItem> gridItems; //Key is the view ID. Access with view.getID()
+    //private HashMap<Integer, MainMenuItem> gridItems; //Key is the view ID. Access with view.getID()
 
     private DynamicGridView gridView;
+
+    List<MainMenuItem> menuItems;
 
     private String[] icons = new String[] { "Hello", "This", "is", "the", "New", "grid", "view"};
 
@@ -37,19 +39,23 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("MainMenu", "onCreate()");
         setContentView(R.layout.activity_main_menu);
 
         gridView = (DynamicGridView) findViewById(R.id.dynamic_grid);
 
-        assignGridListeners();
-
         CustomGridAdapter adapter = prepareAdapter();
         gridView.setAdapter(adapter);
+
+        assignGridListeners();
 
         prepTestButton();
     }
 
     private CustomGridAdapter prepareAdapter() {
+
+        menuItems = MainMenuItem.getDefaultMainMenuItems(this.getResources());
+
         /*SharedPreferences prefs = getSharedPreferences("grid_locations", 0);
         if(prefs.contains("grid_items"))
         {
@@ -72,11 +78,7 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
 
         } else*/
         {
-            gridItems = new HashMap<Integer, MainMenuItem>();
-            List<MainMenuItem> menuItems = MainMenuItem.getDefaultMainMenuItems(this.getResources());
-            for(int i = 0; i < menuItems.size(); i++) {
-                gridItems.put(i, menuItems.get(i));
-            }
+
 
             return new CustomGridAdapter<MainMenuItem>(this,
                     new ArrayList<MainMenuItem>(menuItems), 3);
@@ -107,10 +109,18 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
         gridView.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String url = gridItems.get(view.getId()).url;
-                Intent webViewIntent = new Intent(getBaseContext(), WebViewActivity.class);
-                webViewIntent.putExtra("URL_ENDPOINT", url);
-                startActivity(webViewIntent);
+                Log.d("GridItemClicked", "Grid item clicked.");
+                Object o = view.getTag();
+
+                if(o instanceof MainMenuItem)
+                {
+                    MainMenuItem item = (MainMenuItem) o;
+                    String url = item.url;
+                    Log.d("GridItemClicked", "Opening url: " + url);
+                    Intent webViewIntent = new Intent(getBaseContext(), WebViewActivity.class);
+                    webViewIntent.putExtra("URL_ENDPOINT", url);
+                    startActivity(webViewIntent);
+                }
             }
         });
     }

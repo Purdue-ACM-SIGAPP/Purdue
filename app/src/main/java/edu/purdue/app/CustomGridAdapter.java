@@ -16,6 +16,7 @@ import java.util.List;
  */
 public class CustomGridAdapter<T extends CustomMenuItem> extends BaseDynamicGridAdapter<T> {
 
+
     public CustomGridAdapter(Context context, List<T> items, int columnCount) {
         super(context, items, columnCount);
     }
@@ -23,18 +24,19 @@ public class CustomGridAdapter<T extends CustomMenuItem> extends BaseDynamicGrid
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         CustomViewHolder holder;
+        CustomMenuItem item = getItem(position);
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_grid, null);
-            holder = new CustomViewHolder(convertView);
-            convertView.setTag(holder);
-        } else {
-            holder = (CustomViewHolder) convertView.getTag();
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_grid, parent, false);
         }
-        holder.build(getItem(position));
+        holder = new CustomViewHolder(convertView);
+        convertView.setTag(item);
+
+        holder.build(item);
+
         return convertView;
     }
 
-    private class CustomViewHolder {
+    public class CustomViewHolder {
         private TextView titleText;
         private ImageView image;
 
