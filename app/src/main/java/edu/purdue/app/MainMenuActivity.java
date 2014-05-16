@@ -35,6 +35,8 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        getActionBar().setIcon(R.drawable.ic_p);
+
         setContentView(R.layout.activity_main_menu);
 
         gridView = (DynamicGridView) findViewById(R.id.dynamic_grid);
