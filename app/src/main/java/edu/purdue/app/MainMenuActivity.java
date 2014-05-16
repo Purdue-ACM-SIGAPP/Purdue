@@ -10,8 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.askerov.dynamicgid.BaseDynamicGridAdapter;
@@ -27,7 +25,7 @@ import static android.widget.AdapterView.OnItemClickListener;
 
 public class MainMenuActivity extends Activity implements OnItemClickListener {
 
-    private DraggableGridView dgv;
+
     //private HashMap<Integer, MainMenuItem> gridItems; //Key is the view ID. Access with view.getID()
 
     private DynamicGridView gridView;
@@ -49,8 +47,6 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
         gridView.setAdapter(adapter);
 
         assignGridListeners();
-
-        prepTestButton();
     }
 
     private CustomGridAdapter prepareAdapter() {
@@ -122,23 +118,6 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
                     webViewIntent.putExtra("URL_ENDPOINT", url);
                     startActivity(webViewIntent);
                 }
-            }
-        });
-    }
-
-
-
-    private void prepTestButton() {
-        // TODO: Below is a sample test of the web view. Should be removed later.
-        Button testButton = ((Button) findViewById(R.id.webViewButton));
-        final TextView testTextView = ((TextView) findViewById(R.id.urlTextField));
-        testButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String url = testTextView.getText().toString();
-                Intent webViewIntent = new Intent(getBaseContext(), WebViewActivity.class);
-                webViewIntent.putExtra("URL_ENDPOINT", url);
-                startActivity(webViewIntent);
             }
         });
     }
