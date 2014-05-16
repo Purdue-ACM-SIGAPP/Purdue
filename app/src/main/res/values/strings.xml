@@ -2,8 +2,14 @@
 <resources>
 
     <string name="app_name">Purdue</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_web_view">WebViewActivity</string>
+    <string name="news">News</string>
+    <string name="calendar">Calendar</string>
+    <string name="map">Map</string>
+    <string name="mymail">MyMail</string>
+    <string name="menus">Menus</string>
+    <string name="labs">Labs</string>
+    <string name="bus_routes">Bus Routes</string>
 
 </resources>

@@ -24,6 +24,9 @@ import static android.widget.AdapterView.OnItemClickListener;
 
 public class MainMenuActivity extends Activity implements OnItemClickListener {
 
+    private static final String PREF_PAGE_GRID = "grid_locations";
+    private static final String PREF_GRID_ITEMS = "grid_items";
+
     private DynamicGridView gridView;
 
     List<MainMenuItem> menuItems;
@@ -31,7 +34,7 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("MainMenu", "onCreate()");
+
         setContentView(R.layout.activity_main_menu);
 
         gridView = (DynamicGridView) findViewById(R.id.dynamic_grid);
@@ -47,14 +50,11 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
         menuItems = MainMenuItem.getDefaultMainMenuItems(this.getResources());
         CustomGridAdapter ada = new CustomGridAdapter<MainMenuItem>(this,
                 new ArrayList<MainMenuItem>(menuItems), 4);
-        Log.d("GridState", "Loading grid...");
 
-        SharedPreferences prefs = getSharedPreferences("grid_locations", 0);
-        if(prefs.contains("grid_items"))
+        SharedPreferences prefs = getSharedPreferences(PREF_PAGE_GRID, 0);
+        if(prefs.contains(PREF_GRID_ITEMS))
         {
-            Log.d("GridState", "Old data exists");
-            String itemsJson = prefs.getString("grid_items", null);
-            Log.d("GridState", "The raw data: " + itemsJson);
+            String itemsJson = prefs.getString(PREF_GRID_ITEMS, null);
             JSONArray jsonArray = null;
             ArrayList<Integer> items = null;
             try {
@@ -65,10 +65,9 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
                     items.add(jsonArray.getInt(i));
                 }
             } catch (JSONException e) {
-                Log.e("MainMenuActivity", "JSON from Shared Prefs was not valid");
+                Log.e("MainMenuActivity", "JSON from Shared Prefs was not valid", e);
             }
 
-            Log.d("GridState", "Assigning locations...");
             if(items != null)
                 ada.setLocations(items);
         }
@@ -100,8 +99,8 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
         ArrayList<Integer> items = dga.getLocations();
 
         JSONArray jarr = new JSONArray(items);
-        SharedPreferences prefs = getSharedPreferences("grid_locations", Context.MODE_PRIVATE);
-        prefs.edit().putString("grid_items", jarr.toString()).apply();
+        SharedPreferences prefs = getSharedPreferences(PREF_PAGE_GRID, Context.MODE_PRIVATE);
+        prefs.edit().putString(PREF_GRID_ITEMS, jarr.toString()).apply();
     }
 
     @Override
@@ -143,7 +142,7 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
             String url = item.getUrl();
             Log.d("GridItemClicked", "Opening url: " + url);
             Intent webViewIntent = new Intent(getBaseContext(), WebViewActivity.class);
-            webViewIntent.putExtra("URL_ENDPOINT", url);
+            webViewIntent.putExtra(WebViewActivity.EXTRA_URL, url);
             startActivity(webViewIntent);
         }
     }

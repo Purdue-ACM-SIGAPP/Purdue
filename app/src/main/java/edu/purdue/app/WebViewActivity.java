@@ -13,6 +13,9 @@ import android.webkit.WebViewClient;
 
 
 public class WebViewActivity extends Activity {
+
+    public static final String EXTRA_URL = "URL_ENDPOINT";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +25,7 @@ public class WebViewActivity extends Activity {
         Bundle extras = getIntent().getExtras();
         String url = null;
         if (extras != null) {
-            url = extras.getString("URL_ENDPOINT");
+            url = extras.getString(EXTRA_URL);
         }
 
         WebView webView = (WebView) findViewById(R.id.webView);
