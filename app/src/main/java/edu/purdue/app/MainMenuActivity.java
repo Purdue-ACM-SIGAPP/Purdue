@@ -180,9 +180,12 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
             if (o instanceof MainMenuItem) {
                 MainMenuItem item = (MainMenuItem) o;
                 String url = item.getUrl();
+                String name = item.getName();
+
                 Log.d("GridItemClicked", "Opening url: " + url);
                 Intent webViewIntent = new Intent(getBaseContext(), WebViewActivity.class);
                 webViewIntent.putExtra(WebViewActivity.EXTRA_URL, url);
+                webViewIntent.putExtra(WebViewActivity.EXTRA_NAME, name);
                 startActivity(webViewIntent);
             }
         }
