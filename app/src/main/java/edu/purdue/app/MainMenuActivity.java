@@ -1,15 +1,21 @@
 package edu.purdue.app;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import org.askerov.dynamicgid.BaseDynamicGridAdapter;
 import org.askerov.dynamicgid.DynamicGridView;
@@ -26,10 +32,8 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
 
     private static final String PREF_PAGE_GRID = "grid_locations";
     private static final String PREF_GRID_ITEMS = "grid_items";
-
-    private DynamicGridView gridView;
-
     List<MainMenuItem> menuItems;
+    private DynamicGridView gridView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,39 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
         gridView.setAdapter(adapter);
 
         assignGridListeners();
+
+        if(!isOnline())
+        {
+            showNoInternetAlert();
+        }
+    }
+
+    private void showNoInternetAlert() {
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+
+        alertDialog.setTitle("Sorry");
+        alertDialog.setMessage("The Purdue App currently does not function offline. " +
+                "Please connect to the internet and try again. " +
+                "We hope to add offline browsing in the near future.");
+
+        DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                switch(which)
+                {
+                    case AlertDialog.BUTTON_POSITIVE:
+                        dialog.dismiss();
+                        break;
+                    case AlertDialog.BUTTON_NEUTRAL:
+                        Intent intent = new Intent(Settings.ACTION_WIRELESS_SETTINGS);
+                        startActivity(intent);
+                }
+            }
+        };
+
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Ok", listener);
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Open network settings", listener);
+
+        alertDialog.show();
     }
 
     private CustomGridAdapter prepareAdapter() {
@@ -136,16 +173,32 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Object o = view.getTag();
 
-        if(o instanceof MainMenuItem)
-        {
-            MainMenuItem item = (MainMenuItem) o;
-            String url = item.getUrl();
-            Log.d("GridItemClicked", "Opening url: " + url);
-            Intent webViewIntent = new Intent(getBaseContext(), WebViewActivity.class);
-            webViewIntent.putExtra(WebViewActivity.EXTRA_URL, url);
-            startActivity(webViewIntent);
+        if(isOnline()) {
+            Object o = view.getTag();
+
+            if (o instanceof MainMenuItem) {
+                MainMenuItem item = (MainMenuItem) o;
+                String url = item.getUrl();
+                Log.d("GridItemClicked", "Opening url: " + url);
+                Intent webViewIntent = new Intent(getBaseContext(), WebViewActivity.class);
+                webViewIntent.putExtra(WebViewActivity.EXTRA_URL, url);
+                startActivity(webViewIntent);
+            }
         }
+        else
+        {
+            Toast.makeText(this, "No internet connection. Connect and try again.", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public boolean isOnline() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+            return true;
+        }
+        return false;
     }
 }
