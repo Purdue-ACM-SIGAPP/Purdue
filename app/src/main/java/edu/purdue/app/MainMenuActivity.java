@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Toast;
 
 import org.askerov.dynamicgid.BaseDynamicGridAdapter;
 import org.askerov.dynamicgid.DynamicGridView;
@@ -25,15 +24,9 @@ import static android.widget.AdapterView.OnItemClickListener;
 
 public class MainMenuActivity extends Activity implements OnItemClickListener {
 
-
-    //private HashMap<Integer, MainMenuItem> gridItems; //Key is the view ID. Access with view.getID()
-
     private DynamicGridView gridView;
 
     List<MainMenuItem> menuItems;
-
-    private String[] icons = new String[] { "Hello", "This", "is", "the", "New", "grid", "view"};
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,51 +79,27 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
         gridView.setOnDropListener(new DynamicGridView.OnDropListener() {
             @Override
             public void onActionDrop() {
-                saveGridState();
-
-                gridView.stopEditMode();
-
-                Toast.makeText(MainMenuActivity.this, "Item was dropped",
-                        Toast.LENGTH_SHORT).show();
+            saveGridState();
+            gridView.stopEditMode();
             }
         });
 
         gridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                gridView.startEditMode();
-                return false;
+            gridView.startEditMode();
+            return false;
             }
         });
 
-        gridView.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.d("GridItemClicked", "Grid item clicked.");
-                Object o = view.getTag();
-
-                if(o instanceof MainMenuItem)
-                {
-                    MainMenuItem item = (MainMenuItem) o;
-                    String url = item.getUrl();
-                    Log.d("GridItemClicked", "Opening url: " + url);
-                    Intent webViewIntent = new Intent(getBaseContext(), WebViewActivity.class);
-                    webViewIntent.putExtra("URL_ENDPOINT", url);
-                    startActivity(webViewIntent);
-                }
-            }
-        });
+        gridView.setOnItemClickListener(this);
     }
 
     private void saveGridState() {
-        Log.d("GridState", "Saving...");
         BaseDynamicGridAdapter dga = (BaseDynamicGridAdapter) gridView.getAdapter();
         ArrayList<Integer> items = dga.getLocations();
-        for(Integer i : items)
-            Log.d("GridState", "Saving location: " + i);
 
         JSONArray jarr = new JSONArray(items);
-        Log.d("GridState", "JSONArray: " + jarr.toString());
         SharedPreferences prefs = getSharedPreferences("grid_locations", Context.MODE_PRIVATE);
         prefs.edit().putString("grid_items", jarr.toString()).apply();
     }
@@ -166,12 +135,16 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Toast.makeText(MainMenuActivity.this, adapterView.getAdapter().getItem(i).toString(),
-                Toast.LENGTH_SHORT).show();
+        Object o = view.getTag();
 
-        /*String url = gridItems.get(view.getId()).url;
-        Intent webViewIntent = new Intent(getBaseContext(), WebViewActivity.class);
-        webViewIntent.putExtra("URL_ENDPOINT", url);
-        startActivity(webViewIntent);*/
+        if(o instanceof MainMenuItem)
+        {
+            MainMenuItem item = (MainMenuItem) o;
+            String url = item.getUrl();
+            Log.d("GridItemClicked", "Opening url: " + url);
+            Intent webViewIntent = new Intent(getBaseContext(), WebViewActivity.class);
+            webViewIntent.putExtra("URL_ENDPOINT", url);
+            startActivity(webViewIntent);
+        }
     }
 }
