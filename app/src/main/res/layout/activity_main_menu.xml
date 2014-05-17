@@ -2,41 +2,19 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
-    android:layout_width="match_parent" >
+    android:layout_width="match_parent"
+    android:background="@drawable/background">
 
-    <edu.purdue.app.DraggableGridView
-        android:id="@+id/draggable_grid_view"
-        android:layout_height="fill_parent"
-        android:layout_width="fill_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true" >
-
-
-
-    </edu.purdue.app.DraggableGridView>
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/urlTextField"
-        android:text="http://www.purdue.edu"
-        android:layout_above="@+id/webViewButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Test Web View"
-        android:id="@+id/webViewButton"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
+    <org.askerov.dynamicgid.DynamicGridView
+        android:id="@+id/dynamic_grid"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:numColumns="4"
+        />
 
 </RelativeLayout>
 
