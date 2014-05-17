@@ -102,4 +102,17 @@ public class WebViewActivity extends Activity {
         }
         return super.onPrepareOptionsMenu(menu);
     }
+
+    @Override
+    public void onBackPressed() {
+        WebView webView = (WebView) findViewById(R.id.webView);
+
+        if(webView.canGoBack()) {
+            webView.goBack();
+            return;
+        }
+
+        // Otherwise defer to system default behavior.
+        super.onBackPressed();
+    }
 }
