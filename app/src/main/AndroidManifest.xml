@@ -21,7 +21,12 @@
         </activity>
         <activity
             android:name="edu.purdue.app.WebViewActivity"
-            android:label="@string/title_activity_web_view" >
+            android:label="@string/title_activity_web_view"
+            android:parentActivityName="edu.purdue.app.MainMenuActivity">
+            <!-- The meta-data element is needed for versions lower than 4.1 -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.purdue.app.MainMenuActivity" />
         </activity>
     </application>
 
