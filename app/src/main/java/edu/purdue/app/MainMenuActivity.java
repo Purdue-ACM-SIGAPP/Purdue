@@ -103,6 +103,10 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
                 {
                     items.add(jsonArray.getInt(i));
                 }
+
+                while(menuItems.size() > items.size())
+                    items.add(items.size());
+
             } catch (JSONException e) {
                 Log.e("MainMenuActivity", "JSON from Shared Prefs was not valid", e);
             }
