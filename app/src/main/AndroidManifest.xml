@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:theme="@style/Theme.Purdue" >
         <activity
-            android:name="edu.purdue.app.MainMenuActivity"
+            android:name=".main.MainMenuActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,7 @@
         <activity
             android:name="edu.purdue.app.WebViewActivity"
             android:label="@string/title_activity_web_view"
-            android:parentActivityName="edu.purdue.app.MainMenuActivity">
+            android:parentActivityName=".main.MainMenuActivity">
             <!-- The meta-data element is needed for versions lower than 4.1 -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

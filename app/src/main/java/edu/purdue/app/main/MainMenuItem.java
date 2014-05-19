@@ -1,10 +1,12 @@
-package edu.purdue.app;
+package edu.purdue.app.main;
 
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import edu.purdue.app.R;
 
 public class MainMenuItem implements CustomMenuItem {
     private final Drawable icon;

@@ -1,4 +1,4 @@
-package edu.purdue.app;
+package edu.purdue.app.main;
 
 import android.graphics.drawable.Drawable;
 

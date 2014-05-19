@@ -1,4 +1,4 @@
-package edu.purdue.app;
+package edu.purdue.app.main;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 import org.askerov.dynamicgid.BaseDynamicGridAdapter;
 
 import java.util.List;
+
+import edu.purdue.app.R;
 
 /**
  * Created by david on 5/14/14 for Purdue

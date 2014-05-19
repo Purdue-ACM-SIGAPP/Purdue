@@ -1,4 +1,4 @@
-package edu.purdue.app;
+package edu.purdue.app.main;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -24,6 +24,9 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import edu.purdue.app.R;
+import edu.purdue.app.WebViewActivity;
 
 import static android.widget.AdapterView.OnItemClickListener;
 
