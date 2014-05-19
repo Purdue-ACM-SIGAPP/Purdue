@@ -17,6 +17,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 import org.askerov.dynamicgid.BaseDynamicGridAdapter;
 import org.askerov.dynamicgid.DynamicGridView;
 import org.json.JSONArray;
@@ -25,6 +28,7 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.purdue.app.PurdueApplication;
 import edu.purdue.app.R;
 import edu.purdue.app.WebViewActivity;
 
@@ -57,6 +61,19 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
         {
             showNoInternetAlert();
         }
+
+
+
+        // Get tracker.
+        Tracker t = ((PurdueApplication) getApplication()).getTracker(
+                PurdueApplication.TrackerName.APP_TRACKER);
+
+        // Set screen name.
+        // Where path is a String representing the screen name.
+        t.setScreenName("MainMenu");
+
+        // Send a screen view.
+        t.send(new HitBuilders.AppViewBuilder().build());
     }
 
     private void showNoInternetAlert() {
