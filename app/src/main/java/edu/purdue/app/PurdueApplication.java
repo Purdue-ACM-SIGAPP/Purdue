@@ -29,6 +29,7 @@ public class PurdueApplication extends Application {
         if (!mTrackers.containsKey(trackerId)) {
 
             GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
+            analytics.setDryRun(true);
             Tracker t = analytics.newTracker(R.xml.app_tracker);
 
             mTrackers.put(trackerId, t);
@@ -36,4 +37,5 @@ public class PurdueApplication extends Application {
         }
         return mTrackers.get(trackerId);
     }
+
 }

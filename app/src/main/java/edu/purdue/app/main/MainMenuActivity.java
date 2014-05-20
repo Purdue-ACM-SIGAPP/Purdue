@@ -70,7 +70,7 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
 
         // Set screen name.
         // Where path is a String representing the screen name.
-        t.setScreenName("MainMenu");
+        t.setScreenName(this.getLocalClassName());
 
         // Send a screen view.
         t.send(new HitBuilders.AppViewBuilder().build());
@@ -205,6 +205,18 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
                 MainMenuItem item = (MainMenuItem) o;
                 String url = item.getUrl();
                 String name = item.getName();
+
+
+                // Get tracker.
+                Tracker t = ((PurdueApplication) getApplication()).getTracker(
+                        PurdueApplication.TrackerName.APP_TRACKER);
+
+                t.setScreenName(this.getLocalClassName());
+
+                // Send an event.
+                t.send(new HitBuilders.EventBuilder("ui_interaction", "grid_icon_click").setLabel(name).build());
+
+
 
                 Log.d("GridItemClicked", "Opening url: " + url);
                 Intent webViewIntent = new Intent(getBaseContext(), WebViewActivity.class);

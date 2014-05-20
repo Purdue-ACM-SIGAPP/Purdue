@@ -5,16 +5,16 @@
     <!-- Enable automatic Activity measurement -->
     <bool name="ga_autoActivityTracking">true</bool>
 
-
     <bool name="ga_reportUncaughtExceptions">true</bool>
 
     <!-- The screen names that will appear in reports -->
-    <screenName name="com.google.android.gms.analytics.samples.mobileplayground.ScreenviewFragment">
-        AnalyticsSampleApp ScreenView
+    <screenName name="edu.purdue.app.main.MainMenuActivity">
+        PurdueApp MainMenuActivity
     </screenName>
-    <screenName name="com.google.android.gms.analytics.samples.mobileplayground.EcommerceFragment">
-        AnalyticsSampleApp EcommerceView
+    <screenName name="edu.purdue.app.WebViewActivity">
+        PurdueApp WebViewActivity
     </screenName>
+
     <!--  The following value should be replaced with correct property id. -->
     <string name="ga_trackingId">UA-51109974-1</string>
 </resources>
