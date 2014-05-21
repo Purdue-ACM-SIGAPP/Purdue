@@ -1,11 +1,15 @@
 package edu.purdue.app;
 
 import android.app.Application;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
 
 import java.util.HashMap;
+
+import edu.purdue.app.prefs.CustomOnSharedPreferenceChangeListener;
 
 /**
  * Created by david on 5/19/14 for Purdue
@@ -38,4 +42,12 @@ public class PurdueApplication extends Application {
         return mTrackers.get(trackerId);
     }
 
+    @Override
+    public void onCreate()
+    {
+        super.onCreate();
+        SharedPreferences userPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+        userPrefs.registerOnSharedPreferenceChangeListener(new CustomOnSharedPreferenceChangeListener(this));
+    }
 }

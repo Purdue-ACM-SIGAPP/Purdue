@@ -7,10 +7,6 @@
         android:title="@string/pref_header_general" />
 
     <header
-        android:fragment="edu.purdue.app.prefs.NotificationPreferenceFragment"
-        android:title="@string/pref_header_notifications" />
-
-    <header
         android:fragment="edu.purdue.app.prefs.DataSyncPreferenceFragment"
         android:title="@string/pref_header_data_sync" />
 
