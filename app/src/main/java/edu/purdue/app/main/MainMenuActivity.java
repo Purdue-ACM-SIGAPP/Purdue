@@ -31,6 +31,8 @@ import java.util.List;
 import edu.purdue.app.PurdueApplication;
 import edu.purdue.app.R;
 import edu.purdue.app.WebViewActivity;
+import edu.purdue.app.prefs.SettingsActivity;
+import edu.purdue.app.tracking.TrackingUtils;
 
 import static android.widget.AdapterView.OnItemClickListener;
 
@@ -62,7 +64,7 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
             showNoInternetAlert();
         }
 
-
+        TrackingUtils.trackActivityOpen(this);
 
         // Get tracker.
         Tracker t = ((PurdueApplication) getApplication()).getTracker(
@@ -181,6 +183,8 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+            Intent settings = new Intent(this, SettingsActivity.class);
+            startActivity(settings);
             return true;
         }
         return super.onOptionsItemSelected(item);

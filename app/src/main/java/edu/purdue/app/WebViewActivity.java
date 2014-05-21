@@ -11,6 +11,9 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 
 public class WebViewActivity extends Activity {
 
@@ -50,6 +53,18 @@ public class WebViewActivity extends Activity {
         if (url != null) {
             webView.loadUrl(url);
         }
+
+
+        // Get tracker.
+        Tracker t = ((PurdueApplication) getApplication()).getTracker(
+                PurdueApplication.TrackerName.APP_TRACKER);
+
+        // Set screen name.
+        // Where path is a String representing the screen name.
+        t.setScreenName(this.getLocalClassName());
+
+        // Send a screen view.
+        t.send(new HitBuilders.AppViewBuilder().build());
     }
 
 
