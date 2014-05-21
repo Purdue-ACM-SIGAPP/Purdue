@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.Logger;
 import com.google.android.gms.analytics.Tracker;
 
 import java.util.HashMap;
@@ -33,6 +34,9 @@ public class PurdueApplication extends Application {
         if (!mTrackers.containsKey(trackerId)) {
 
             GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
+            analytics.getLogger()
+                    .setLogLevel(Logger.LogLevel.VERBOSE);
+
             analytics.setDryRun(true);
             Tracker t = analytics.newTracker(R.xml.app_tracker);
 
