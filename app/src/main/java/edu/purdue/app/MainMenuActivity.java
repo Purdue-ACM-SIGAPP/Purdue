@@ -129,8 +129,12 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
         gridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-            gridView.startEditMode();
-            return false;
+                return false;
+                //TODO: Fix edit mode on wide screens
+                /*
+                gridView.startEditMode();
+                return false;
+                */
             }
         });
 
