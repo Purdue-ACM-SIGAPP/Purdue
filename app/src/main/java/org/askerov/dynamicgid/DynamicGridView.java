@@ -76,6 +76,9 @@ public class DynamicGridView extends GridView {
     private OnItemLongClickListener mUserLongClickListener;
     private OnItemLongClickListener mLocalLongClickListener = new OnItemLongClickListener() {
         public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int pos, long id) {
+            //TODO: Fix long click on wide screens
+            return false;
+            /*
             if (!isEnabled() || isEditMode())
                 return false;
             mTotalOffsetY = 0;
@@ -103,6 +106,7 @@ public class DynamicGridView extends GridView {
             mIsEditMode = true;
 
             return true;
+            */
         }
     };
 

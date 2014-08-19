@@ -38,11 +38,11 @@ public class PurdueApplication extends Application {
             analytics.getLogger()
                     .setLogLevel(Logger.LogLevel.VERBOSE);
 
-            analytics.setDryRun(true);
+            analytics.setDryRun( BuildConfig.DEBUG ); //This should turn off/on tracking based on debug/release build.
+
             Tracker t = analytics.newTracker(getString(R.string.analytics_id));
 
             mTrackers.put(trackerId, t);
-
         }
         return mTrackers.get(trackerId);
     }

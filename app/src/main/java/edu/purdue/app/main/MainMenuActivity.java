@@ -65,17 +65,6 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
         }
 
         TrackingUtils.sendScreenView(this, TrackingUtils.MAIN_SCREEN);
-
-        // Get tracker.
-        Tracker t = ((PurdueApplication) getApplication()).getTracker(
-                PurdueApplication.TrackerName.APP_TRACKER);
-
-        // Set screen name.
-        // Where path is a String representing the screen name.
-        t.setScreenName(this.getLocalClassName());
-
-        // Send a screen view.
-        t.send(new HitBuilders.AppViewBuilder().build());
     }
 
     private void showNoInternetAlert() {
@@ -155,7 +144,6 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
 //            return false;
 //            }
 //        });
-
         gridView.setOnItemClickListener(this);
     }
 
@@ -172,8 +160,10 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
     public boolean onCreateOptionsMenu(Menu menu) {
         
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
+        //TODO: Add stuff to the menu
+        //getMenuInflater().inflate(R.menu.main_menu, menu);
+        return false;
+        // return true;
     }
 
     @Override
@@ -212,7 +202,6 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
 
             if (isOnline()) {
                 TrackingUtils.sendEvent(this, "ui_interaction", "grid_item_click", name);
-
                 Log.d("GridItemClicked", "Opening url: " + url);
                 Intent webViewIntent = new Intent(getBaseContext(), WebViewActivity.class);
                 webViewIntent.putExtra(WebViewActivity.EXTRA_URL, url);
