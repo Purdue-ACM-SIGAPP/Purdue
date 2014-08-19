@@ -2,6 +2,7 @@ package edu.purdue.app;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,11 +15,15 @@ import android.webkit.WebViewClient;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
+import edu.purdue.app.tracking.TrackingUtils;
+
 
 public class WebViewActivity extends Activity {
 
     public static final String EXTRA_URL = "URL_ENDPOINT";
     public static final String EXTRA_NAME = "ITEM_NAME";
+
+    private WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,45 +31,50 @@ public class WebViewActivity extends Activity {
         setContentView(R.layout.activity_web_view);
 
         // Retrieve the url from the calling activity via the intent's extras bundle
-        Bundle extras = getIntent().getExtras();
-        String url = null;
-        String name = null;
-        if (extras != null) {
-            url = extras.getString(EXTRA_URL);
-            name = extras.getString(EXTRA_NAME);
-        }
+        final Bundle extras = getIntent().getExtras();
+
+        if(extras == null) throw new IllegalArgumentException("Must include intent extras");
+        String url = extras.getString(EXTRA_URL);
+        final String name = extras.getString(EXTRA_NAME);
 
         getActionBar().setTitle(name);
 
-        WebView webView = (WebView) findViewById(R.id.webView);
+        TrackingUtils.sendScreenView(this, TrackingUtils.WEB_SCREEN, name);
+
+        webView = (WebView) findViewById(R.id.webView);
+
+        if (savedInstanceState != null)
+            webView.restoreState(savedInstanceState);
+
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);         // Javascript is not enabled by default, so enable it
         webView.setWebViewClient(new WebViewClient() {
+            boolean firstLoad = true;
+            long startTime;
+
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 invalidateOptionsMenu();
+                //TODO: Time the first reload.
+                if(firstLoad) {
+                    startTime = System.currentTimeMillis();
+                }
             }
             @Override
             public void onPageFinished(WebView view, String url) {
                 invalidateOptionsMenu();
+
+                if(firstLoad) {
+                    firstLoad = false;
+                    long time = System.currentTimeMillis() - startTime;
+                    TrackingUtils.sentTiming(WebViewActivity.this, "web_timing", "pageload", name, time);
+                }
             }
         });
 
         if (url != null) {
             webView.loadUrl(url);
         }
-
-
-        // Get tracker.
-        Tracker t = ((PurdueApplication) getApplication()).getTracker(
-                PurdueApplication.TrackerName.APP_TRACKER);
-
-        // Set screen name.
-        // Where path is a String representing the screen name.
-        t.setScreenName(this.getLocalClassName());
-
-        // Send a screen view.
-        t.send(new HitBuilders.AppViewBuilder().build());
     }
 
 

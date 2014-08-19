@@ -32,7 +32,7 @@ public class MainMenuItem implements CustomMenuItem {
         toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_bus), r.getString(R.string.bus_routes), "http://citybus.doublemap.com/map/"));
 
         //Not necessary for this version, but I'm putting them here anyway
-        toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_tours), "Tours", "http://play.google.com/store/apps/details?id=com.barz.tourguide.purdue"));
+        //toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_tours), "Tours", "http://play.google.com/store/apps/details?id=com.barz.tourguide.purdue"));
         toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_directory), "Directory", "http://itap.purdue.edu/directory"));
         toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_safety), "Safety", "https://www.purdue.edu/emergency_preparedness/flipchart/index.html"));
         toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_weather), "Weather", "http://www.purdue.edu/newsroom/health_safety/weather.html"));

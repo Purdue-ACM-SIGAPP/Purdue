@@ -39,7 +39,7 @@ public class PurdueApplication extends Application {
                     .setLogLevel(Logger.LogLevel.VERBOSE);
 
             analytics.setDryRun(true);
-            Tracker t = analytics.newTracker(R.xml.app_tracker);
+            Tracker t = analytics.newTracker(getString(R.string.analytics_id));
 
             mTrackers.put(trackerId, t);
 
@@ -63,7 +63,7 @@ public class PurdueApplication extends Application {
 
         // Set screen name.
         // Where path is a String representing the screen name.
-        t.setScreenName(this.getPackageName() + ".Application");
+        t.setScreenName("/Application");
 
         // Start a new session with the hit.
         t.send(new HitBuilders.AppViewBuilder()

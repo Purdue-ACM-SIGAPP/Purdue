@@ -64,7 +64,7 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
             showNoInternetAlert();
         }
 
-        TrackingUtils.trackActivityOpen(this);
+        TrackingUtils.sendScreenView(this, TrackingUtils.MAIN_SCREEN);
 
         // Get tracker.
         Tracker t = ((PurdueApplication) getApplication()).getTracker(
@@ -140,33 +140,33 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
     }
 
     private void assignGridListeners() {
-        gridView.setOnDropListener(new DynamicGridView.OnDropListener() {
-            @Override
-            public void onActionDrop() {
-            saveGridState();
-            gridView.stopEditMode();
-            }
-        });
-
-        gridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-            gridView.startEditMode();
-            return false;
-            }
-        });
+//        gridView.setOnDropListener(new DynamicGridView.OnDropListener() {
+//            @Override
+//            public void onActionDrop() {
+//            saveGridState();
+//            gridView.stopEditMode();
+//            }
+//        });
+//
+//        gridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//            @Override
+//            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+//            gridView.startEditMode();
+//            return false;
+//            }
+//        });
 
         gridView.setOnItemClickListener(this);
     }
 
-    private void saveGridState() {
-        BaseDynamicGridAdapter dga = (BaseDynamicGridAdapter) gridView.getAdapter();
-        ArrayList<Integer> items = dga.getLocations();
-
-        JSONArray jarr = new JSONArray(items);
-        SharedPreferences prefs = getSharedPreferences(PREF_PAGE_GRID, Context.MODE_PRIVATE);
-        prefs.edit().putString(PREF_GRID_ITEMS, jarr.toString()).apply();
-    }
+//    private void saveGridState() {
+//        BaseDynamicGridAdapter dga = (BaseDynamicGridAdapter) gridView.getAdapter();
+//        ArrayList<Integer> items = dga.getLocations();
+//
+//        JSONArray jarr = new JSONArray(items);
+//        SharedPreferences prefs = getSharedPreferences(PREF_PAGE_GRID, Context.MODE_PRIVATE);
+//        prefs.edit().putString(PREF_GRID_ITEMS, jarr.toString()).apply();
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -201,37 +201,27 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Object o = view.getTag();
 
-        if(isOnline()) {
-            Object o = view.getTag();
-
-            if (o instanceof MainMenuItem) {
-                MainMenuItem item = (MainMenuItem) o;
-                String url = item.getUrl();
-                String name = item.getName();
-
-
-                // Get tracker.
-                Tracker t = ((PurdueApplication) getApplication()).getTracker(
-                        PurdueApplication.TrackerName.APP_TRACKER);
-
-                t.setScreenName(this.getLocalClassName());
-
-                // Send an event.
-                t.send(new HitBuilders.EventBuilder("ui_interaction", "grid_icon_click").setLabel(name).build());
+        String url, name;
+        if (o instanceof MainMenuItem) {
+            MainMenuItem item = (MainMenuItem) o;
+            url = item.getUrl();
+            name = item.getName();
 
 
+            if (isOnline()) {
+                TrackingUtils.sendEvent(this, "ui_interaction", "grid_item_click", name);
 
                 Log.d("GridItemClicked", "Opening url: " + url);
                 Intent webViewIntent = new Intent(getBaseContext(), WebViewActivity.class);
                 webViewIntent.putExtra(WebViewActivity.EXTRA_URL, url);
                 webViewIntent.putExtra(WebViewActivity.EXTRA_NAME, name);
                 startActivity(webViewIntent);
+            } else {
+                TrackingUtils.sendEvent(this, "access_action", "grid_item_click", "no_internet");
+                Toast.makeText(this, "No internet connection. Connect and try again.", Toast.LENGTH_LONG).show();
             }
-        }
-        else
-        {
-            Toast.makeText(this, "No internet connection. Connect and try again.", Toast.LENGTH_LONG).show();
         }
     }
 

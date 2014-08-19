@@ -20,6 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import edu.purdue.app.R;
+import edu.purdue.app.tracking.TrackingUtils;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -47,6 +48,7 @@ public class SettingsActivity extends PreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setupActionBar();
+        TrackingUtils.sendScreenView(this, TrackingUtils.SETTING_SCREEN);
     }
 
     /**
