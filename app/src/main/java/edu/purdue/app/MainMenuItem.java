@@ -28,16 +28,17 @@ public class MainMenuItem implements CustomMenuItem {
         toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_menus), r.getString(R.string.menus), "http://www.housing.purdue.edu/menus/"));
         toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_labs), r.getString(R.string.labs), "https://lslab.ics.purdue.edu/icsWeb/AvailableStations"));
         toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_bus), r.getString(R.string.bus_routes), "http://citybus.doublemap.com/map/"));
+
         //Not necessary for this version, but I'm putting them here anyway
         toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_tours), "Tours", "http://play.google.com/store/apps/details?id=com.barz.tourguide.purdue"));
         toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_directory), "Directory", "http://itap.purdue.edu/directory"));
         toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_safety), "Safety", "https://www.purdue.edu/emergency_preparedness/flipchart/index.html"));
         toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_weather), "Weather", "http://www.purdue.edu/newsroom/health_safety/weather.html"));
-        toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_giving), "Giving", "https://donate.purdue.edu/Menu.aspx"));
+        //toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_giving), "Giving", "https://donate.purdue.edu/Menu.aspx"));
         toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_purdueboard), "PurdueBoard", "http://www.purdue.edu/purdueboard/"));
         toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_store), "Store", "http://www.purdueofficialstore.com/"));
         //this one has no icon...
-        toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_launcher), "5 Students", "http://www.purdue.edu/fivestudents/"));
+        //toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_launcher), "5 Students", "http://www.purdue.edu/fivestudents/"));
 
         //TODO: Add the rest of the icons
         return toReturn;
