@@ -39,7 +39,7 @@ public class SettingsActivity extends PreferenceActivity {
      * as a master/detail two-pane view on tablets. When true, a single pane is
      * shown on tablets.
      */
-    private static final boolean ALWAYS_SIMPLE_PREFS = false;
+    private static final boolean ALWAYS_SIMPLE_PREFS = true;
     private static final String[] validFragments = new String[]{"edu.purdue.app.prefs.DataSyncPreferenceFragment",
             "edu.purdue.app.prefs.GeneralPreferenceFragment" };
 
@@ -123,7 +123,6 @@ public class SettingsActivity extends PreferenceActivity {
         // their values. When their values change, their summaries are updated
         // to reflect the new value, per the Android Design guidelines.
         //bindPreferenceSummaryToValue(findPreference("example_text"));
-
         assignVersionPrefSummary();
     }
 

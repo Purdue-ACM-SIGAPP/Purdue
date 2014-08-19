@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Logger;
 import com.google.android.gms.analytics.Tracker;
 
@@ -53,5 +54,20 @@ public class PurdueApplication extends Application {
         SharedPreferences userPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         userPrefs.registerOnSharedPreferenceChangeListener(new CustomOnSharedPreferenceChangeListener(this));
+
+
+
+
+
+        Tracker t = getTracker(TrackerName.APP_TRACKER);
+
+        // Set screen name.
+        // Where path is a String representing the screen name.
+        t.setScreenName(this.getPackageName() + ".Application");
+
+        // Start a new session with the hit.
+        t.send(new HitBuilders.AppViewBuilder()
+                .setNewSession()
+                .build());
     }
 }
