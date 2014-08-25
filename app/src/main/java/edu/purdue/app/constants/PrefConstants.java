@@ -1,4 +1,4 @@
-package edu.purdue.app.prefs;
+package edu.purdue.app.constants;
 
 /**
  * Created by david on 5/21/14 for Purdue

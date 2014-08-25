@@ -1,4 +1,4 @@
-package edu.purdue.app.prefs;
+package edu.purdue.app.activity;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import edu.purdue.app.R;
-import edu.purdue.app.tracking.TrackingUtils;
+import edu.purdue.app.utility.TrackingUtils;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -41,8 +41,8 @@ public class SettingsActivity extends PreferenceActivity {
      * shown on tablets.
      */
     private static final boolean ALWAYS_SIMPLE_PREFS = true;
-    private static final String[] validFragments = new String[]{"edu.purdue.app.prefs.DataSyncPreferenceFragment",
-            "edu.purdue.app.prefs.GeneralPreferenceFragment" };
+    private static final String[] validFragments = new String[]{"edu.purdue.app.fragment.DataSyncPreferenceFragment",
+            "edu.purdue.app.fragment.GeneralPreferenceFragment" };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -220,7 +220,7 @@ public class SettingsActivity extends PreferenceActivity {
      *
      * @see #sBindPreferenceSummaryToValueListener
      */
-    protected static void bindPreferenceSummaryToValue(Preference preference) {
+    public static void bindPreferenceSummaryToValue(Preference preference) {
         // Set the listener to watch for value changes.
         preference.setOnPreferenceChangeListener(sBindPreferenceSummaryToValueListener);
 

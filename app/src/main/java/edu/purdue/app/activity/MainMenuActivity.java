@@ -1,4 +1,4 @@
-package edu.purdue.app.main;
+package edu.purdue.app.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -22,10 +22,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.purdue.app.R;
-import edu.purdue.app.WebViewActivity;
-import edu.purdue.app.main.MainMenuItem;
-import edu.purdue.app.prefs.SettingsActivity;
-import edu.purdue.app.tracking.TrackingUtils;
+import edu.purdue.app.adapter.CustomGridAdapter;
+import edu.purdue.app.model.MainMenuItem;
+import edu.purdue.app.utility.TrackingUtils;
 import edu.purdue.app.utility.Connectivity;
 
 import static android.widget.AdapterView.OnItemClickListener;

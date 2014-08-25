@@ -1,13 +1,11 @@
-package edu.purdue.app.tracking;
+package edu.purdue.app.utility;
 
 import android.app.Activity;
-import android.content.Context;
-import android.util.Log;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
-import edu.purdue.app.PurdueApplication;
+import edu.purdue.app.application.PurdueApplication;
 
 /**
  * Created by david on 5/21/14 for Purdue
