@@ -33,6 +33,7 @@ import edu.purdue.app.R;
 import edu.purdue.app.WebViewActivity;
 import edu.purdue.app.prefs.SettingsActivity;
 import edu.purdue.app.tracking.TrackingUtils;
+import edu.purdue.app.utility.Connectivity;
 
 import static android.widget.AdapterView.OnItemClickListener;
 
@@ -200,27 +201,20 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
             name = item.getName();
 
 
-            if (isOnline()) {
+            if (Connectivity.isOnline(this)) {
+
                 TrackingUtils.sendEvent(this, "ui_interaction", "grid_item_click", name);
                 Log.d("GridItemClicked", "Opening url: " + url);
                 Intent webViewIntent = new Intent(getBaseContext(), WebViewActivity.class);
                 webViewIntent.putExtra(WebViewActivity.EXTRA_URL, url);
                 webViewIntent.putExtra(WebViewActivity.EXTRA_NAME, name);
                 startActivity(webViewIntent);
+
             } else {
                 TrackingUtils.sendEvent(this, "access_action", "grid_item_click", "no_internet");
                 Toast.makeText(this, "No internet connection. Connect and try again.", Toast.LENGTH_LONG).show();
             }
-        }
-    }
 
-    public boolean isOnline() {
-        ConnectivityManager cm =
-                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-            return true;
         }
-        return false;
     }
 }
