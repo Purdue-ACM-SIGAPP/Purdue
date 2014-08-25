@@ -1,8 +1,7 @@
-package edu.purdue.app;
+package edu.purdue.app.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,10 +11,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
-
-import edu.purdue.app.tracking.TrackingUtils;
+import edu.purdue.app.R;
+import edu.purdue.app.utility.TrackingUtils;
 
 
 public class WebViewActivity extends Activity {

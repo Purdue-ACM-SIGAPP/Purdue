@@ -3,11 +3,11 @@
     <!-- These settings headers are only used on tablets. -->
 
     <header
-        android:fragment="edu.purdue.app.prefs.GeneralPreferenceFragment"
+        android:fragment="edu.purdue.app.fragment.GeneralPreferenceFragment"
         android:title="@string/pref_header_general" />
 
     <header
-        android:fragment="edu.purdue.app.prefs.DataSyncPreferenceFragment"
+        android:fragment="edu.purdue.app.fragment.DataSyncPreferenceFragment"
         android:title="@string/pref_header_data_sync" />
 
 </preference-headers>

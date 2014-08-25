@@ -1,4 +1,4 @@
-package edu.purdue.app.main;
+package edu.purdue.app.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,6 +12,7 @@ import org.askerov.dynamicgid.BaseDynamicGridAdapter;
 import java.util.List;
 
 import edu.purdue.app.R;
+import edu.purdue.app.model.CustomMenuItem;
 
 /**
  * Created by david on 5/14/14 for Purdue
