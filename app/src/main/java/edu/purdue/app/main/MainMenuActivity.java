@@ -2,12 +2,9 @@ package edu.purdue.app.main;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
@@ -17,10 +14,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
-
-import org.askerov.dynamicgid.BaseDynamicGridAdapter;
 import org.askerov.dynamicgid.DynamicGridView;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,9 +21,9 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.purdue.app.PurdueApplication;
 import edu.purdue.app.R;
 import edu.purdue.app.WebViewActivity;
+import edu.purdue.app.main.MainMenuItem;
 import edu.purdue.app.prefs.SettingsActivity;
 import edu.purdue.app.tracking.TrackingUtils;
 import edu.purdue.app.utility.Connectivity;
@@ -60,8 +53,7 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
 
         assignGridListeners();
 
-        if(!isOnline())
-        {
+        if(!Connectivity.isOnline(this)) {
             showNoInternetAlert();
         }
 
