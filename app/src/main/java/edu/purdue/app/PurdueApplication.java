@@ -11,12 +11,13 @@ import com.google.android.gms.analytics.Tracker;
 
 import java.util.HashMap;
 
+import edu.purdue.app.mail.com.fsck.k9.K9;
 import edu.purdue.app.prefs.CustomOnSharedPreferenceChangeListener;
 
 /**
  * Created by david on 5/19/14 for Purdue
  */
-public class PurdueApplication extends Application {
+public class PurdueApplication extends K9 {
 
     /**
      * Enum used to identify the tracker that needs to be used for tracking.

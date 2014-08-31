@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
+import org.apache.http.protocol.HTTP;
 import org.askerov.dynamicgid.DynamicGridView;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,6 +24,7 @@ import java.util.List;
 
 import edu.purdue.app.R;
 import edu.purdue.app.WebViewActivity;
+import edu.purdue.app.mail.com.fsck.k9.Account;
 import edu.purdue.app.main.MainMenuItem;
 import edu.purdue.app.prefs.SettingsActivity;
 import edu.purdue.app.tracking.TrackingUtils;
@@ -187,22 +189,30 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
         String url, name;
         if (o instanceof MainMenuItem) {
             MainMenuItem item = (MainMenuItem) o;
-            url = item.getUrl();
-            name = item.getName();
+
+            if(item.getType() == MainMenuItem.Type.HTTP) {
 
 
-            if (Connectivity.isOnline(this)) {
+                url = item.getUrl();
+                name = item.getName();
 
-                TrackingUtils.sendEvent(this, "ui_interaction", "grid_item_click", name);
-                Log.d("GridItemClicked", "Opening url: " + url);
-                Intent webViewIntent = new Intent(getBaseContext(), WebViewActivity.class);
-                webViewIntent.putExtra(WebViewActivity.EXTRA_URL, url);
-                webViewIntent.putExtra(WebViewActivity.EXTRA_NAME, name);
-                startActivity(webViewIntent);
 
-            } else {
-                TrackingUtils.sendEvent(this, "access_action", "grid_item_click", "no_internet");
-                Toast.makeText(this, "No internet connection. Connect and try again.", Toast.LENGTH_LONG).show();
+                if (Connectivity.isOnline(this)) {
+
+                    TrackingUtils.sendEvent(this, "ui_interaction", "grid_item_click", name);
+                    Log.d("GridItemClicked", "Opening url: " + url);
+                    Intent webViewIntent = new Intent(getBaseContext(), WebViewActivity.class);
+                    webViewIntent.putExtra(WebViewActivity.EXTRA_URL, url);
+                    webViewIntent.putExtra(WebViewActivity.EXTRA_NAME, name);
+                    startActivity(webViewIntent);
+
+                } else {
+                    TrackingUtils.sendEvent(this, "access_action", "grid_item_click", "no_internet");
+                    Toast.makeText(this, "No internet connection. Connect and try again.", Toast.LENGTH_LONG).show();
+                }
+            } else if (MainMenuItem.Type.ACTIVITY == item.getType()) {
+                Intent intent = new Intent(this, Account.class);
+                startActivity(intent);
             }
 
         }
