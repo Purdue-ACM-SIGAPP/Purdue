@@ -38,6 +38,7 @@ public class WebViewActivity extends Activity {
         final String name = extras.getString(EXTRA_NAME);
 
         getActionBar().setTitle(name);
+        getActionBar().setIcon(R.drawable.ic_p);
 
         TrackingUtils.sendScreenView(this, TrackingUtils.WEB_SCREEN, name);
 
