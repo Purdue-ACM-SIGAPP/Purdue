@@ -6,15 +6,15 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name="edu.purdue.app.PurdueApplication"
+        android:name=".PurdueApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.Purdue" >
         <activity
-            android:name="edu.purdue.app.main.MainMenuActivity"
+            android:name=".main.MainMenuActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,9 +22,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="edu.purdue.app.WebViewActivity"
+            android:name=".WebViewActivity"
             android:label="@string/title_activity_web_view"
-            android:parentActivityName="edu.purdue.app.main.MainMenuActivity" >
+            android:parentActivityName=".main.MainMenuActivity" >
 
             <!-- The meta-data element is needed for versions lower than 4.1 -->
             <meta-data
@@ -39,7 +39,15 @@
         <activity
             android:name=".prefs.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName="edu.purdue.app.main.MainMenuActivity" >
+            android:parentActivityName=".main.MainMenuActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.purdue.app.main.MainMenuActivity" />
+        </activity>
+        <activity
+            android:name=".labs.LabActivity"
+            android:label="@string/title_activity_lab"
+            android:parentActivityName=".main.MainMenuActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="edu.purdue.app.main.MainMenuActivity" />

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.purdue.app.R;
+import edu.purdue.app.labs.LabActivity;
 
 public class MainMenuItem implements CustomMenuItem {
     private final Drawable icon;
@@ -30,7 +31,7 @@ public class MainMenuItem implements CustomMenuItem {
         toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_calendar), r.getString(R.string.calendar), "https://calendar.purdue.edu/"));
         toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_videos), "Videos", "http://www.youtube.com/user/PurdueUniversity"));
         toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_pictures), "Photos", "http://purdue.photoshelter.com/gallery-list"));
-        toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_labs), r.getString(R.string.labs), "https://lslab.ics.purdue.edu/icsWeb/AvailableStations"));
+        toReturn.add(new ActivityMainMenuItem(r.getDrawable(R.drawable.ic_labs), r.getString(R.string.labs), LabActivity.class));
 
         //Not necessary for this version, but I'm putting them here anyway
         //toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_tours), "Tours", "http://play.google.com/store/apps/details?id=com.barz.tourguide.purdue"));
