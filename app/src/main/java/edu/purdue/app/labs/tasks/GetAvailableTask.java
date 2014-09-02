@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Map;
 
 import edu.purdue.app.labs.listeners.OnGetAvailableLabsListener;
-import edu.purdue.app.labs.listeners.OnGetLabsListener;
 import edu.purdue.app.labs.model.AvailableLab;
 import edu.purdue.app.labs.model.Lab;
 
@@ -31,9 +30,7 @@ public class GetAvailableTask extends AsyncTask<Void, Integer, List<AvailableLab
 
     @Override
     protected void onPostExecute(List<AvailableLab> availableLabs) {
-        if(availableLabs == null) return;
-
-        else if (listener != null)
+        if (listener != null)
             listener.onGetLabs(availableLabs);
     }
 
@@ -42,7 +39,7 @@ public class GetAvailableTask extends AsyncTask<Void, Integer, List<AvailableLab
 
         Document document;
         try {
-            document = Jsoup.connect("https://lslab.ics.purdue.edu/icsWeb/AvailableStations").get();
+            document = Jsoup.connect("https://lslab.ics.purdue.edu/icsWeb/AvailableStations").timeout(10*1000).get();
         } catch (IOException e) {
             e.printStackTrace();
             return null;

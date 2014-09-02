@@ -3,7 +3,7 @@ package edu.purdue.app.labs.model;
 /**
  * Created by david on 9/2/14.
  */
-public abstract class Lab {
+public class Lab {
 
     private Type type;
     private int totalStations;

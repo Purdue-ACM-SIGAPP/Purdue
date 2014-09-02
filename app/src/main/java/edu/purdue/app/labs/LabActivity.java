@@ -7,14 +7,16 @@ import android.view.MenuItem;
 import android.view.View;
 
 import edu.purdue.app.R;
-import edu.purdue.app.labs.tasks.GetAvailableTask;
+import edu.purdue.app.labs.fragments.LabMenuFragment;
 
 public class LabActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lab);
+        setContentView(R.layout.labs_activity_lab);
+
+        getFragmentManager().beginTransaction().add(R.id.content, new LabMenuFragment(), LabMenuFragment.class.getName()).commit();
     }
 
 
@@ -38,7 +40,6 @@ public class LabActivity extends Activity {
     }
 
     public void mapLabs(View view) {
-        new GetAvailableTask().execute();
     }
 
     public void allLabs(View view) {

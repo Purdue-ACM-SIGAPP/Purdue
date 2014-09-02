@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_centerInParent="true"
+    android:dividerPadding="0dp"
+    android:gravity="center">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+        android:textStyle="bold"
+        android:textColor="@color/purdue_gold"
+        android:background="@color/purdue_black"
+        android:text="Map"
+        android:id="@+id/labs_maplabs"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+        android:textStyle="bold"
+        android:background="@color/purdue_gold"
+        android:text="All ITaP Labs"
+        android:id="@+id/labs_alllabs"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+        android:textStyle="bold"
+        android:textColor="@color/purdue_gold"
+        android:background="@color/purdue_black"
+        android:text="Favorite Labs"
+        android:id="@+id/labs_favoritelabs"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+        android:textStyle="bold"
+        android:background="@color/purdue_gold"
+        android:text="Available Labs"
+        android:id="@+id/labs_availablelabs"
+        />
+
+    <!--ECN and CS labs-->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+        android:textStyle="bold"
+        android:textColor="@color/purdue_gold"
+        android:background="@color/purdue_black"
+        android:text="Special access labs"
+        android:id="@+id/labs_speciallabs"
+        />
+
+</LinearLayout>
