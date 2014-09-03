@@ -73,7 +73,8 @@ public class LabsListAdapter extends BaseAdapter {
 
         holder.available.setText( "" + getItem(position).getAvailableStations() );
         holder.location.setText( getItem(position).getLocation() );
-
+        //
+        // holder.colorBar.setBackground(context.getResources().getDrawable(R.drawable.labs_color_bar));
         return convertView;
     }
 

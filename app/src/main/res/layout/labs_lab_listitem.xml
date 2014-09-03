@@ -13,12 +13,14 @@
         android:padding="10dp"
         android:gravity="center"/>
 
-    <ImageView
+    <FrameLayout
         android:layout_width="20dp"
         android:id="@+id/colorBar"
-        android:layout_height="match_parent"
+        android:layout_height="fill_parent"
         android:background="@color/purdue_gold"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -28,6 +30,6 @@
         android:id="@+id/lab_txt_available"
         android:textAppearance="?android:textAppearanceMedium"
         android:layout_centerVertical="true"
-        android:padding="10dp"/>
+        android:padding="10dp" />
 
 </RelativeLayout>
