@@ -29,8 +29,8 @@
         <item name="android:actionModeBackground">@drawable/cab_background_top_purdue</item>
         <item name="android:actionModeSplitBackground">@drawable/cab_background_bottom_purdue</item>
         <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Purdue</item>
-        
-        
+
+        <item name="android:icon">@drawable/ic_p</item>
     </style>
 
     <style name="ActionBar.Solid.Purdue" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
