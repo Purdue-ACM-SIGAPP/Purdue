@@ -1,21 +1,16 @@
 package edu.purdue.app.labs.adapters;
 
 import android.content.Context;
-import android.database.DataSetObserver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ListAdapter;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
 import edu.purdue.app.R;
 import edu.purdue.app.labs.model.AvailableLab;
-import edu.purdue.app.labs.model.Lab;
 
 /**
  * Created by david on 9/2/14.
@@ -67,13 +62,12 @@ public class LabsListAdapter extends BaseAdapter {
             holder = new ViewHolder();
             holder.available = (TextView) convertView.findViewById(R.id.lab_txt_available);
             holder.location = (TextView) convertView.findViewById(R.id.lab_txt_location);
-            holder.colorBar = (View) convertView.findViewById(R.id.colorBar);
+//            holder.colorBar = (View) convertView.findViewById(R.id.color_indicator);
             convertView.setTag(holder);
         }
 
         holder.available.setText( "" + getItem(position).getAvailableStations() );
         holder.location.setText( getItem(position).getLocation() );
-        //
         // holder.colorBar.setBackground(context.getResources().getDrawable(R.drawable.labs_color_bar));
         return convertView;
     }
@@ -82,6 +76,6 @@ public class LabsListAdapter extends BaseAdapter {
     class ViewHolder {
         TextView location;
         TextView available;
-        View colorBar;
+//        View colorBar;
     }
 }

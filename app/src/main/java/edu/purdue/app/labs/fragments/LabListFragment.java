@@ -55,8 +55,8 @@ public class LabListFragment extends ListFragment implements OnGetAvailableLabsL
         View progress = getView().findViewById(android.R.id.empty);
         View error = getView().findViewById(R.id.errorView);
 
-        list.setVisibility(View.INVISIBLE);
-        progress.setVisibility(View.INVISIBLE);
+        list.setVisibility(View.GONE);
+        progress.setVisibility(View.GONE);
         error.setVisibility(View.VISIBLE);
     }
 }

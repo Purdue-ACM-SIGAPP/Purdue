@@ -13,23 +13,30 @@
         android:padding="10dp"
         android:gravity="center"/>
 
-    <FrameLayout
-        android:layout_width="20dp"
-        android:id="@+id/colorBar"
-        android:layout_height="fill_parent"
-        android:background="@color/purdue_gold"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        />
+    <!--<ImageView-->
+        <!--android:layout_width="20dp"-->
+        <!--android:id="@+id/color_indicator"-->
+        <!--android:layout_height="20dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:src="@color/purdue_gold"-->
+        <!--android:background="@color/purdue_gold"-->
+        <!--android:scaleType="center"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--/>-->
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
+        android:gravity="center"
         android:text="20"
-        android:layout_toLeftOf="@id/colorBar"
         android:id="@+id/lab_txt_available"
         android:textAppearance="?android:textAppearanceMedium"
         android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:padding="10dp" />
+
 
 </RelativeLayout>
