@@ -5,24 +5,45 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import edu.purdue.app.R;
 import edu.purdue.app.labs.model.AvailableLab;
+import edu.purdue.app.labs.model.Lab;
 
 /**
  * Created by david on 9/2/14.
  */
-public class LabsListAdapter extends BaseAdapter {
-    List<AvailableLab> labs;
+public class LabsListAdapter extends BaseExpandableListAdapter {
+    List<Lab.Type> headers;
+    Map<Lab.Type, List<Lab>> labs;
     Context context;
     LayoutInflater inflater;
 
     public LabsListAdapter(Context context, List<AvailableLab> labs) {
-        this.labs = labs;
         this.context = context;
+        this.labs = new HashMap<Lab.Type, List<Lab>>();
+        this.headers = new ArrayList<Lab.Type>();
+
+        for(Lab lab : labs) {
+            Lab.Type t = lab.getType();
+            List<Lab> list = this.labs.get(t);
+            if(list == null) {
+                list = new LinkedList<Lab>();
+                this.headers.add(t);
+            }
+            list.add(lab);
+
+            this.labs.put(t, list);
+        }
     }
 
     private LayoutInflater getInflater() {
@@ -33,27 +54,54 @@ public class LabsListAdapter extends BaseAdapter {
     }
 
     @Override
-    public int getCount() {
-        return labs.size();
+    public int getGroupCount() {
+        return this.labs.size();
     }
 
     @Override
-    public AvailableLab getItem(int position) {
-        return labs.get(position);
+    public int getChildrenCount(int groupPosition) {
+        return this.labs.get(this.headers.get(groupPosition)).size();
     }
 
     @Override
-    public long getItemId(int position) {
-        return getItem(position).hashCode();
+    public Lab.Type getGroup(int groupPosition) {
+        return headers.get(groupPosition);
     }
 
     @Override
-    public boolean isEmpty() {
-        return labs == null || labs.size() == 0;
+    public Lab getChild(int groupPosition, int childPosition) {
+        return this.labs.get(this.headers.get(groupPosition)).get(childPosition);
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public long getGroupId(int groupPosition) {
+        return getGroup(groupPosition).hashCode();
+    }
+
+    @Override
+    public long getChildId(int groupPosition, int childPosition) {
+        return getChild(groupPosition, childPosition).hashCode();
+    }
+
+    @Override
+    public boolean hasStableIds() {
+        return true;
+    }
+
+    @Override
+    public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+
+        if(convertView == null) {
+            convertView = getInflater().inflate(R.layout.labs_lab_listheader, parent, false);
+        }
+
+        ((TextView)convertView.findViewById(R.id.header_text)).setText(getGroup(groupPosition).toString());
+
+        return convertView;
+    }
+
+    @Override
+    public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if(convertView != null) {
             holder = (ViewHolder) convertView.getTag();
@@ -66,12 +114,21 @@ public class LabsListAdapter extends BaseAdapter {
             convertView.setTag(holder);
         }
 
-        holder.available.setText( "" + getItem(position).getAvailableStations() );
-        holder.location.setText( getItem(position).getLocation() );
+        holder.available.setText( "" + ((AvailableLab)getChild(groupPosition, childPosition)).getAvailableStations() );
+        holder.location.setText( getChild(groupPosition, childPosition).getLocation() );
         // holder.colorBar.setBackground(context.getResources().getDrawable(R.drawable.labs_color_bar));
         return convertView;
     }
 
+    @Override
+    public boolean isChildSelectable(int groupPosition, int childPosition) {
+        return false;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return labs == null || labs.size() == 0;
+    }
 
     class ViewHolder {
         TextView location;
