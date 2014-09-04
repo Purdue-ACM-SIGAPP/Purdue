@@ -12,12 +12,27 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import edu.purdue.app.labs.listeners.OnGetAvailableLabsListener;
+import edu.purdue.app.labs.listeners.OnGetLabBuildingsListener;
 import edu.purdue.app.labs.model.AvailableLab;
 
 /**
  * Created by david on 9/4/14.
  */
 public class GetLabBuildingsTask extends AsyncTask<Void, Integer, Set<String>> {
+
+    private final OnGetLabBuildingsListener listener;
+
+    public GetLabBuildingsTask(OnGetLabBuildingsListener listener) {
+        this.listener = listener;
+    }
+
+    @Override
+    protected void onPostExecute(Set<String> labs) {
+        if (listener != null)
+            listener.onGetLabBuildings(labs);
+    }
+
     @Override
     protected Set<String> doInBackground(Void... params) {
 
@@ -33,6 +48,7 @@ public class GetLabBuildingsTask extends AsyncTask<Void, Integer, Set<String>> {
     }
 
     private Set<String> getLabsFromDocument(Document document) {
+        if( document == null ) return null;
         Elements select = document.select("select[name=bldg]");
 
         Set<String> names = new HashSet<String>();
@@ -41,7 +57,7 @@ public class GetLabBuildingsTask extends AsyncTask<Void, Integer, Set<String>> {
             names.add(e.text());
         }
 
-        return null;
+        return names;
     }
 
 }
