@@ -11,6 +11,7 @@
     <ImageView
         android:id="@+id/item_img"
         android:layout_height="100dp"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_centerHorizontal="true"
         android:paddingLeft="10dp"
@@ -26,6 +27,7 @@
         android:singleLine="true"
         android:ellipsize="end"
         android:text="@string/bus_routes"
+        android:textAppearance="?android:textAppearanceMedium"
         android:layout_below="@+id/item_img"
         android:gravity="center"
         />
