@@ -40,19 +40,4 @@ public class LabActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-    public void mapLabs(View view) {
-    }
-
-    public void allLabs(View view) {
-    }
-
-    public void favoriteLabs(View view) {
-    }
-
-    public void availableLabs(View view) {
-    }
-
-    public void specialLabs(View view) {
-    }
 }

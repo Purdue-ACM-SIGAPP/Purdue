@@ -36,7 +36,7 @@ public class LabMenuFragment extends Fragment implements View.OnClickListener {
                 getFragmentManager().beginTransaction().addToBackStack(AvailableLabListFragment.class.getName()).replace(R.id.content, new AvailableLabListFragment()).commit();
                 break;
             case R.id.labs_alllabs:
-                getFragmentManager().beginTransaction().addToBackStack(LabBuildingListFragment.class.getName()).replace(R.id.content, new LabBuildingListFragment()).commit();
+                getFragmentManager().beginTransaction().addToBackStack(AllLabsListFragment.class.getName()).replace(R.id.content, new AllLabsListFragment()).commit();
         }
     }
 }
