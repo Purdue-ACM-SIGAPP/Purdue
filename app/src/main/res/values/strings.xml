@@ -12,7 +12,7 @@
     <string name="labs">Labs</string>
     <string name="bus_routes">Bus Routes</string>
     <string name="analytics_id" tools:ignore="TypographyDashes">UA-51109974-1</string>
-    <string name="title_activity_lab">LabActivity</string>
+    <string name="title_activity_lab">Computer Labs</string>
     <string name="hello_world">Hello world!</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

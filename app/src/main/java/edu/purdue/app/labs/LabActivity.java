@@ -16,7 +16,9 @@ public class LabActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.labs_activity_lab);
 
-        getFragmentManager().beginTransaction().add(R.id.content, new LabMenuFragment(), LabMenuFragment.class.getName()).commit();
+        if (savedInstanceState == null) {
+            getFragmentManager().beginTransaction().add(R.id.content, new LabMenuFragment(), LabMenuFragment.class.getName()).commit();
+        }
     }
 
 

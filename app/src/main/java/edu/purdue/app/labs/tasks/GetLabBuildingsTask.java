@@ -1,6 +1,7 @@
 package edu.purdue.app.labs.tasks;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -8,6 +9,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -53,11 +55,14 @@ public class GetLabBuildingsTask extends AsyncTask<Void, Integer, Set<String>> {
 
         Set<String> names = new HashSet<String>();
 
-        for(Element e : select) {
-            names.add(e.text());
-        }
+
+        Collections.addAll(names, select.get(0).text().split(" "));
+
+        Log.d("LABS", "Found " + names.size() + " things");
 
         return names;
     }
+
+
 
 }

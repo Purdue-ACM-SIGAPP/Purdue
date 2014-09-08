@@ -7,6 +7,7 @@ import android.app.ExpandableListActivity;
 import android.app.ListFragment;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +26,7 @@ import edu.purdue.app.labs.tasks.GetAvailableTask;
  * A simple {@link Fragment} subclass.
  *
  */
-public class AvailableLabListFragment extends Fragment implements OnGetAvailableLabsListener {
+public class AvailableLabListFragment extends AsyncListFragment implements OnGetAvailableLabsListener {
 
     public AvailableLabListFragment() {
         // Required empty public constructor
@@ -34,7 +35,7 @@ public class AvailableLabListFragment extends Fragment implements OnGetAvailable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.labs_lab_list, container, false);
+        return inflater.inflate(R.layout.labs_lab_explist, container, false);
     }
 
     @Override
@@ -54,44 +55,10 @@ public class AvailableLabListFragment extends Fragment implements OnGetAvailable
         if(labs == null) showError();
         else {
             showList();
-            if(getView() != null)
-                ((ExpandableListView)getView().findViewById(android.R.id.list)).setAdapter(new LabsListAdapter(getActivity(), labs));
+            if (getView() != null) {
+                Log.d("LABS", "Adding adapter");
+                ((ExpandableListView) getView().findViewById(android.R.id.list)).setAdapter(new LabsListAdapter(getActivity(), labs));
+            }
         }
-    }
-
-    private void showError() {
-        if(getView() == null) return;
-
-        View list = getView().findViewById(android.R.id.list);
-        View progress = getView().findViewById(android.R.id.empty);
-        View error = getView().findViewById(R.id.errorView);
-
-        list.setVisibility(View.GONE);
-        progress.setVisibility(View.GONE);
-        error.setVisibility(View.VISIBLE);
-    }
-
-    private void showEmpty() {
-        if(getView() == null) return;
-
-        View list = getView().findViewById(android.R.id.list);
-        View progress = getView().findViewById(android.R.id.empty);
-        View error = getView().findViewById(R.id.errorView);
-
-        list.setVisibility(View.GONE);
-        progress.setVisibility(View.VISIBLE);
-        error.setVisibility(View.GONE);
-    }
-
-    private void showList() {
-        if(getView() == null) return;
-
-        View list = getView().findViewById(android.R.id.list);
-        View progress = getView().findViewById(android.R.id.empty);
-        View error = getView().findViewById(R.id.errorView);
-
-        list.setVisibility(View.VISIBLE);
-        progress.setVisibility(View.GONE);
-        error.setVisibility(View.GONE);
     }
 }

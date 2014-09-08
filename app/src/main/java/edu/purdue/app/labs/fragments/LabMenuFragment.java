@@ -26,6 +26,7 @@ public class LabMenuFragment extends Fragment implements View.OnClickListener {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ((Button)view.findViewById(R.id.labs_availablelabs)).setOnClickListener(this);
+        ((Button)view.findViewById(R.id.labs_alllabs)).setOnClickListener(this);
     }
 
     @Override
@@ -35,7 +36,7 @@ public class LabMenuFragment extends Fragment implements View.OnClickListener {
                 getFragmentManager().beginTransaction().addToBackStack(AvailableLabListFragment.class.getName()).replace(R.id.content, new AvailableLabListFragment()).commit();
                 break;
             case R.id.labs_alllabs:
-                getFragmentManager().beginTransaction().addToBackStack(LabListFragment.class.getName()).replace(R.id.content, new LabListFragment()).commit();
+                getFragmentManager().beginTransaction().addToBackStack(LabBuildingListFragment.class.getName()).replace(R.id.content, new LabBuildingListFragment()).commit();
         }
     }
 }
