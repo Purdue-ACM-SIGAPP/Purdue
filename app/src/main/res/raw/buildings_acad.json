@@ -1,0 +1,406 @@
+[
+	{
+		"short_name"	: "ABE",
+		"full_name"	: "Agricultural and Biological Engineering Building",
+		"lat"		: 40.421698,
+		"lng"		: -86.916559
+	},
+	{
+		"short_name"	: "ADDL",
+		"full_name"	: "Animal Disease and Diagnostics Laboratory",
+		"lat"		: 40.418182,
+		"lng"		: -86.916039
+	},
+	{
+		"short_name"	: "AERO",
+		"full_name"	: "Aerospace Science Laboratory",
+		"lat"		: 40.41635,
+		"lng"		: -86.92857
+	},
+	{
+		"short_name"	: "AR",
+		"full_name"	: "Armory",
+		"lat"		: 40.428014,
+		"lng"		: -86.916254
+	},
+	{
+		"short_name" 	: "ARMS",
+		"full_name"	: "Armstrong Hall of Engineering",
+		"lat"		: 40.430987,
+		"lng"		: -86.915159
+	},
+	{
+		"short_name"	: "ASTL",
+		"full_name"	: "Animal Sciences Teaching Laboratory",
+		"lat"		: 40.42321,
+		"lng"		: -86.919858
+	},
+	{
+		"short_name"	: "BCHM",
+		"full_name"	: "Biochemistry Building",
+		"lat"		: 40.422713,
+		"lng"		: -86.916307
+	},
+	{
+		"short_name"	: "BRNG",
+		"full_name"	: "Beering Hall of Liberal Arts and Education",
+		"lat"		: 40.425566,
+		"lng"		: -86.916216
+	},
+	{
+		"short_name"	: "BRWN",
+		"full_name"	: "Brown Laboratory of Chemistry",
+		"lat"		: 40.426585,
+		"lng"		: -86.911855
+	},
+	{
+		"short_name"	: "CL50",
+		"full_name"	: "Class of 50 Lecture Hall",
+		"lat"		: 40.426305,
+		"lng"		: -86.915014
+	},
+	{
+		"short_name"	: "DOYL",
+		"full_name"	: "Doyle Laboratory",
+		"lat"		: 40.418662,
+		"lng"		: -86.915545
+	},
+	{
+		"short_name"	: "EE",
+		"full_name"	: "Electrical Engineering Building",
+		"lat"		: 40.428741,
+		"lng"		: -86.912037
+	},
+	{
+		"short_name"	: "EEL",
+		"full_name"	: "Entomology Environmental Laboratory",
+		"lat"		: 40.422869,
+		"lng"		: -86.91473
+	},
+	{
+		"short_name"	: "EHSA",
+		"full_name"	: "Equine Health Sciences Annex",
+		"lat"		: 40.417533,
+		"lng"		: -86.914226
+	},
+	{
+		"short_name"	: "EHSB",
+		"full_name"	: "Equine Health Sciences Building",
+		"lat"		: 40.418701,
+		"lng"		: -86.914521
+	},
+	{
+		"short_name"	: "FPRD",
+		"full_name"	: "Forestry Products Building",
+		"lat"		: 40.423091,
+		"lng"		: -86.915106
+	},
+	{
+		"short_name"	: "FRNY",
+		"full_name"	: "Forney Hall of Chemical Engineering",
+		"lat"		: 40.429329,
+		"lng"		: -86.913979
+	},
+	{
+		"short_name"	: "FORS",
+		"full_name"	: "Forestry Building",
+		"lat"		: 40.422771,
+		"lng"		: -86.914151
+	},
+	{
+		"short_name"	: "GRIS",
+		"full_name"	: "Grissom Hall",
+		"lat"		: 40.426389,
+		"lng"		: -86.91075
+	},
+	{
+		"short_name"	: "HAAS",
+		"full_name"	: "Hass Hall",
+		"lat"		: 40.426805,
+		"lng"		: -86.916339
+	},
+	{
+		"short_name"	: "HAMP",
+		"full_name"	: "Hampton Hall of Civil Engineering",
+		"lat"		: 40.430235,
+		"lng"		: -86.914848
+	},
+	{
+		"short_name"	: "HANS",
+		"full_name"	: "Hanson Life Sciences Research Building",
+		"lat"		: 40.422272,
+		"lng"		: -86.916999
+	},
+	{
+		"short_name"	: "HEAV",
+		"full_name"	: "Heavilon Hall",
+		"lat"		: 40.426242,
+		"lng"		: -86.911833
+	},
+	{
+		"short_name"	: "HGRH",
+		"full_name"	: "Horticultural Greenhouses",
+		"lat"		: 40.421063,
+		"lng"		: -86.91443
+	},
+	{
+		"short_name"	: "HIKS",
+		"full_name"	: "Hicks Undergraduate Library",
+		"lat"		: 40.424514,
+		"lng"		: -86.91267
+	},
+	{
+		"short_name"	: "HORT",
+		"full_name"	: "Horticultural Building",
+		"lat"		: 40.421801,
+		"lng"		: -86.914397
+	},
+	{
+		"short_name"	: "JNSN",
+		"full_name"	: "Johnson Hall of Nursing",
+		"lat"		: 40.429362,
+		"lng"		: -86.915503
+	},
+	{
+		"short_name"	: "KCTR",
+		"full_name"	: "Krannert Center for Executive Education and Research",
+		"lat"		: 40.423595,
+		"lng"		: -86.911522
+	},
+	{
+		"short_name"	: "KNOY",
+		"full_name"	: "Knoy Hall of Technology",
+		"lat"		: 40.427548,
+		"lng"		: -86.911082
+	},
+	{
+		"short_name"	: "KRAN",
+		"full_name"	: "Krannert Building",
+		"lat"		: 40.423718,
+		"lng"		: -86.910846
+	},
+	{
+		"short_name"	: "LILY",
+		"full_name"	: "Lilly Hall of Life Sciences",
+		"lat"		: 40.423489,
+		"lng"		: -86.917906
+	},
+	{
+		"short_name"	: "LSA",
+		"full_name"	: "Life Science Animal Building",
+		"lat"		: 40.422501,
+		"lng"		: -86.917702
+	},
+	{
+		"short_name"	: "LSR",
+		"full_name"	: "Life Sciences Ranges",
+		"lat"		: 40.422695,
+		"lng"		: -86.918753
+	},
+	{
+		"short_name"	: "LWSN",
+		"full_name"	: "Lawson Computer Science Building",
+		"lat"		: 40.42763,
+		"lng"		: -86.916972
+	},
+	{
+		"short_name"	: "LYNN",
+		"full_name"	: "Lynn Hall of Veterinary Medicine",
+		"lat"		: 40.419479,
+		"lng"		: -86.914591
+	},
+	{
+		"short_name"	: "MATH",
+		"full_name"	: "Mathematical Sciences Building",
+		"lat"		: 40.426195,
+		"lng"		: -86.915755
+	},
+	{
+		"short_name"	: "ME",
+		"full_name"	: "Mechanical Engineering Building",
+		"lat"		: 40.428234,
+		"lng"		: -86.912853
+	},
+	{
+		"short_name"	: "MGL",
+		"full_name"	: "Michael Golden Engineering Labs and Shops",
+		"lat"		: 40.427279,
+		"lng"		: -86.91164
+	},
+	{
+		"short_name"	: "MRRT",
+		"full_name"	: "Marriott Hall",
+		"lat"		: 40.424494,
+		"lng"		: -86.916962
+	},
+	{
+		"short_name"	: "MSEE",
+		"full_name"	: "Materials Science and Engineering Building",
+		"lat"		: 40.429337,
+		"lng"		: -86.912638
+	},
+	{
+		"short_name"	: "MTHW",
+		"full_name"	: "Matthews Hall",
+		"lat"		: 40.424774,
+		"lng"		: -86.916355
+	},
+	{
+		"short_name"	: "NISW",
+		"full_name"	: "Niswonger Aviation Technology Building",
+		"lat"		: 40.416408,
+		"lng"		: -86.929364
+	},
+	{
+		"short_name"	: "NLSN",
+		"full_name"	: "Nelson Hall of Food Science",
+		"lat"		: 40.421562,
+		"lng"		: -86.915481
+	},
+	{
+		"short_name"	: "NUCL",
+		"full_name"	: "Nuclear Engineering Building",
+		"lat"		: 40.427107,
+		"lng"		: -86.911125
+	},
+	{
+		"short_name"	: "PAO",
+		"full_name"	: "Pao Hall of Visual and Performing Arts",
+		"lat"		: 40.422532,
+		"lng"		: -86.913019
+	},
+	{
+		"short_name"	: "PFEN",
+		"full_name"	: "Pfendler Hall of Agriculture",
+		"lat"		: 40.423569,
+		"lng"		: -86.915395
+	},
+	{
+		"short_name"	: "PHYS",
+		"full_name"	: "Physics Building",
+		"lat"		: 40.429739,
+		"lng"		: -86.913228
+	},
+	{
+		"short_name"	: "POAN",
+		"full_name"	: "Poultry Sciences Annex",
+		"lat"		: 40.423418,
+		"lng"		: -86.919875
+	},
+	{
+		"short_name"	: "POTR",
+		"full_name"	: "Potter Engineering Center",
+		"lat"		: 40.427491,
+		"lng"		: -86.912391
+	},
+	{
+		"short_name"	: "POUL",
+		"full_name"	: "Poultry Sciences Building",
+		"lat"		: 40.423622,
+		"lng"		: -86.919875
+	},
+	{
+		"short_name"	: "PRCE",
+		"full_name"	: "Pierce Hall",
+		"lat"		: 40.426644,
+		"lng"		: -86.91503
+	},
+	{
+		"short_name"	: "PSYC",
+		"full_name"	: "Psychological Sciences Building",
+		"lat"		: 40.427044,
+		"lng"		: -86.914902
+	},
+	{
+		"short_name"	: "RAWL",
+		"full_name"	: "Rawls Hall",
+		"lat"		: 40.423718,
+		"lng"		: -86.909763
+	},
+	{
+		"short_name"	: "REC",
+		"full_name"	: "Recitation Building",
+		"lat"		: 40.425811,
+		"lng"		: -86.91517
+	},
+	{
+		"short_name"	: "RHPH",
+		"full_name"	: "Robert Heine Pharmacy Building",
+		"lat"		: 40.429786,
+		"lng"		: -86.915824
+	},
+	{
+		"short_name"	: "SC",
+		"full_name"	: "Stanley Coulter Hall",
+		"lat"		: 40.426395,
+		"lng"		: -86.914328
+	},
+	{
+		"short_name"	: "SMTH",
+		"full_name"	: "Smith Hall",
+		"lat"		: 40.423555,
+		"lng"		: -86.916865
+	},
+	{
+		"short_name"	: "SOIL",
+		"full_name"	: "Soil Erosion Laboratory",
+		"lat"		: 40.421303,
+		"lng"		: -86.920191
+	},
+	{
+		"short_name"	: "STON",
+		"full_name"	: "Stone Hall",
+		"lat"		: 40.424633,
+		"lng"		: -86.915213
+	},
+	{
+		"short_name"	: "UNIV",
+		"full_name"	: "University Hall",
+		"lat"		: 40.42526,
+		"lng"		: -86.915165
+	},
+	{
+		"short_name"	: "VA1",
+		"full_name"	: "Veterinary Animal Isolation Building 1",
+		"lat"		: 40.419307,
+		"lng"		: -86.91605
+	},
+	{
+		"short_name"	: "VA2",
+		"full_name"	: "Veterinary Animal Isolation Building 2",
+		"lat"		: 40.418866,
+		"lng"		: -86.916082
+	},
+	{
+		"short_name"	: "VLAB",
+		"full_name"	: "Veterinary Laboratory Animal Building",
+		"lat"		: 40.418674,
+		"lng"		: -86.914929
+	},
+	{
+		"short_name"	: "VPRB",
+		"full_name"	: "Veterinary Pathology Research Building",
+		"lat"		: 40.419781,
+		"lng"		: -86.916146
+	},
+	{
+		"short_name"	: "VPTH",
+		"full_name"	: "Veterinary Pathology Building",
+		"lat"		: 40.420059,
+		"lng"		: -86.915631
+	},
+	{
+		"short_name"	: "WSLR",
+		"full_name"	: "Whistler Hall of Agricultural Research",
+		"lat"		: 40.422953,
+		"lng"		: -86.915513
+	},
+	{
+		"short_name"	: "WTHR",
+		"full_name"	: "Wetherill Laboratory of Chemistry",
+		"lat"		: 40.426462,
+		"lng"		: -86.913078
+	}
+
+
+]

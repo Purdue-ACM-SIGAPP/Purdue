@@ -1,0 +1,38 @@
+[
+	{
+		"short_name"	: "PGNW",
+		"full_name"	: "Grant Street Parking Garage",
+		"lat"		: 40.425221,
+		"lng"		: -86.909773
+	},
+	{
+		"short_name"	: "PGM",
+		"full_name"	: "Marsteller Street Parking Garage",
+		"lat"		: 40.423105,
+		"lng"		: -86.912981
+	},
+	{
+		"short_name"	: "PGMD",
+		"full_name"	: "McCutcheon Parking Garage",
+		"lat"		: 40.426348,
+		"lng"		: -86.928205
+	},
+	{
+		"short_name"	: "PGG",
+		"full_name"	: "Northwestern Parking Garage",
+		"lat"		: 40.429574,
+		"lng"		: -86.91119
+	},
+	{
+		"short_name"	: "PGU",
+		"full_name"	: "University Street Parking Garage",
+		"lat"		: 40.42674,
+		"lng"		: -86.917241
+	},
+	{
+		"short_name"	: "PGW",
+		"full_name"	: "Wood Street Parking Garage",
+		"lat"		: 40.42286,
+		"lng"		: -86.910009
+	}
+]

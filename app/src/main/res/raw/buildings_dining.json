@@ -1,0 +1,33 @@
+[
+	{
+		"short_name"	: "?",
+		"full_name"	: "Earhart Dining Court",
+		"lat"		: 40.425582,
+		"lng"		: -86.925239
+	},
+	{
+		"short_name"	: "?",
+		"full_name"	: "Ford Dining Court",
+		"lat"		: 40.432081,
+		"lng"		: -86.919601
+	},
+	{
+		"short_name"	: "?",
+		"full_name"	: "Hillenbrand Dining Court",
+		"lat"		: 40.426487,
+		"lng"		: -86.926628
+	},
+	{
+		"short_name"	: "?",
+		"full_name"	: "Windsor Dining Court",
+		"lat"		: 40.426873,
+		"lng"		: -86.921226
+	},
+	{
+		"short_name"	: "?",
+		"full_name"	: "Wiley Dining Court",
+		"lat"		: 40.428529,
+		"lng"		: -86.920835
+	}
+
+]

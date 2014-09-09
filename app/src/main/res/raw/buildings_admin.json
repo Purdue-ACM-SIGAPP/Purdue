@@ -1,0 +1,86 @@
+[
+	{
+		"short_name"	: "AGAD",
+		"full_name"	: "Agricultural Administration Building",
+		"lat"		: 40.423424,
+		"lng"		: -86.914215
+	},
+	{
+		"short_name"	: "AHF",
+		"full_name"	: "Animal Holding Facility",
+		"lat"		: 40.418604,
+		"lng"		: -86.914169
+	},
+	{
+		"short_name"	: "CSEL",
+		"full_name"	: "Center for Student Excellence and Leadership",
+		"lat"		: 40.427655,
+		"lng"		: -86.921382
+	},
+	{
+		"short_name"	: "ENAD",
+		"full_name"	: "Engineering Administration Building",
+		"lat"		: 40.427671,
+		"lng"		: -86.913282
+	},
+	{
+		"short_name"	: "FREH",
+		"full_name"	: "Freehafer Hall of Administrative Services",
+		"lat"		: 40.41836,
+		"lng"		: -86.910975
+	},
+	{
+		"short_name"	: "HOVD",
+		"full_name"	: "Hovde Hall of Administration",
+		"lat"		: 40.428218,
+		"lng"		: -86.914387
+	},
+	{
+		"short_name"	: "PMU",
+		"full_name"	: "Purdue Memorial Union",
+		"lat"		: 40.424976,
+		"lng"		: -86.91135
+	},
+	{
+		"short_name"	: "PUSH",
+		"full_name"	: "Purdue University Student Health Center",
+		"lat"		: 40.430317,
+		"lng"		: -86.915932
+	},
+	{
+		"short_name"	: "RAIL",
+		"full_name"	: "American Railway Building",
+		"lat"		: 40.427916,
+		"lng"		: -86.912509
+	},
+	{
+		"short_name"	: "SCHL",
+		"full_name"	: "Schleman Hall of Student Services",
+		"lat"		: 40.428986,
+		"lng"		: -86.914794
+	},
+	{
+		"short_name"	: "SMLY",
+		"full_name"	: "Smalley Center for Housing and Food Services Administration",
+		"lat"		: 40.427044,
+		"lng"		: -86.923211
+	},
+	{
+		"short_name"	: "STEW",
+		"full_name"	: "Stewart Center",
+		"lat"		: 40.424951,
+		"lng"		: -86.912767
+	},
+	{
+		"short_name"	: "TEL",
+		"full_name"	: "Telecommunications Building",
+		"lat"		: 40.426038,
+		"lng"		: -86.916972
+	},
+	{
+		"short_name"	: "YONG",
+		"full_name"	: "Young Hall",
+		"lat"		: 40.422918,
+		"lng"		: -86.910664
+	}
+]
