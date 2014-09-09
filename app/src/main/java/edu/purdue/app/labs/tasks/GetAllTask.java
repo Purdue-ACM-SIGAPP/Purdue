@@ -31,9 +31,6 @@ public class GetAllTask  extends AsyncTask<Void, Integer, List<String>> {
 
     @Override
     protected void onPostExecute(List<String> labs) {
-        for(String lab : labs) {
-            Log.d("ALL_LABS", lab);
-        }
         if (listener != null)
             listener.onGetAllLabs(labs);
     }

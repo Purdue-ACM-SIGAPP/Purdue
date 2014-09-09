@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 
 import java.util.List;
@@ -49,7 +50,13 @@ public class AllLabsListFragment extends AsyncListFragment implements OnGetAllLa
             showList();
             if (getView() != null) {
                 Log.d("LABS", "Adding adapter");
-                ((ExpandableListView) getView().findViewById(android.R.id.list)).setAdapter(new AllLabsListAdapter(getActivity(), labs));
+                ExpandableListView lv = ((ExpandableListView) getView().findViewById(android.R.id.list));
+                ExpandableListAdapter ada = new AllLabsListAdapter(getActivity(), labs);
+                lv.setAdapter(ada);
+                for(int i = 0; i < ada.getGroupCount(); i++) {
+                    lv.expandGroup(i);
+                }
+
             }
         }
     }
