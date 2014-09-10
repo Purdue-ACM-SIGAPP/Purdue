@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.Map;
 
 import edu.purdue.app.R;
-import edu.purdue.app.labs.model.AvailableLab;
 import edu.purdue.app.labs.model.Lab;
 
 /**
@@ -28,7 +27,7 @@ public class LabsListAdapter extends BaseExpandableListAdapter {
     Context context;
     LayoutInflater inflater;
 
-    public LabsListAdapter(Context context, List<AvailableLab> labs) {
+    public LabsListAdapter(Context context, List<Lab> labs) {
         this.context = context;
         this.labs = new HashMap<Lab.Type, List<Lab>>();
         this.headers = new ArrayList<Lab.Type>();
@@ -114,7 +113,7 @@ public class LabsListAdapter extends BaseExpandableListAdapter {
             convertView.setTag(holder);
         }
 
-        holder.available.setText( "" + ((AvailableLab)getChild(groupPosition, childPosition)).getAvailableStations() );
+        holder.available.setText( "" + getChild(groupPosition, childPosition).getAvailableStations() );
         holder.location.setText( getChild(groupPosition, childPosition).getLocation() );
         // holder.colorBar.setBackground(context.getResources().getDrawable(R.drawable.labs_color_bar));
         return convertView;

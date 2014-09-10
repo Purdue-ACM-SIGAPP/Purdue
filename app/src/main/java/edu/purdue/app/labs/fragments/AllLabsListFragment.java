@@ -16,7 +16,6 @@ import edu.purdue.app.R;
 import edu.purdue.app.labs.adapters.AllLabsListAdapter;
 import edu.purdue.app.labs.adapters.LabsListAdapter;
 import edu.purdue.app.labs.listeners.OnGetAllLabsListener;
-import edu.purdue.app.labs.model.AvailableLab;
 import edu.purdue.app.labs.tasks.GetAllTask;
 import edu.purdue.app.labs.tasks.GetAvailableTask;
 

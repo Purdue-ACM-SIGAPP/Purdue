@@ -19,7 +19,7 @@ import java.util.List;
 import edu.purdue.app.R;
 import edu.purdue.app.labs.adapters.LabsListAdapter;
 import edu.purdue.app.labs.listeners.OnGetAvailableLabsListener;
-import edu.purdue.app.labs.model.AvailableLab;
+import edu.purdue.app.labs.model.Lab;
 import edu.purdue.app.labs.tasks.GetAvailableTask;
 
 /**
@@ -51,7 +51,7 @@ public class AvailableLabListFragment extends AsyncListFragment implements OnGet
     }
 
     @Override
-    public void onGetLabs(List<AvailableLab> labs) {
+    public void onGetLabs(List<Lab> labs) {
         if(labs == null) showError();
         else {
             showList();

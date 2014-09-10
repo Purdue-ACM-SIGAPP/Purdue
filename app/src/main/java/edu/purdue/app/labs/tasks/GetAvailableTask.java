@@ -14,13 +14,12 @@ import java.util.List;
 import java.util.Map;
 
 import edu.purdue.app.labs.listeners.OnGetAvailableLabsListener;
-import edu.purdue.app.labs.model.AvailableLab;
 import edu.purdue.app.labs.model.Lab;
 
 /**
  * Created by david on 9/2/14.
  */
-public class GetAvailableTask extends AsyncTask<Void, Integer, List<AvailableLab>> {
+public class GetAvailableTask extends AsyncTask<Void, Integer, List<Lab>> {
 
     private final OnGetAvailableLabsListener listener;
 
@@ -29,13 +28,13 @@ public class GetAvailableTask extends AsyncTask<Void, Integer, List<AvailableLab
     }
 
     @Override
-    protected void onPostExecute(List<AvailableLab> availableLabs) {
+    protected void onPostExecute(List<Lab> availableLabs) {
         if (listener != null)
             listener.onGetLabs(availableLabs);
     }
 
     @Override
-    protected List<AvailableLab> doInBackground(Void... params) {
+    protected List<Lab> doInBackground(Void... params) {
 
         Document document;
         try {
@@ -48,8 +47,8 @@ public class GetAvailableTask extends AsyncTask<Void, Integer, List<AvailableLab
         return getLabsFromDocument(document);
     }
 
-    private List<AvailableLab> getLabsFromDocument(Document document) {
-        List<AvailableLab> labs = new ArrayList<AvailableLab>();
+    private List<Lab> getLabsFromDocument(Document document) {
+        List<Lab> labs = new ArrayList<Lab>();
         for (Element table : document.select("table")) {
 
             Lab.Type type = null;
@@ -66,7 +65,7 @@ public class GetAvailableTask extends AsyncTask<Void, Integer, List<AvailableLab
                 } else {
                     Elements tds = row.select("td");
 
-                    AvailableLab lab = createLab(headers.get(0).text(), tds.get(0).text(), tds.get(1).text(), type);
+                    Lab lab = createLab(headers.get(0).text(), tds.get(0).text(), tds.get(1).text(), type);
                     labs.add(lab);
                 }
             }
@@ -74,8 +73,8 @@ public class GetAvailableTask extends AsyncTask<Void, Integer, List<AvailableLab
         return labs;
     }
 
-    private AvailableLab createLab(String location, String availableStations, String openUntil, Lab.Type type) {
-        AvailableLab lab = new AvailableLab();
+    private Lab createLab(String location, String availableStations, String openUntil, Lab.Type type) {
+        Lab lab = new Lab();
         lab.setAvailableStations( Integer.parseInt(availableStations) );
         lab.setName(location);
         lab.setLocation(location);

@@ -9,9 +9,27 @@ public class Lab {
     private int totalStations;
     private String name;
     private String location;
+    private String availableUntil;
+    private int availableStations;
 
     public static enum Type {
         MAC, PC, LINUX;
+    }
+
+    public String getAvailableUntil() {
+        return availableUntil;
+    }
+
+    public void setAvailableUntil(String availableUntil) {
+        this.availableUntil = availableUntil;
+    }
+
+    public int getAvailableStations() {
+        return availableStations;
+    }
+
+    public void setAvailableStations(int availableStations) {
+        this.availableStations = availableStations;
     }
 
     public Type getType() {

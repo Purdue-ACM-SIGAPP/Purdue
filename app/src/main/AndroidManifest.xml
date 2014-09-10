@@ -47,6 +47,7 @@
         <activity
             android:name=".labs.LabActivity"
             android:label="@string/title_activity_lab"
+            android:theme="@style/Theme.Purdue.Flat"
             android:parentActivityName=".main.MainMenuActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

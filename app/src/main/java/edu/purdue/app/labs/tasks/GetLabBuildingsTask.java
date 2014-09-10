@@ -16,7 +16,6 @@ import java.util.Set;
 
 import edu.purdue.app.labs.listeners.OnGetAvailableLabsListener;
 import edu.purdue.app.labs.listeners.OnGetLabBuildingsListener;
-import edu.purdue.app.labs.model.AvailableLab;
 
 /**
  * Created by david on 9/4/14.

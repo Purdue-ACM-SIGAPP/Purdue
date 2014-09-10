@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Map;
 
 import edu.purdue.app.R;
-import edu.purdue.app.labs.model.AvailableLab;
 import edu.purdue.app.labs.model.Lab;
 
 /**
@@ -94,6 +93,7 @@ public class AllLabsListAdapter extends BaseExpandableListAdapter {
         }
 
         ((TextView)convertView.findViewById(R.id.header_text)).setText(getGroup(groupPosition));
+        ((TextView)convertView.findViewById(R.id.lab_count)).setText("" + getChildrenCount(groupPosition));
 
         return convertView;
     }
