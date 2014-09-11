@@ -1,13 +1,37 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="edu.purdue.app.labs.fragments.LabDetailsFragment">
+
+
+    <com.loopj.android.image.SmartImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:id="@+id/mapImage" />
+
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:id="@+id/lab_title"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="40sp"
+        android:text="STEW 102"
+        />
 
-</FrameLayout>
+    <ExpandableListView
+        android:id="@+id/details_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ExpandableListView>
+
+</LinearLayout>

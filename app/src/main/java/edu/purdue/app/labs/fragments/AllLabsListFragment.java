@@ -19,10 +19,8 @@ import edu.purdue.app.labs.listeners.OnGetAllLabsListener;
 import edu.purdue.app.labs.tasks.GetAllTask;
 import edu.purdue.app.labs.tasks.GetAvailableTask;
 
-/**
- * Created by david on 9/8/14.
- */
-public class AllLabsListFragment extends AsyncListFragment implements OnGetAllLabsListener {
+
+public class AllLabsListFragment extends AsyncListFragment implements OnGetAllLabsListener, ExpandableListView.OnChildClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,6 +31,14 @@ public class AllLabsListFragment extends AsyncListFragment implements OnGetAllLa
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+        Log.d("LIST", "On Child Click");
+        String lab = parent.getExpandableListAdapter().getChild(groupPosition, childPosition).toString();
+        getFragmentManager().beginTransaction().replace(R.id.content, LabDetailsFragment.newInstance(lab)).commit();
+        return true;
     }
 
     @Override
@@ -52,6 +58,7 @@ public class AllLabsListFragment extends AsyncListFragment implements OnGetAllLa
                 ExpandableListView lv = ((ExpandableListView) getView().findViewById(android.R.id.list));
                 ExpandableListAdapter ada = new AllLabsListAdapter(getActivity(), labs);
                 lv.setAdapter(ada);
+                lv.setOnChildClickListener(this);
                 for(int i = 0; i < ada.getGroupCount(); i++) {
                     lv.expandGroup(i);
                 }

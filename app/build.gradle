@@ -51,4 +51,5 @@ dependencies {
     compile 'com.google.android.gms:play-services:+'
     compile 'com.android.support:support-v4:20.+'
     compile 'org.jsoup:jsoup:1.7.2'
+    compile files('/Users/david/git/Purdue/libs/android-smart-image-view-1.0.0.jar')
 }

@@ -5,69 +5,65 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ExpandableListAdapter;
+import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
 import edu.purdue.app.R;
-import edu.purdue.app.labs.model.Lab;
+import edu.purdue.app.labs.fragments.LabDetailsFragment;
 
 /**
- * Created by david on 9/2/14.
+ * Created by david on 9/10/14.
  */
-public class AllLabsListAdapter extends BaseExpandableListAdapter {
-    List<String> headers;
-    Map<String, List<String>> labs;
-    Context context;
+public class BasicExpandableListAdapter extends BaseExpandableListAdapter {
+
+    private Map<String, List<String>> mData;
+    private List<String> mHeaders;
+    private Context mContext;
     LayoutInflater inflater;
 
-    public AllLabsListAdapter(Context context, List<String> labs) {
-        this.context = context;
-        this.labs = new HashMap<String, List<String>>();
-        this.headers = new ArrayList<String>();
 
-        for(String lab : labs) {
-            String location = lab.split(" ")[0];
-            List<String> list = this.labs.get(location);
-            if(list == null) {
-                list = new LinkedList<String>();
-                this.headers.add(location);
-            }
-            list.add(lab);
-
-            this.labs.put(location, list);
+    public BasicExpandableListAdapter(Context context, Map<String, List<String>> data) {
+        mData = data;
+        mContext = context;
+        mHeaders = new ArrayList<String>(mData.size());
+        for(String s : mData.keySet()) {
+            mHeaders.add(s);
         }
+
+        Collections.sort(mHeaders);
     }
 
     private LayoutInflater getInflater() {
         if(inflater == null) {
-            inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
         return inflater;
     }
 
     @Override
     public int getGroupCount() {
-        return this.labs.size();
+        return mData.size();
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return this.labs.get(this.headers.get(groupPosition)).size();
+        return mData.get(mHeaders.get(groupPosition)).size();
     }
 
     @Override
     public String getGroup(int groupPosition) {
-        return headers.get(groupPosition);
+        return mHeaders.get(groupPosition);
     }
 
     @Override
     public String getChild(int groupPosition, int childPosition) {
-        return this.labs.get(this.headers.get(groupPosition)).get(childPosition);
+        return mData.get(mHeaders.get(groupPosition)).get(childPosition);
     }
 
     @Override
@@ -87,14 +83,13 @@ public class AllLabsListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-
         if(convertView == null) {
-            convertView = getInflater().inflate(R.layout.labs_lab_listheader, parent, false);
+            convertView = getInflater().inflate(R.layout.labs_details_header, parent, false);
         }
 
         ((TextView)convertView.findViewById(R.id.header_text)).setText(getGroup(groupPosition));
-        ((TextView)convertView.findViewById(R.id.lab_count)).setText("" + getChildrenCount(groupPosition));
 
+        convertView.setClickable(false);
         return convertView;
     }
 
@@ -113,17 +108,13 @@ public class AllLabsListAdapter extends BaseExpandableListAdapter {
         }
         holder.location.setText(getChild(groupPosition, childPosition));
 
+        convertView.setClickable(false);
         return convertView;
     }
 
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return labs == null || labs.size() == 0;
     }
 
     class ViewHolder {
