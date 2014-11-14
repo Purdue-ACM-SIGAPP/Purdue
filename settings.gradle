@@ -1,1 +1,1 @@
-include ':app', ':plugins:HoloColorPicker', ':plugins:Android-PullToRefresh:library', ':plugins:openpgp-api-library', ':plugins:ckChangeLog:library'
+include ':app'
