@@ -30,6 +30,7 @@ public class LabMenuFragment extends Fragment implements View.OnClickListener {
         ((Button)view.findViewById(R.id.labs_availablelabs)).setOnClickListener(this);
         ((Button)view.findViewById(R.id.labs_alllabs)).setOnClickListener(this);
         ((Button)view.findViewById(R.id.labs_maplabs)).setOnClickListener(this);
+        ((Button)view.findViewById(R.id.labs_speciallabs)).setOnClickListener(this);
     }
 
     @Override
@@ -46,6 +47,9 @@ public class LabMenuFragment extends Fragment implements View.OnClickListener {
                 webViewIntent.putExtra(WebViewActivity.EXTRA_URL, "https://lslab.ics.purdue.edu/icsWeb/LabMap");
                 webViewIntent.putExtra(WebViewActivity.EXTRA_NAME, "Labs Map");
                 startActivity(webViewIntent);
+                break;
+            case R.id.labs_speciallabs:
+                getFragmentManager().beginTransaction().addToBackStack(ECNLabsFragment.class.getName()).replace(R.id.content, new ECNLabsFragment()).commit();
                 break;
         }
     }

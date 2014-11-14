@@ -9,30 +9,26 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 import edu.purdue.app.labs.listeners.OnGetAllLabsListener;
 
 /**
- * Created by david on 9/8/14.
+ * Created by david on 11/14/14.
  */
-public class GetAllTask  extends AsyncTask<Void, Integer, List<String>> {
+public class GetAllECNTask extends AsyncTask<Void, Integer, List<String>> {
 
-    private final OnGetAllLabsListener listener;
+    private final OnGetAllECNListener listener;
 
-    public GetAllTask(OnGetAllLabsListener listener) {
+    public GetAllECNTask(OnGetAllECNListener listener) {
         this.listener = listener;
     }
 
     @Override
     protected void onPostExecute(List<String> labs) {
         if (listener != null)
-            listener.onGetAllLabs(labs);
+            listener.onGetAllECNLabs(labs);
     }
 
     @Override
@@ -40,7 +36,7 @@ public class GetAllTask  extends AsyncTask<Void, Integer, List<String>> {
 
         Document document;
         try {
-            document = Jsoup.connect("https://lslab.ics.purdue.edu/icsWeb/LabSchedules").timeout(10*1000).get();
+            document = Jsoup.connect("https://engineering.purdue.edu/ECN/Services/Labs/engineering_labs.html").timeout(10*1000).get();
         } catch (IOException e) {
             e.printStackTrace();
             return null;
@@ -51,15 +47,13 @@ public class GetAllTask  extends AsyncTask<Void, Integer, List<String>> {
 
     private List<String> getLabsFromDocument(Document document) {
         if( document == null ) return null;
-        Elements selects = document.select("select[name=labselect]");
+        Element table = document.select("table[summary=Engineering Computer Labs]").first();
 
         List<String> names = new LinkedList<String>();
 
-        for(Element select : selects) {
-            Elements options = select.children();
-            for(Element option : options) {
-                names.add(option.text());
-            }
+        for(Element row : table.getElementsByTag("tbody").first().getElementsByTag("tr")) {
+
+            names.add( row.children().first().text() );
         }
 
         Log.d("LABS", "Found " + names.size() + " things");

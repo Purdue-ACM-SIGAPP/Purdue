@@ -19,11 +19,11 @@ import edu.purdue.app.labs.model.Lab;
 /**
  * Created by david on 9/2/14.
  */
-public class GetAvailableTask extends AsyncTask<Void, Integer, List<Lab>> {
+public class GetAvailableItapTask extends AsyncTask<Void, Integer, List<Lab>> {
 
     private final OnGetAvailableLabsListener listener;
 
-    public GetAvailableTask(OnGetAvailableLabsListener listener) {
+    public GetAvailableItapTask(OnGetAvailableLabsListener listener) {
         this.listener = listener;
     }
 
