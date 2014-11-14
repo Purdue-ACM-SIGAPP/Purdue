@@ -22,6 +22,16 @@ public class MainMenuItem implements CustomMenuItem {
 
     public static List<MainMenuItem> getDefaultMainMenuItems(Resources r) {
         ArrayList<MainMenuItem> toReturn = new ArrayList<MainMenuItem>();
+
+        /*
+        To add an item to the main screen, add a MainMenuItem entry to the toReturn arraylist.
+
+        To add an item that links to a webview:
+                toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_map), r.getString(R.string.map), "http://www.purdue.edu/campus_map/"));
+        To add an item that opens an activity:
+                toReturn.add(new ActivityMainMenuItem(r.getDrawable(R.drawable.ic_labs), r.getString(R.string.labs), TestActivity.class));
+         */
+
         toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_map), r.getString(R.string.map), "http://www.purdue.edu/campus_map/"));
         toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_menus), r.getString(R.string.menus), "http://www.housing.purdue.edu/menus/"));
         toReturn.add(new MainMenuItem(r.getDrawable(R.drawable.ic_mymail), r.getString(R.string.mymail), "https://mymail.purdue.edu/"));
