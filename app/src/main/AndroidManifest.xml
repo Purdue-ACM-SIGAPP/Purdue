@@ -14,7 +14,7 @@
         <activity
             android:name="edu.purdue.app.main.MainMenuActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,7 +37,7 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".prefs.SettingsActivity"
+            android:name="edu.purdue.app.prefs.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:parentActivityName="edu.purdue.app.main.MainMenuActivity" >
             <meta-data

@@ -12,5 +12,7 @@
     <string name="labs">Labs</string>
     <string name="bus_routes">Bus Routes</string>
     <string name="analytics_id" tools:ignore="TypographyDashes">UA-51109974-1</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

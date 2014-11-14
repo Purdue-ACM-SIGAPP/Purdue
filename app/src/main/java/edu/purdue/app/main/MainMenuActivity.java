@@ -185,7 +185,12 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
         Object o = view.getTag();
 
         String url, name;
-        if (o instanceof MainMenuItem) {
+        if(o instanceof ActivityMainMenuItem) {
+
+            Intent intent = new Intent(this, ((ActivityMainMenuItem)o).getActivity());
+            startActivity(intent);
+
+        } else if (o instanceof MainMenuItem) {
             MainMenuItem item = (MainMenuItem) o;
             url = item.getUrl();
             name = item.getName();
@@ -204,7 +209,7 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
                 TrackingUtils.sendEvent(this, "access_action", "grid_item_click", "no_internet");
                 Toast.makeText(this, "No internet connection. Connect and try again.", Toast.LENGTH_LONG).show();
             }
-
         }
     }
+
 }
