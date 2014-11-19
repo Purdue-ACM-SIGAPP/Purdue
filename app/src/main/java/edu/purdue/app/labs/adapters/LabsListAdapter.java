@@ -22,7 +22,7 @@ import edu.purdue.app.labs.model.Lab;
  * Created by david on 9/2/14.
  */
 public class LabsListAdapter extends BaseExpandableListAdapter {
-    List<Lab.Type> headers;
+    List<String> headers;
     Map<Lab.Type, List<Lab>> labs;
     Context context;
     LayoutInflater inflater;
@@ -33,6 +33,8 @@ public class LabsListAdapter extends BaseExpandableListAdapter {
         this.headers = new ArrayList<Lab.Type>();
 
         for(Lab lab : labs) {
+
+
             Lab.Type t = lab.getType();
             List<Lab> list = this.labs.get(t);
             if(list == null) {

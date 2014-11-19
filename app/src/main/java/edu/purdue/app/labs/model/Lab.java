@@ -3,41 +3,24 @@ package edu.purdue.app.labs.model;
 /**
  * Created by david on 9/2/14.
  */
-public class Lab {
+public abstract class Lab {
 
-    private Type type;
     private int totalStations;
+    private int availStations;
     private String name;
-    private String location;
-    private String availableUntil;
+    private Location location;
     private int availableStations;
 
-    public static enum Type {
-        MAC, PC, LINUX;
-    }
-
-    public String getAvailableUntil() {
-        return availableUntil;
-    }
-
-    public void setAvailableUntil(String availableUntil) {
-        this.availableUntil = availableUntil;
-    }
-
+    /**
+     * This is meant to refer to ALL stations of all types
+     * @return
+     */
     public int getAvailableStations() {
         return availableStations;
     }
 
     public void setAvailableStations(int availableStations) {
         this.availableStations = availableStations;
-    }
-
-    public Type getType() {
-        return type;
-    }
-
-    public void setType(Type type) {
-        this.type = type;
     }
 
     public int getTotalStations() {
@@ -56,11 +39,14 @@ public class Lab {
         this.name = name;
     }
 
-    public String getLocation() {
+    public Location getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Location location) {
         this.location = location;
     }
+
+    public abstract Object getHours();
+    public abstract void setHours(Object hours);
 }
