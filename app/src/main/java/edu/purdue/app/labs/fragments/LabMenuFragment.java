@@ -1,5 +1,6 @@
 package edu.purdue.app.labs.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import edu.purdue.app.R;
+import edu.purdue.app.WebViewActivity;
 
 public class LabMenuFragment extends Fragment implements View.OnClickListener {
 
@@ -28,6 +30,7 @@ public class LabMenuFragment extends Fragment implements View.OnClickListener {
         ((Button)view.findViewById(R.id.labs_availablelabs)).setOnClickListener(this);
         ((Button)view.findViewById(R.id.labs_alllabs)).setOnClickListener(this);
         ((Button)view.findViewById(R.id.labs_maplabs)).setOnClickListener(this);
+        ((Button)view.findViewById(R.id.labs_speciallabs)).setOnClickListener(this);
     }
 
     @Override
@@ -40,7 +43,13 @@ public class LabMenuFragment extends Fragment implements View.OnClickListener {
                 getFragmentManager().beginTransaction().addToBackStack(AllLabsListFragment.class.getName()).replace(R.id.content, new AllLabsListFragment()).commit();
                 break;
             case R.id.labs_maplabs:
-                getFragmentManager().beginTransaction().addToBackStack(LabDetailsFragment.class.getName()).replace(R.id.content, new LabDetailsFragment()).commit();
+                Intent webViewIntent = new Intent(getActivity().getBaseContext(), WebViewActivity.class);
+                webViewIntent.putExtra(WebViewActivity.EXTRA_URL, "https://lslab.ics.purdue.edu/icsWeb/LabMap");
+                webViewIntent.putExtra(WebViewActivity.EXTRA_NAME, "Labs Map");
+                startActivity(webViewIntent);
+                break;
+            case R.id.labs_speciallabs:
+                getFragmentManager().beginTransaction().addToBackStack(ECNLabsFragment.class.getName()).replace(R.id.content, new ECNLabsFragment()).commit();
                 break;
         }
     }

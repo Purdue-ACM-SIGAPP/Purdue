@@ -14,10 +14,12 @@ import java.util.List;
 import edu.purdue.app.R;
 import edu.purdue.app.labs.adapters.AllLabsListAdapter;
 import edu.purdue.app.labs.listeners.OnGetAllLabsListener;
+import edu.purdue.app.labs.tasks.GetAllECNTask;
 import edu.purdue.app.labs.tasks.GetAllItapTask;
+import edu.purdue.app.labs.tasks.OnGetAllECNListener;
 
 
-public class AllLabsListFragment extends AsyncListFragment implements OnGetAllLabsListener, ExpandableListView.OnChildClickListener {
+public class ECNLabsFragment extends AsyncListFragment implements OnGetAllECNListener, ExpandableListView.OnChildClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,11 +44,11 @@ public class AllLabsListFragment extends AsyncListFragment implements OnGetAllLa
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         showEmpty();
-        new GetAllItapTask(this).execute();
+        new GetAllECNTask(this).execute();
     }
 
     @Override
-    public void onGetAllLabs(List<String> labs) {
+    public void onGetAllECNLabs(List<String> labs) {
         if(labs == null) showError();
         else {
             showList();

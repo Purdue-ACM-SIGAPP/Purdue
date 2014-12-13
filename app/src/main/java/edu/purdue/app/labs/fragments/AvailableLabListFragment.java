@@ -3,8 +3,6 @@ package edu.purdue.app.labs.fragments;
 
 
 import android.app.Activity;
-import android.app.ExpandableListActivity;
-import android.app.ListFragment;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
@@ -12,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
-import android.widget.TextView;
 
 import java.util.List;
 
@@ -20,7 +17,7 @@ import edu.purdue.app.R;
 import edu.purdue.app.labs.adapters.LabsListAdapter;
 import edu.purdue.app.labs.listeners.OnGetAvailableLabsListener;
 import edu.purdue.app.labs.model.Lab;
-import edu.purdue.app.labs.tasks.GetAvailableTask;
+import edu.purdue.app.labs.tasks.GetAvailableItapTask;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -47,7 +44,7 @@ public class AvailableLabListFragment extends AsyncListFragment implements OnGet
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         showEmpty();
-        new GetAvailableTask(this).execute();
+        new GetAvailableItapTask(this).execute();
     }
 
     @Override
