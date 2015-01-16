@@ -1,5 +1,6 @@
 package edu.purdue.app;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -39,6 +40,12 @@ public class WebViewActivity extends Activity {
 
         getActionBar().setTitle(name);
         getActionBar().setIcon(R.drawable.ic_p);
+
+        /*if (getActionBar() != null) {
+            getActionBar().setHomeButtonEnabled(false); // disable the button
+            getActionBar().setDisplayHomeAsUpEnabled(false); // remove the left caret
+            getActionBar().setDisplayShowHomeEnabled(false); // remove the icon
+        }*/
 
         TrackingUtils.sendScreenView(this, TrackingUtils.WEB_SCREEN, name);
 
@@ -148,5 +155,11 @@ public class WebViewActivity extends Activity {
 
         // Otherwise defer to system default behavior.
         super.onBackPressed();
+    }
+
+    @Override
+    public boolean onNavigateUp() {
+        finish();
+        return true;
     }
 }
