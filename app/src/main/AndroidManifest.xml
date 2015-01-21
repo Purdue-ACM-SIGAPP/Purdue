@@ -29,7 +29,7 @@
             <!-- The meta-data element is needed for versions lower than 4.1 -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.purdue.app.MainMenuActivity" />
+                android:value="edu.purdue.app.activities.MainMenuActivity" />
         </activity>
 
         <meta-data
