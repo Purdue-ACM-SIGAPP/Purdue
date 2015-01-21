@@ -16,7 +16,7 @@ import edu.purdue.app.R;
 /**
  * Created by david on 5/14/14 for Purdue
  */
-public class CustomGridAdapter<T extends CustomMenuItem> extends BaseDynamicGridAdapter<T> {
+public class CustomGridAdapter<T extends MainMenuItem> extends BaseDynamicGridAdapter<T> {
 
     public CustomGridAdapter(Context context, List<T> items, int columnCount) {
         super(context, items, columnCount);
@@ -25,7 +25,7 @@ public class CustomGridAdapter<T extends CustomMenuItem> extends BaseDynamicGrid
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         CustomViewHolder holder;
-        CustomMenuItem item = getItem(position);
+        MainMenuItem item = getItem(position);
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_grid, parent, false);
         }
@@ -46,7 +46,7 @@ public class CustomGridAdapter<T extends CustomMenuItem> extends BaseDynamicGrid
             image = (ImageView) view.findViewById(R.id.item_img);
         }
 
-        void build(CustomMenuItem item) {
+        void build(MainMenuItem item) {
             titleText.setText(item.getName());
             image.setImageDrawable(item.getDrawable());
         }
