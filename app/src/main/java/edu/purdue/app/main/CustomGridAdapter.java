@@ -18,7 +18,6 @@ import edu.purdue.app.R;
  */
 public class CustomGridAdapter<T extends CustomMenuItem> extends BaseDynamicGridAdapter<T> {
 
-
     public CustomGridAdapter(Context context, List<T> items, int columnCount) {
         super(context, items, columnCount);
     }

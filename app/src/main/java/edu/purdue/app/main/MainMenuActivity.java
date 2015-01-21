@@ -22,10 +22,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.purdue.app.R;
-import edu.purdue.app.WebViewActivity;
-import edu.purdue.app.main.MainMenuItem;
+import edu.purdue.app.activities.WebViewActivity;
 import edu.purdue.app.prefs.SettingsActivity;
-import edu.purdue.app.tracking.TrackingUtils;
+import edu.purdue.app.utility.Tracking;
 import edu.purdue.app.utility.Connectivity;
 
 import static android.widget.AdapterView.OnItemClickListener;
@@ -57,7 +56,7 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
             showNoInternetAlert();
         }
 
-        TrackingUtils.sendScreenView(this, TrackingUtils.MAIN_SCREEN);
+        Tracking.sendScreenView(this, Tracking.MAIN_SCREEN);
     }
 
     private void showNoInternetAlert() {
@@ -198,7 +197,7 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
 
             if (Connectivity.isOnline(this)) {
 
-                TrackingUtils.sendEvent(this, "ui_interaction", "grid_item_click", name);
+                Tracking.sendEvent(this, "ui_interaction", "grid_item_click", name);
                 Log.d("GridItemClicked", "Opening url: " + url);
                 Intent webViewIntent = new Intent(getBaseContext(), WebViewActivity.class);
                 webViewIntent.putExtra(WebViewActivity.EXTRA_URL, url);
@@ -206,7 +205,7 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
                 startActivity(webViewIntent);
 
             } else {
-                TrackingUtils.sendEvent(this, "access_action", "grid_item_click", "no_internet");
+                Tracking.sendEvent(this, "access_action", "grid_item_click", "no_internet");
                 Toast.makeText(this, "No internet connection. Connect and try again.", Toast.LENGTH_LONG).show();
             }
         }

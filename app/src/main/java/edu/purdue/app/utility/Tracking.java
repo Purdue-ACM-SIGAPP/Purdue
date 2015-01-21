@@ -1,18 +1,16 @@
-package edu.purdue.app.tracking;
+package edu.purdue.app.utility;
 
 import android.app.Activity;
-import android.content.Context;
-import android.util.Log;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
-import edu.purdue.app.PurdueApplication;
+import edu.purdue.app.activities.PurdueApplication;
 
 /**
  * Created by david on 5/21/14 for Purdue
  */
-public final class TrackingUtils{
+public final class Tracking {
 
     public static final String APP_SCREEN = "/Application";
     public static final String MAIN_SCREEN = "/Application/Grid";

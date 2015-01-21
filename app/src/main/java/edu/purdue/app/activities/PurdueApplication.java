@@ -1,4 +1,4 @@
-package edu.purdue.app;
+package edu.purdue.app.activities;
 
 import android.app.Application;
 import android.content.SharedPreferences;
@@ -11,6 +11,8 @@ import com.google.android.gms.analytics.Tracker;
 
 import java.util.HashMap;
 
+import edu.purdue.app.BuildConfig;
+import edu.purdue.app.R;
 import edu.purdue.app.prefs.CustomOnSharedPreferenceChangeListener;
 
 /**
