@@ -1,14 +1,9 @@
-package edu.purdue.app.main;
+package edu.purdue.app.mainmenu;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import edu.purdue.app.R;
 import edu.purdue.app.activities.WebViewActivity;
 
 public class WebViewMenuItem extends MainMenuItem {

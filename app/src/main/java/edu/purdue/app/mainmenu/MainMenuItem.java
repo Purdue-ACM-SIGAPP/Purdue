@@ -1,4 +1,4 @@
-package edu.purdue.app.main;
+package edu.purdue.app.mainmenu;
 
 import android.content.Context;
 import android.content.Intent;

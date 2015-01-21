@@ -21,7 +21,7 @@ import java.util.List;
 import edu.purdue.app.R;
 import edu.purdue.app.adapters.MainMenuDynamicGridAdapter;
 import edu.purdue.app.dialogs.NoInternetDialog;
-import edu.purdue.app.main.MainMenuItem;
+import edu.purdue.app.mainmenu.MainMenuItem;
 import edu.purdue.app.prefs.SettingsActivity;
 import edu.purdue.app.utility.Tracking;
 import edu.purdue.app.utility.Connectivity;

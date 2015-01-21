@@ -12,7 +12,7 @@ import org.askerov.dynamicgid.BaseDynamicGridAdapter;
 import java.util.List;
 
 import edu.purdue.app.R;
-import edu.purdue.app.main.MainMenuItem;
+import edu.purdue.app.mainmenu.MainMenuItem;
 
 /**
  *  Despite the scary name, this is simply an adapter for main menu items.
