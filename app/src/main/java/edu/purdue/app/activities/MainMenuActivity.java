@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.purdue.app.R;
-import edu.purdue.app.adapters.MainMenuDynamicGridAdapter;
+import edu.purdue.app.mainmenu.MainMenuDynamicGridAdapter;
 import edu.purdue.app.dialogs.NoInternetDialog;
 import edu.purdue.app.mainmenu.MainMenuItem;
 import edu.purdue.app.prefs.SettingsActivity;

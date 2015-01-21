@@ -1,4 +1,4 @@
-package edu.purdue.app.adapters;
+package edu.purdue.app.mainmenu;
 
 import android.content.Context;
 import android.view.LayoutInflater;
