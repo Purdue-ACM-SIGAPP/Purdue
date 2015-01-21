@@ -1,4 +1,4 @@
-package edu.purdue.app.main;
+package edu.purdue.app.activities;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Toast;
 
 import org.askerov.dynamicgid.DynamicGridView;
 import org.json.JSONArray;
@@ -20,8 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.purdue.app.R;
-import edu.purdue.app.activities.WebViewActivity;
+import edu.purdue.app.adapters.MainMenuDynamicGridAdapter;
 import edu.purdue.app.dialogs.NoInternetDialog;
+import edu.purdue.app.main.MainMenuItem;
 import edu.purdue.app.prefs.SettingsActivity;
 import edu.purdue.app.utility.Tracking;
 import edu.purdue.app.utility.Connectivity;
@@ -59,7 +59,7 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
         // Get an instance of the draggable grid view we are using
         // and create our adapter for it
         gridView = (DynamicGridView) findViewById(R.id.dynamic_grid);
-        CustomGridAdapter adapter = prepareAdapter();
+        MainMenuDynamicGridAdapter adapter = prepareAdapter();
         gridView.setAdapter(adapter);
 
         assignGridListeners();
@@ -68,10 +68,10 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
 
     }
 
-    private CustomGridAdapter prepareAdapter() {
+    private MainMenuDynamicGridAdapter prepareAdapter() {
 
         menuItems = MainMenuItem.getDefaultMainMenuItems(this);
-        CustomGridAdapter ada = new CustomGridAdapter<MainMenuItem>(this, new ArrayList<MainMenuItem>(menuItems), 4);
+        MainMenuDynamicGridAdapter ada = new MainMenuDynamicGridAdapter(this, new ArrayList<MainMenuItem>(menuItems), 4);
 
         SharedPreferences prefs = getSharedPreferences(PREF_PAGE_GRID, 0);
         if(prefs.contains(PREF_GRID_ITEMS))

@@ -8,7 +8,7 @@
     <bool name="ga_reportUncaughtExceptions">true</bool>
 
     <!-- The screen names that will appear in reports -->
-    <screenName name="edu.purdue.app.main.MainMenuActivity">
+    <screenName name="edu.purdue.app.activities.MainMenuActivity">
         PurdueApp MainMenuActivity
     </screenName>
     <screenName name="edu.purdue.app.activities.WebViewActivity">
