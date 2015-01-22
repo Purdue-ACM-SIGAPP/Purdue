@@ -22,7 +22,6 @@ import edu.purdue.app.R;
 import edu.purdue.app.mainmenu.MainMenuDynamicGridAdapter;
 import edu.purdue.app.dialogs.NoInternetDialog;
 import edu.purdue.app.mainmenu.MainMenuItem;
-import edu.purdue.app.prefs.SettingsActivity;
 import edu.purdue.app.utility.Tracking;
 import edu.purdue.app.utility.Connectivity;
 

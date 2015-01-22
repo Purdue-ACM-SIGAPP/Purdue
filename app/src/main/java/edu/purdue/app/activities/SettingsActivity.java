@@ -1,4 +1,4 @@
-package edu.purdue.app.prefs;
+package edu.purdue.app.activities;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -34,6 +34,7 @@ import edu.purdue.app.utility.Tracking;
  * API Guide</a> for more information on developing a Settings UI.
  */
 public class SettingsActivity extends PreferenceActivity {
+
     /**
      * Determines whether to always show the simplified settings UI, where
      * settings are presented in a single list. When false, settings are shown
@@ -41,8 +42,10 @@ public class SettingsActivity extends PreferenceActivity {
      * shown on tablets.
      */
     private static final boolean ALWAYS_SIMPLE_PREFS = true;
-    private static final String[] validFragments = new String[]{"edu.purdue.app.prefs.DataSyncPreferenceFragment",
-            "edu.purdue.app.prefs.GeneralPreferenceFragment" };
+    private static final String[] validFragments = new String[] {
+            "edu.purdue.app.prefs.DataSyncPreferenceFragment",
+            "edu.purdue.app.prefs.GeneralPreferenceFragment"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -220,7 +223,7 @@ public class SettingsActivity extends PreferenceActivity {
      *
      * @see #sBindPreferenceSummaryToValueListener
      */
-    protected static void bindPreferenceSummaryToValue(Preference preference) {
+    public static void bindPreferenceSummaryToValue(Preference preference) {
         // Set the listener to watch for value changes.
         preference.setOnPreferenceChangeListener(sBindPreferenceSummaryToValueListener);
 
