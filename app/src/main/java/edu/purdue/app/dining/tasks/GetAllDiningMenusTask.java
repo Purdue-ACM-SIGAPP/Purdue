@@ -16,7 +16,7 @@ import edu.purdue.app.dining.util.LocationName;
  *  and returns each menu.
  *  Created by mike on 1/22/15.
  */
-public class GetAllMenusTask extends AsyncTask<Void, Void, List<DailyMenu>> {
+public class GetAllDiningMenusTask extends AsyncTask<Void, Void, List<DailyMenu>> {
 
     public interface AllMenusListener {
         public void onResult(List<DailyMenu> menus, Exception ex);
@@ -26,8 +26,13 @@ public class GetAllMenusTask extends AsyncTask<Void, Void, List<DailyMenu>> {
     private AllMenusListener listener;
     private Exception exception;
 
-    public GetAllMenusTask(LocalDate date) {
+    public GetAllDiningMenusTask(LocalDate date) {
         this.date = date;
+    }
+
+    public GetAllDiningMenusTask(LocalDate date, AllMenusListener listener) {
+        this(date);
+        this.listener = listener;
     }
 
     public Exception getException() {
