@@ -1,5 +1,6 @@
 package edu.purdue.app.dining.models;
 
+import org.codehaus.jackson.annotate.JsonProperty;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -18,8 +19,13 @@ public class FoodItem {
         return item;
     }
 
+    @JsonProperty("ID")
     private String id;
+
+    @JsonProperty("Name")
     private String name;
+
+    @JsonProperty("IsVegetarian")
     private boolean isVegetarian;
 
     public String getId() {

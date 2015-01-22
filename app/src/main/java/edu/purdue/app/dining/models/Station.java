@@ -1,5 +1,6 @@
 package edu.purdue.app.dining.models;
 
+import org.codehaus.jackson.annotate.JsonProperty;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,7 +27,10 @@ public class Station {
         return station;
     }
 
+    @JsonProperty("Name")
     private String name;
+
+    @JsonProperty("Items")
     private List<FoodItem> items;
 
     public String getName() {
