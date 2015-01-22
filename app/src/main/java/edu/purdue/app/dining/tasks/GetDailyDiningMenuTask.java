@@ -30,10 +30,10 @@ public class GetDailyDiningMenuTask extends AsyncTask<Void, Void, DailyMenu> {
         public void onResult(DailyMenu menu, Exception ex);
     }
 
-    private LocalDate date;
-    private LocationName locationName;
-    private DailyDiningMenuListener listener;
-    private Exception exception;
+    protected LocalDate date;
+    protected LocationName locationName;
+    protected DailyDiningMenuListener listener;
+    protected Exception exception;
 
     public GetDailyDiningMenuTask(LocalDate date, LocationName location) {
         this.date = date;
