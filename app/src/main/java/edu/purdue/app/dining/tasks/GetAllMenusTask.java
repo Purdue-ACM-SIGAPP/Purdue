@@ -1,5 +1,6 @@
 package edu.purdue.app.dining.tasks;
 
+import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 
 import org.joda.time.LocalDate;
@@ -29,6 +30,10 @@ public class GetAllMenusTask extends AsyncTask<Void, Void, List<DailyMenu>> {
         this.date = date;
     }
 
+    public Exception getException() {
+        return this.exception;
+    }
+
     @Override
     protected List<DailyMenu> doInBackground(Void... params) {
 
@@ -42,8 +47,11 @@ public class GetAllMenusTask extends AsyncTask<Void, Void, List<DailyMenu>> {
             DailyMenu menu = task.doInBackground();
 
             // Check if an error occurred
-            if (task.exception != null) {
-                this.exception = task.exception;
+            // Ignore the lint warning here. We don't want to throw exceptions in async tasks
+            // because they'd immediately propagate to the java runtime, print out to the console,
+            // and we'd never know if anything actually went wrong.
+            if (task.getException() != null) {
+                this.exception = task.getException();
                 return null;
             }
             if (menu == null) {

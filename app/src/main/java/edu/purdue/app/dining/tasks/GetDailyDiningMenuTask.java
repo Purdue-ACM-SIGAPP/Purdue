@@ -6,16 +6,13 @@ import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.joda.time.LocalDate;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 import edu.purdue.app.dining.models.DailyMenu;
-import edu.purdue.app.dining.models.Location;
 import edu.purdue.app.dining.util.LocationName;
-import edu.purdue.app.tasks.GetJsonApiTask;
 import edu.purdue.app.utility.Logger;
 
 /**
@@ -30,10 +27,10 @@ public class GetDailyDiningMenuTask extends AsyncTask<Void, Void, DailyMenu> {
         public void onResult(DailyMenu menu, Exception ex);
     }
 
-    protected LocalDate date;
-    protected LocationName locationName;
-    protected DailyDiningMenuListener listener;
-    protected Exception exception;
+    private LocalDate date;
+    private LocationName locationName;
+    private DailyDiningMenuListener listener;
+    private Exception exception;
 
     public GetDailyDiningMenuTask(LocalDate date, LocationName location) {
         this.date = date;
@@ -43,6 +40,10 @@ public class GetDailyDiningMenuTask extends AsyncTask<Void, Void, DailyMenu> {
     public GetDailyDiningMenuTask(LocalDate date, LocationName locationName, DailyDiningMenuListener listener) {
         this(date, locationName);
         this.listener = listener;
+    }
+
+    public Exception getException() {
+        return this.exception;
     }
 
     @Override
