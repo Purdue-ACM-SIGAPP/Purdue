@@ -38,11 +38,18 @@ android {
         versionCode getVersionCode()
         versionName getVersionName()
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
     }
 }
 
@@ -50,4 +57,5 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.google.android.gms:play-services:+'
     compile 'com.android.support:support-v4:20.+'
+    compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
 }

@@ -11,7 +11,6 @@ import edu.purdue.app.tasks.GetJsonApiTask;
  */
 public class GetDiningMenusTask extends AsyncTask<Void, Void, Void> {
 
-
     @Override
     protected Void doInBackground(Void... params) {
         return null;
