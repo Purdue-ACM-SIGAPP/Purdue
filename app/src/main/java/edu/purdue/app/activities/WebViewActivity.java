@@ -8,12 +8,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import edu.purdue.app.R;
-import edu.purdue.app.utility.Tracking;
+import edu.purdue.app.utility.Analytics;
 
 /**
  *  Typical web view activity for any menu item which does not have
@@ -48,7 +47,7 @@ public class WebViewActivity extends Activity {
         }
 
         // Register a view to this screen on our analytics
-        Tracking.sendScreenView(this, Tracking.WEB_SCREEN, name);
+        Analytics.sendScreenView(Analytics.WEB_SCREEN, name);
 
         // Create the web view and restore its state if possible
         webView = (WebView) findViewById(R.id.webView);
@@ -80,7 +79,7 @@ public class WebViewActivity extends Activity {
                 if(firstLoad) {
                     firstLoad = false;
                     long time = System.currentTimeMillis() - startTime;
-                    Tracking.sentTiming(WebViewActivity.this, "web_timing", "pageload", name, time);
+                    Analytics.sendTiming(WebViewActivity.this, "web_timing", "pageload", name, time);
                 }
             }
         });

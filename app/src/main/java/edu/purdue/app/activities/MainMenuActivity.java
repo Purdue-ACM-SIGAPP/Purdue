@@ -22,7 +22,7 @@ import edu.purdue.app.R;
 import edu.purdue.app.mainmenu.MainMenuDynamicGridAdapter;
 import edu.purdue.app.dialogs.NoInternetDialog;
 import edu.purdue.app.mainmenu.MainMenuItem;
-import edu.purdue.app.utility.Tracking;
+import edu.purdue.app.utility.Analytics;
 import edu.purdue.app.utility.Connectivity;
 
 import static android.widget.AdapterView.OnItemClickListener;
@@ -41,7 +41,7 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
         setContentView(R.layout.activity_main_menu);
 
         // Register a view to this screen on analytics
-        Tracking.sendScreenView(this, Tracking.MAIN_SCREEN);
+        Analytics.sendScreenView(Analytics.MAIN_SCREEN);
 
         // Set the drawable for the action bar
         ActionBar actionBar = getActionBar();
