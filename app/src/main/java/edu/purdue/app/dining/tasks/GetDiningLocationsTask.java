@@ -13,7 +13,7 @@ import java.net.URL;
 import java.util.List;
 
 import edu.purdue.app.dining.models.Location;
-import edu.purdue.app.utility.Logger;
+import edu.purdue.app.util.Logger;
 
 /**
  *  Task which returns a list of all the locations currently on the purdue /v2 api

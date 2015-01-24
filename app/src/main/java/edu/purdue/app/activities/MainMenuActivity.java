@@ -22,8 +22,8 @@ import edu.purdue.app.R;
 import edu.purdue.app.mainmenu.MainMenuDynamicGridAdapter;
 import edu.purdue.app.dialogs.NoInternetDialog;
 import edu.purdue.app.mainmenu.MainMenuItem;
-import edu.purdue.app.utility.Analytics;
-import edu.purdue.app.utility.Connectivity;
+import edu.purdue.app.util.Analytics;
+import edu.purdue.app.util.Connectivity;
 
 import static android.widget.AdapterView.OnItemClickListener;
 

@@ -1,4 +1,4 @@
-package edu.purdue.app.utility;
+package edu.purdue.app.util;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,7 +10,6 @@ import com.google.android.gms.analytics.Tracker;
 
 import edu.purdue.app.BuildConfig;
 import edu.purdue.app.R;
-import edu.purdue.app.activities.PurdueApplication;
 
 /**
  * Created by david on 5/21/14 for Purdue

@@ -13,7 +13,7 @@ import java.net.URL;
 
 import edu.purdue.app.dining.models.DailyMenu;
 import edu.purdue.app.dining.util.LocationName;
-import edu.purdue.app.utility.Logger;
+import edu.purdue.app.util.Logger;
 
 /**
  *  Asynchronously returns a DailyMenu object for a specific day and location on campus

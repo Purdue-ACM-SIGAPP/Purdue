@@ -1,4 +1,4 @@
-package edu.purdue.app.utility;
+package edu.purdue.app.util;
 
 import android.util.Log;
 

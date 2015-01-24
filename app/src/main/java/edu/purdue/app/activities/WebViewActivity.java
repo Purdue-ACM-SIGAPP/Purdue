@@ -12,7 +12,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import edu.purdue.app.R;
-import edu.purdue.app.utility.Analytics;
+import edu.purdue.app.util.Analytics;
 
 /**
  *  Typical web view activity for any menu item which does not have

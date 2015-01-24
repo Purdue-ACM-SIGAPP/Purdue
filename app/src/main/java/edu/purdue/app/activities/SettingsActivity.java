@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import edu.purdue.app.R;
-import edu.purdue.app.utility.Analytics;
+import edu.purdue.app.util.Analytics;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On

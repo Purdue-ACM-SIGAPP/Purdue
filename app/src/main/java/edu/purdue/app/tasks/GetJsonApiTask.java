@@ -13,7 +13,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-import edu.purdue.app.utility.Logger;
+import edu.purdue.app.util.Logger;
 
 /**
  *  This is a general Async task which manages accessing and returning a jsonobject
