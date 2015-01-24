@@ -19,7 +19,7 @@ import edu.purdue.app.dining.util.LocationName;
 public class GetAllDiningMenusTask extends AsyncTask<Void, Void, List<DailyMenu>> {
 
     public interface AllMenusListener {
-        public void onResult(List<DailyMenu> menus, Exception ex);
+        public void onAllMenusResult(List<DailyMenu> menus, Exception ex);
     }
 
     private LocalDate date;
@@ -75,7 +75,7 @@ public class GetAllDiningMenusTask extends AsyncTask<Void, Void, List<DailyMenu>
     @Override
     protected void onPostExecute(List<DailyMenu> dailyMenus) {
         if (listener != null) {
-            listener.onResult(dailyMenus, exception);
+            listener.onAllMenusResult(dailyMenus, exception);
         }
     }
 

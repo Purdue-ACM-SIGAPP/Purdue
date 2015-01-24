@@ -24,7 +24,7 @@ public class GetDailyDiningMenuTask extends AsyncTask<Void, Void, DailyMenu> {
 
     /** Callback interface for this task */
     public interface DailyDiningMenuListener {
-        public void onResult(DailyMenu menu, Exception ex);
+        public void onDailyMenuResult(DailyMenu menu, Exception ex);
     }
 
     private LocalDate date;
@@ -84,7 +84,7 @@ public class GetDailyDiningMenuTask extends AsyncTask<Void, Void, DailyMenu> {
     @Override
     protected void onPostExecute(DailyMenu menu) {
         if (listener != null) {
-            listener.onResult(menu, exception);
+            listener.onDailyMenuResult(menu, exception);
         }
     }
 

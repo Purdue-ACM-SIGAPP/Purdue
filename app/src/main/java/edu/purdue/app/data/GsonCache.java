@@ -8,7 +8,6 @@ import com.google.gson.Gson;
 import org.joda.time.Duration;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -111,7 +110,7 @@ public class GsonCache implements Cache.Framework {
         sprefs.edit().putStringSet(keySet(collection), newKeys).apply();
 
         return true;
-        
+
     }
 
     @Override

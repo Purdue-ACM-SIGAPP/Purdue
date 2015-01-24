@@ -22,7 +22,7 @@ import edu.purdue.app.util.Logger;
 public class GetDiningLocationsTask extends AsyncTask<Void, Void, List<Location>> {
 
     public interface GetDiningLocationsListener {
-        public void onResult(List<Location> locations, Exception ex);
+        public void onDiningLocationsResult(List<Location> locations, Exception ex);
     }
 
     private static final String url = "http://api.hfs.purdue.edu/menus/v2/locations/";
@@ -70,7 +70,7 @@ public class GetDiningLocationsTask extends AsyncTask<Void, Void, List<Location>
     @Override
     protected void onPostExecute(List<Location> locations) {
         if (listener != null) {
-            listener.onResult(locations, exception);
+            listener.onDiningLocationsResult(locations, exception);
         }
     }
 

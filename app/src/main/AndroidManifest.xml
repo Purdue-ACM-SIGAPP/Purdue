@@ -11,30 +11,26 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.Purdue" >
+
         <activity
             android:name=".activities.MainMenuActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activities.WebViewActivity"
             android:label="@string/title_activity_web_view"
             android:parentActivityName=".activities.MainMenuActivity" >
-
             <!-- The meta-data element is needed for versions lower than 4.1 -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="edu.purdue.app.activities.MainMenuActivity" />
         </activity>
-
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
 
         <activity
             android:name=".activities.SettingsActivity"
@@ -44,6 +40,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.MainMenuActivity" />
         </activity>
+
+        <service android:name=".dining.services.DiningUpdaterService" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
     </application>
 
 </manifest>
