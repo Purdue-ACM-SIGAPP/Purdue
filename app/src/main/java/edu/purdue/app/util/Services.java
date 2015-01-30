@@ -17,7 +17,7 @@ public abstract class Services {
     private static final String SPK_DINING_SCHEDULED = "service-dining-court-updater-scheduled";
 
     public static void startServices(Context context) {
-        startDiningUpdater(context);
+        //startDiningUpdater(context);
     }
 
     public static void startDiningUpdater(Context context) {

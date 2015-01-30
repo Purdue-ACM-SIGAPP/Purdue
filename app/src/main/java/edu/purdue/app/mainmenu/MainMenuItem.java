@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.purdue.app.R;
+import edu.purdue.app.news.NewsSelectorActivity;
 
 /**
  *  The superclass for a set of main menu items which make up the main menu
@@ -58,7 +59,7 @@ public abstract class MainMenuItem {
             add(new WebViewMenuItem(c, r.getString(R.string.menus), r.getDrawable(R.drawable.ic_menus), "http://www.housing.purdue.edu/menus/"));
             add(new WebViewMenuItem(c, r.getString(R.string.mymail), r.getDrawable(R.drawable.ic_mymail), "https://mymail.purdue.edu/"));
             add(new WebViewMenuItem(c, r.getString(R.string.bus_routes), r.getDrawable(R.drawable.ic_bus), "http://citybus.doublemap.com/map/"));
-            add(new WebViewMenuItem(c, r.getString(R.string.news), r.getDrawable(R.drawable.ic_news), "http://www.purdue.edu/newsroom/index.html"));
+            add(new ActivityMenuItem(c, r.getString(R.string.news), r.getDrawable(R.drawable.ic_news), NewsSelectorActivity.class));
             add(new WebViewMenuItem(c, r.getString(R.string.calendar), r.getDrawable(R.drawable.ic_calendar), "https://calendar.purdue.edu/"));
             add(new WebViewMenuItem(c, "Videos", r.getDrawable(R.drawable.ic_videos), "http://www.youtube.com/user/PurdueUniversity"));
             add(new WebViewMenuItem(c, "Photos", r.getDrawable(R.drawable.ic_pictures), "http://purdue.photoshelter.com/gallery-list"));
@@ -73,6 +74,8 @@ public abstract class MainMenuItem {
             // add(new MainMenuItem(c, r.getDrawable(R.drawable.ic_giving), "Giving", "https://donate.purdue.edu/Menu.aspx"));
             // add(new MainMenuItem(c, r.getDrawable(R.drawable.ic_purdueboard), "PurdueBoard", "http://www.purdue.edu/purdueboard/"));
             // add(new MainMenuItem(c, r.getDrawable(R.drawable.ic_launcher), "5 Students", "http://www.purdue.edu/fivestudents/"));
+
+
 
         }};
 
