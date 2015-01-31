@@ -9,7 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import edu.purdue.app.R;
-import edu.purdue.app.WebViewActivity;
+import edu.purdue.app.activities.WebViewActivity;
+
 
 public class LabMenuFragment extends Fragment implements View.OnClickListener {
 

@@ -1,18 +1,15 @@
-package edu.purdue.app.main;
+package edu.purdue.app.activities;
 
+import android.app.ActionBar;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Toast;
 
 import org.askerov.dynamicgid.DynamicGridView;
 import org.json.JSONArray;
@@ -22,11 +19,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.purdue.app.R;
-import edu.purdue.app.WebViewActivity;
-import edu.purdue.app.main.MainMenuItem;
-import edu.purdue.app.prefs.SettingsActivity;
-import edu.purdue.app.tracking.TrackingUtils;
-import edu.purdue.app.utility.Connectivity;
+import edu.purdue.app.mainmenu.MainMenuDynamicGridAdapter;
+import edu.purdue.app.dialogs.NoInternetDialog;
+import edu.purdue.app.mainmenu.MainMenuItem;
+import edu.purdue.app.util.Analytics;
+import edu.purdue.app.util.Connectivity;
 
 import static android.widget.AdapterView.OnItemClickListener;
 
@@ -41,58 +38,39 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        getActionBar().setIcon(R.drawable.ic_p);
-
         setContentView(R.layout.activity_main_menu);
 
-        gridView = (DynamicGridView) findViewById(R.id.dynamic_grid);
+        // Register a view to this screen on analytics
+        Analytics.sendScreenView(Analytics.MAIN_SCREEN);
 
-        CustomGridAdapter adapter = prepareAdapter();
+        // Set the drawable for the action bar
+        ActionBar actionBar = getActionBar();
+        if (actionBar != null) {
+            actionBar.setIcon(R.drawable.ic_p);
+        }
+
+        // Display an error if there is no connectivity to the internet
+        if(!Connectivity.isOnline(this)) {
+            NoInternetDialog dialog = new NoInternetDialog(this);
+            dialog.show();
+        }
+
+        // Get an instance of the draggable grid view we are using
+        // and create our adapter for it
+        gridView = (DynamicGridView) findViewById(R.id.dynamic_grid);
+        MainMenuDynamicGridAdapter adapter = prepareAdapter();
         gridView.setAdapter(adapter);
 
         assignGridListeners();
 
-        if(!Connectivity.isOnline(this)) {
-            showNoInternetAlert();
-        }
 
-        TrackingUtils.sendScreenView(this, TrackingUtils.MAIN_SCREEN);
+
     }
 
-    private void showNoInternetAlert() {
-        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+    private MainMenuDynamicGridAdapter prepareAdapter() {
 
-        alertDialog.setTitle("Sorry");
-        alertDialog.setMessage("The Purdue App currently does not function offline. " +
-                "Please connect to the internet and try again. " +
-                "We hope to add offline browsing in the near future.");
-
-        DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                switch(which)
-                {
-                    case AlertDialog.BUTTON_POSITIVE:
-                        dialog.dismiss();
-                        break;
-                    case AlertDialog.BUTTON_NEUTRAL:
-                        Intent intent = new Intent(Settings.ACTION_WIRELESS_SETTINGS);
-                        startActivity(intent);
-                }
-            }
-        };
-
-        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Ok", listener);
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Open network settings", listener);
-
-        alertDialog.show();
-    }
-
-    private CustomGridAdapter prepareAdapter() {
-
-        menuItems = MainMenuItem.getDefaultMainMenuItems(this.getResources());
-        CustomGridAdapter ada = new CustomGridAdapter<MainMenuItem>(this,
-                new ArrayList<MainMenuItem>(menuItems), 4);
+        menuItems = MainMenuItem.getDefaultMainMenuItems(this);
+        MainMenuDynamicGridAdapter ada = new MainMenuDynamicGridAdapter(this, new ArrayList<MainMenuItem>(menuItems), 4);
 
         SharedPreferences prefs = getSharedPreferences(PREF_PAGE_GRID, 0);
         if(prefs.contains(PREF_GRID_ITEMS))
@@ -185,20 +163,23 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
         Object o = view.getTag();
 
         String url, name;
-        if(o instanceof ActivityMainMenuItem) {
+        startActivity(menuItems.get(i).getIntent());
 
-            Intent intent = new Intent(this, ((ActivityMainMenuItem)o).getActivity());
+        /*
+        if(o instanceof ActivityMenuItem) {
+
+            Intent intent = new Intent(this, ((ActivityMenuItem)o).getActivity());
             startActivity(intent);
 
-        } else if (o instanceof MainMenuItem) {
-            MainMenuItem item = (MainMenuItem) o;
+        } else if (o instanceof WebViewMenuItem) {
+            WebViewMenuItem item = (WebViewMenuItem) o;
             url = item.getUrl();
             name = item.getName();
 
 
             if (Connectivity.isOnline(this)) {
 
-                TrackingUtils.sendEvent(this, "ui_interaction", "grid_item_click", name);
+                Tracking.sendEvent(this, "ui_interaction", "grid_item_click", name);
                 Log.d("GridItemClicked", "Opening url: " + url);
                 Intent webViewIntent = new Intent(getBaseContext(), WebViewActivity.class);
                 webViewIntent.putExtra(WebViewActivity.EXTRA_URL, url);
@@ -206,10 +187,11 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
                 startActivity(webViewIntent);
 
             } else {
-                TrackingUtils.sendEvent(this, "access_action", "grid_item_click", "no_internet");
+                Tracking.sendEvent(this, "access_action", "grid_item_click", "no_internet");
                 Toast.makeText(this, "No internet connection. Connect and try again.", Toast.LENGTH_LONG).show();
             }
         }
+        */
     }
 
 }

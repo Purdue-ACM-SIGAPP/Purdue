@@ -1,4 +1,4 @@
-package edu.purdue.app.prefs;
+package edu.purdue.app.activities;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import edu.purdue.app.R;
-import edu.purdue.app.tracking.TrackingUtils;
+import edu.purdue.app.util.Analytics;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -34,6 +34,7 @@ import edu.purdue.app.tracking.TrackingUtils;
  * API Guide</a> for more information on developing a Settings UI.
  */
 public class SettingsActivity extends PreferenceActivity {
+
     /**
      * Determines whether to always show the simplified settings UI, where
      * settings are presented in a single list. When false, settings are shown
@@ -41,14 +42,16 @@ public class SettingsActivity extends PreferenceActivity {
      * shown on tablets.
      */
     private static final boolean ALWAYS_SIMPLE_PREFS = true;
-    private static final String[] validFragments = new String[]{"edu.purdue.app.prefs.DataSyncPreferenceFragment",
-            "edu.purdue.app.prefs.GeneralPreferenceFragment" };
+    private static final String[] validFragments = new String[] {
+            "edu.purdue.app.prefs.DataSyncPreferenceFragment",
+            "edu.purdue.app.prefs.GeneralPreferenceFragment"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setupActionBar();
-        TrackingUtils.sendScreenView(this, TrackingUtils.SETTING_SCREEN);
+        Analytics.sendScreenView(Analytics.SETTING_SCREEN);
     }
 
     /**
@@ -220,7 +223,7 @@ public class SettingsActivity extends PreferenceActivity {
      *
      * @see #sBindPreferenceSummaryToValueListener
      */
-    protected static void bindPreferenceSummaryToValue(Preference preference) {
+    public static void bindPreferenceSummaryToValue(Preference preference) {
         // Set the listener to watch for value changes.
         preference.setOnPreferenceChangeListener(sBindPreferenceSummaryToValueListener);
 

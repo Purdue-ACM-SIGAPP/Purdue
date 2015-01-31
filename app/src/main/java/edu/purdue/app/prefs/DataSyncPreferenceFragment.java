@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.preference.PreferenceFragment;
 
 import edu.purdue.app.R;
+import edu.purdue.app.activities.SettingsActivity;
 
 /**
  * This fragment shows data and sync preferences only. It is used when the

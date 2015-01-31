@@ -38,11 +38,18 @@ android {
         versionCode getVersionCode()
         versionName getVersionName()
     }
+
     buildTypes {
         release {
-            runProguard false
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
     }
 }
 
@@ -52,4 +59,7 @@ dependencies {
     compile 'com.android.support:support-v4:20.+'
     compile 'org.jsoup:jsoup:1.7.2'
     compile files('/Users/david/git/Purdue/libs/android-smart-image-view-1.0.0.jar')
+    compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
+    compile 'com.google.code.gson:gson:2.3.1'
+    compile 'joda-time:joda-time:2.7'
 }
