@@ -4,7 +4,6 @@ import android.content.Context;
 
 import org.joda.time.Duration;
 
-import java.util.List;
 import java.util.Set;
 
 /**

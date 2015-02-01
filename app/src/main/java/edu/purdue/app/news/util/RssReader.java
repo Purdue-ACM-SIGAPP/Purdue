@@ -1,14 +1,11 @@
 package edu.purdue.app.news.util;
 
-import java.io.IOException;
 import java.util.List;
 
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 import edu.purdue.app.news.data.RssItem;
-import org.xml.sax.SAXException;
 
 /**
  * Class reads RSS data.

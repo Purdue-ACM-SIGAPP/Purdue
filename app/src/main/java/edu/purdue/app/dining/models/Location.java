@@ -1,6 +1,5 @@
 package edu.purdue.app.dining.models;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.json.JSONArray;

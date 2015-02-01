@@ -9,21 +9,17 @@ package edu.purdue.app.news;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
-import edu.purdue.app.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import edu.purdue.app.R;
 
 public class NewsSelectorActivity extends Activity {
 

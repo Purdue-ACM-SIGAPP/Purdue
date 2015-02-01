@@ -1,7 +1,6 @@
 package edu.purdue.app.dining.models;
 
 import org.codehaus.jackson.annotate.JsonProperty;
-import org.joda.time.DateTime;
 import org.joda.time.LocalTime;
 import org.json.JSONException;
 import org.json.JSONObject;

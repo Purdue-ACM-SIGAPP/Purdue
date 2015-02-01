@@ -1,19 +1,15 @@
 package edu.purdue.app.news;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.AsyncTask;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
-import edu.purdue.app.R;
+
+import java.util.List;
+
 import edu.purdue.app.news.data.RssItem;
 import edu.purdue.app.news.listeners.ListListener;
 import edu.purdue.app.news.util.RssReader;
-
-import java.util.List;
 
 /**
  * Created by hughe127
