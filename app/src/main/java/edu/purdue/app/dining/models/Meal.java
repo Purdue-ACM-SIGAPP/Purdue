@@ -1,5 +1,6 @@
 package edu.purdue.app.dining.models;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,6 +16,7 @@ import java.util.List;
  *
  *  Created by mike on 1/22/15.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Meal {
 
     public static Meal fromJson(JSONObject obj) throws JSONException {
@@ -38,6 +40,11 @@ public class Meal {
     @JsonProperty("Order")
     private int order;
 
+    // The status property defines if the meal is being served or not
+    // Im not sure if jackson is actually setting this properly or not
+    @JsonProperty("Status")
+    private int status;
+
     @JsonProperty("Hours")
     private OpenHours hours;
 
@@ -58,6 +65,18 @@ public class Meal {
 
     public void setOrder(int order) {
         this.order = order;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public boolean isBeingServed() {
+        return hours != null;
     }
 
     public OpenHours getHours() {

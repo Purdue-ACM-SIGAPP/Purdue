@@ -1,5 +1,7 @@
 package edu.purdue.app.dining.models;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,8 +16,13 @@ import java.util.List;
  *  is open. Im not including it in this object as it would probably take a thousand loc to parse
  *  and we dont need it because each individual meal already has hours.
  *
+ *  We are ignoring the "NormalHours" field of this return object because we get the hours each
+ *  meal is open during the dailymeals fetch. That's why there's the JsonIgnoreProperties annotation
+ *  on this class, otherwise jackson freaks out.
+ *
  *  Created by mike on 1/22/15.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Location {
 
     public static Location fromJson(JSONObject object) throws JSONException {

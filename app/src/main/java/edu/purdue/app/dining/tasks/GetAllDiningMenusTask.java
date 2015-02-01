@@ -1,6 +1,5 @@
 package edu.purdue.app.dining.tasks;
 
-import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 
 import org.joda.time.LocalDate;
@@ -9,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.purdue.app.dining.models.DailyMenu;
-import edu.purdue.app.dining.util.LocationName;
+import edu.purdue.app.dining.util.DiningLocationName;
 
 /**
  *  Task which calls GetDailyDiningMenuTask for each recognized dining court on campus
@@ -44,7 +43,7 @@ public class GetAllDiningMenusTask extends AsyncTask<Void, Void, List<DailyMenu>
 
         List<DailyMenu> menus = new ArrayList<DailyMenu>();
 
-        for (LocationName locationName : LocationName.values()) {
+        for (DiningLocationName locationName : DiningLocationName.values()) {
 
             GetDailyDiningMenuTask task = new GetDailyDiningMenuTask(date, locationName);
 

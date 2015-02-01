@@ -12,7 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import edu.purdue.app.dining.models.DailyMenu;
-import edu.purdue.app.dining.util.LocationName;
+import edu.purdue.app.dining.util.DiningLocationName;
 import edu.purdue.app.util.Logger;
 
 /**
@@ -28,16 +28,16 @@ public class GetDailyDiningMenuTask extends AsyncTask<Void, Void, DailyMenu> {
     }
 
     private LocalDate date;
-    private LocationName locationName;
+    private DiningLocationName locationName;
     private DailyDiningMenuListener listener;
     private Exception exception;
 
-    public GetDailyDiningMenuTask(LocalDate date, LocationName location) {
+    public GetDailyDiningMenuTask(LocalDate date, DiningLocationName location) {
         this.date = date;
         this.locationName = location;
     }
 
-    public GetDailyDiningMenuTask(LocalDate date, LocationName locationName, DailyDiningMenuListener listener) {
+    public GetDailyDiningMenuTask(LocalDate date, DiningLocationName locationName, DailyDiningMenuListener listener) {
         this(date, locationName);
         this.listener = listener;
     }

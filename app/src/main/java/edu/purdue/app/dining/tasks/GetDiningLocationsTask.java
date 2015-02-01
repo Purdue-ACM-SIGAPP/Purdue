@@ -76,8 +76,9 @@ public class GetDiningLocationsTask extends AsyncTask<Void, Void, List<Location>
 
     /** This is a private class which actually corresponds to the api the server will return.
      *  Essentially all it returns is a list of locations, but jackson isn't smart enough to
-     *  just tell it that, so we need this class */
-    private class LocationApiResult {
+     *  just tell it that, so we need this class. It also needs to be static for jackson because
+     *  it is an inner class. */
+    static class LocationApiResult {
 
         @JsonProperty("Location")
         private List<Location> locations;

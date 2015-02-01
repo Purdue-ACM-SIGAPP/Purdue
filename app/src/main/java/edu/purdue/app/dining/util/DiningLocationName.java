@@ -14,7 +14,7 @@ import java.net.URL;
  *
  *  Created by mike on 1/22/15.
  */
-public enum LocationName {
+public enum DiningLocationName {
 
     EARHART     ("Earhart",     "earhart"),
     FORD        ("Ford",        "ford"),
@@ -25,7 +25,7 @@ public enum LocationName {
     private String printableName;
     private String urlComponent;
 
-    LocationName(String printable, String urlComponent) {
+    DiningLocationName(String printable, String urlComponent) {
         this.printableName = printable;
         this.urlComponent = urlComponent;
     }
