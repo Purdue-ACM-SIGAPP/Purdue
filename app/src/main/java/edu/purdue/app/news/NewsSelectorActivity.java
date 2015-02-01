@@ -56,7 +56,7 @@ public class NewsSelectorActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
 
-        final ListView listview = (ListView) findViewById(R.id.listView);
+        final ListView listview = (ListView) findViewById(R.id.listview);
 
         String[] feeds = {"Academic", "Agriculture", "Business",
                 "Community", "Diversity", "Education and Career", "Events", "Featured",
