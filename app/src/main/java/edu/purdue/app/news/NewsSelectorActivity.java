@@ -30,16 +30,24 @@ public class NewsSelectorActivity extends Activity {
     static int url;
 
     final static private String[] feedURLs = {"http://www.purdue.edu/newsroom/rss/academics.xml",
-            "http://www.purdue.edu/newsroom/rss/AgriNews.xml", "http://www.purdue.edu/newsroom/rss/BizNews.xml",
+            "http://www.purdue.edu/newsroom/rss/AgriNews.xml",
+            "http://www.purdue.edu/newsroom/rss/BizNews.xml",
             "http://www.purdue.edu/newsroom/rss/community.xml",
-            "http://www.purdue.edu/newsroom/rss/DiversityNews.xml", "http://www.purdue.edu/newsroom/rss/EdCareerNews.xml",
+            "http://www.purdue.edu/newsroom/rss/DiversityNews.xml",
+            "http://www.purdue.edu/newsroom/rss/EdCareerNews.xml",
             "http://www.purdue.edu/newsroom/rss/EventNews.xml",
-            "http://www.purdue.edu/newsroom/rss/FeaturedNews.xml", "http://www.purdue.edu/newsroom/rss/general.xml",
-            "http://www.purdue.edu/newsroom/rss/HealthMedNews.xml", "http://www.purdue.edu/newsroom/rss/InfoTech.xml",
-            "http://www.purdue.edu/newsroom/rss/LifeNews.xml", "http://www.purdue.edu/newsroom/rss/LifeSciNews.xml",
-            "http://www.purdue.edu/newsroom/rss/OTCNews.xml", "http://www.purdue.edu/newsroom/rss/outreach.xml",
-            "http://www.purdue.edu/newsroom/rss/PhysicalSciNews.xml", "http://www.purdue.edu/newsroom/rss/ResearchNews.xml",
-            "http://www.purdue.edu/newsroom/rss/StudentNews.xml", "http://www.purdue.edu/newsroom/rss/VetMedNews.xml"};
+            "http://www.purdue.edu/newsroom/rss/FeaturedNews.xml",
+            "http://www.purdue.edu/newsroom/rss/general.xml",
+            "http://www.purdue.edu/newsroom/rss/HealthMedNews.xml",
+            "http://www.purdue.edu/newsroom/rss/InfoTech.xml",
+            "http://www.purdue.edu/newsroom/rss/LifeNews.xml",
+            "http://www.purdue.edu/newsroom/rss/LifeSciNews.xml",
+            "http://www.purdue.edu/newsroom/rss/OTCNews.xml",
+            "http://www.purdue.edu/newsroom/rss/outreach.xml",
+            "http://www.purdue.edu/newsroom/rss/PhysicalSciNews.xml",
+            "http://www.purdue.edu/newsroom/rss/ResearchNews.xml",
+            "http://www.purdue.edu/newsroom/rss/StudentNews.xml",
+            "http://www.purdue.edu/newsroom/rss/VetMedNews.xml"};
 
     private boolean ready = false;
 
