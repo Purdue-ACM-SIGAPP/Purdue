@@ -34,17 +34,17 @@ public class NewsAdapter extends ArrayAdapter<String> {
 
         LayoutInflater inflater = context.getLayoutInflater();
 
-        View rowView = inflater.inflate(R.layout.news_item_grid, null, true);
+        if (view == null) {
+            view = inflater.inflate(R.layout.news_item_grid, null, false);
+        }
 
-        TextView txtTitle = (TextView) rowView.findViewById(R.id.txt);
-
-        ImageView imageView = (ImageView) rowView.findViewById(R.id.img);
+        TextView txtTitle = (TextView) view.findViewById(R.id.txt);
+        ImageView imageView = (ImageView) view.findViewById(R.id.img);
 
         txtTitle.setText(web.get(position));
-
         imageView.setImageResource(imageId[position]);
 
-        return rowView;
+        return view;
     }
 }
 
