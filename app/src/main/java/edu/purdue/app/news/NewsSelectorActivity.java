@@ -29,11 +29,25 @@ public class NewsSelectorActivity extends Activity {
 
     // Arraylist for names of categories
     final ArrayList<String> list = new ArrayList<String>() {{
-        add("Academic"); add("Agriculture"); add("Business"); add("Community"); add("Diversity");
-        add("Education and Career"); add("Events"); add("Featured"); add("General");
-        add("Health and Medicine"); add("IT"); add("Lifestyle"); add("Life Sciences");
-        add("Technology Commercialization"); add("Outreach"); add("Physical Sciences");
-        add("Research Foundation"); add("Student"); add("Veterinary Medicine");
+        add("Academic");
+        add("Agriculture");
+        add("Business");
+        add("Community");
+        add("Diversity");
+        add("Education and Career");
+        add("Events");
+        add("Featured");
+        add("General");
+        add("Health and Medicine");
+        add("IT");
+        add("Life Sciences");
+        add("Lifestyle");
+        add("Outreach");
+        add("Physical Sciences");
+        add("Research Foundation");
+        add("Student");
+        add("Technology Commercialization");
+        add("Veterinary Medicine");
     }};
     // Int array for drawable icons
     Integer[] imageId = {
