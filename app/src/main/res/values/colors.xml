@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- XML File for all official Purdue-approved colors.
+    @author fieldn
+-->
+<resources>
+
+    <color name="black">#000000</color>
+    <color name="old_gold">#A3792C</color>
+    <color name="golden_yellow">#E3AE24</color>
+    <color name="grey">#746C66</color>
+    <color name="black40">#A7A9AC</color>
+    <color name="black20">#D1D3D4</color>
+    <color name="white">#FFFFFF</color>
+    <color name="dark_green">#3F4B00</color>
+    <color name="forest_green">#5C8727</color>
+    <color name="aquamarine">#2EAFA4</color>
+    <color name="light_blue">#7ED0E0</color>
+    <color name="lavender">#7299C6</color>
+    <color name="grey_blue">#5C6F7B</color>
+    <color name="magenta">#B63F97</color>
+    <color name="brown">#7E543A</color>
+    <color name="red">#B95915</color>
+    <color name="orange">#F8981D</color>
+    <color name="pale_yellow">#D9DA56</color>
+    <color name="mustard_yellow">#B8B308</color>
+
+</resources>
