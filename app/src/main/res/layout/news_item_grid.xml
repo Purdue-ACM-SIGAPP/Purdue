@@ -9,7 +9,7 @@
     >
 
     <ImageView
-        android:id="@+id/item_img"
+        android:id="@+id/img"
         android:layout_height="150dp"
         android:layout_width="200dp"
         android:paddingLeft="5dp"
@@ -19,15 +19,15 @@
         />
 
     <TextView
-        android:id="@+id/item_title"
-        android:layout_width="match_parent"
+        android:id="@+id/txt"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:singleLine="true"
+        android:singleLine="false"
         android:ellipsize="end"
         android:text="Bus Routes"
-        android:layout_below="@+id/item_img"
+        android:layout_below="@+id/img"
         android:gravity="center"
-        android:textSize="20dp"
+        android:textSize="16dp"
         android:focusable="false"
         android:capitalize="words"
         android:typeface="serif" />
