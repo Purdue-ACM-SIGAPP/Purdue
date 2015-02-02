@@ -1,4 +1,4 @@
-package edu.purdue.app.mainmenu;
+package edu.purdue.app.mainmenu.widgets;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,6 +12,7 @@ import org.askerov.dynamicgid.BaseDynamicGridAdapter;
 import java.util.List;
 
 import edu.purdue.app.R;
+import edu.purdue.app.mainmenu.models.MainMenuItem;
 
 /**
  *  Despite the scary name, this is simply an adapter for main menu items.

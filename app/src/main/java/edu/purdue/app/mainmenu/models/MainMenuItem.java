@@ -1,4 +1,4 @@
-package edu.purdue.app.mainmenu;
+package edu.purdue.app.mainmenu.models;
 
 import android.content.Context;
 import android.content.Intent;
@@ -67,15 +67,6 @@ public abstract class MainMenuItem {
             add(new WebViewMenuItem(c, "Directory", r.getDrawable(R.drawable.ic_directory), "http://itap.purdue.edu/directory"));
             add(new WebViewMenuItem(c, "Safety", r.getDrawable(R.drawable.ic_safety), "https://www.purdue.edu/emergency_preparedness/flipchart/index.html"));
             add(new WebViewMenuItem(c, "Store", r.getDrawable(R.drawable.ic_store), "http://www.purdueofficialstore.com/"));
-
-            // In Progress
-            // add(new MainMenuItem(c, r.getDrawable(R.drawable.ic_tours), "Tours", "http://play.google.com/store/apps/details?id=com.barz.tourguide.purdue"));
-            // add(new MainMenuItem(c, r.getDrawable(R.drawable.ic_weather), "Weather Preparedness", "http://www.purdue.edu/newsroom/health_safety/weather.html"));
-            // add(new MainMenuItem(c, r.getDrawable(R.drawable.ic_giving), "Giving", "https://donate.purdue.edu/Menu.aspx"));
-            // add(new MainMenuItem(c, r.getDrawable(R.drawable.ic_purdueboard), "PurdueBoard", "http://www.purdue.edu/purdueboard/"));
-            // add(new MainMenuItem(c, r.getDrawable(R.drawable.ic_launcher), "5 Students", "http://www.purdue.edu/fivestudents/"));
-
-
 
         }};
 
