@@ -4,6 +4,7 @@ package edu.purdue.app.news;
  * Feed selection activity
  *
  * @author hughe127
+ * @author fieldn
  */
 
 import android.app.Activity;
@@ -12,8 +13,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ArrayAdapter;
+import android.widget.GridView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,6 +27,37 @@ public class NewsSelectorActivity extends Activity {
 
     static int url;
 
+    // Arraylist for names of categories
+    final ArrayList<String> list = new ArrayList<String>() {{
+        add("Academic"); add("Agriculture"); add("Business"); add("Community"); add("Diversity");
+        add("Education and Career"); add("Events"); add("Featured"); add("General");
+        add("Health and Medicine"); add("IT"); add("Lifestyle"); add("Life Sciences");
+        add("Technology Commercialization"); add("Outreach"); add("Physical Sciences");
+        add("Research Foundation"); add("Student"); add("Veterinary Medicine");
+    }};
+    // Int array for drawable icons
+    Integer[] imageId = {
+            R.drawable.news_ic_academic,
+            R.drawable.news_ic_agriculture,
+            R.drawable.news_ic_business,
+            R.drawable.news_ic_community,
+            R.drawable.news_ic_diversity,
+            R.drawable.news_ic_edu_career,
+            R.drawable.news_ic_events,
+            R.drawable.news_ic_featured,
+            R.drawable.news_ic_general,
+            R.drawable.news_ic_health_medicine,
+            R.drawable.news_ic_it,
+            R.drawable.news_ic_life_sciences,
+            R.drawable.news_ic_lifestyle,
+            R.drawable.news_ic_outreach,
+            R.drawable.news_ic_physical_sciences,
+            R.drawable.news_ic_research,
+            R.drawable.news_ic_student,
+            R.drawable.news_ic_tech_comm,
+            R.drawable.news_ic_vet_med
+    };
+    // String array of urls for each RSS news feed.
     final static private String[] feedURLs = {"http://www.purdue.edu/newsroom/rss/academics.xml",
             "http://www.purdue.edu/newsroom/rss/AgriNews.xml",
             "http://www.purdue.edu/newsroom/rss/BizNews.xml",
@@ -43,7 +76,8 @@ public class NewsSelectorActivity extends Activity {
             "http://www.purdue.edu/newsroom/rss/PhysicalSciNews.xml",
             "http://www.purdue.edu/newsroom/rss/ResearchNews.xml",
             "http://www.purdue.edu/newsroom/rss/StudentNews.xml",
-            "http://www.purdue.edu/newsroom/rss/VetMedNews.xml"};
+            "http://www.purdue.edu/newsroom/rss/VetMedNews.xml"
+    };
 
     private boolean ready = false;
 
@@ -51,58 +85,18 @@ public class NewsSelectorActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
-
-        final ListView listview = (ListView) findViewById(R.id.listview);
-
-        String[] feeds = {"Academic", "Agriculture", "Business",
-                "Community", "Diversity", "Education and Career", "Events", "Featured",
-                "General", "Health and Medicine", "IT", "Lifestyle", "Life Sciences", "Technology Commercialization",
-                "Outreach", "Physical Sciences", "Research Foundation", "Student", "Veterinary Medicine"};
-
-        final ArrayList<String> list = new ArrayList<String>();
-
-        for (int i = 0; i < feeds.length; ++i) {
-            list.add(feeds[i]);
-        }
-
-        if (getActionBar() != null) {
-            getActionBar().setHomeButtonEnabled(true); // disable the button
-            getActionBar().setDisplayHomeAsUpEnabled(true); // remove the left caret
-            getActionBar().setDisplayShowHomeEnabled(true); // remove the icon
-        }
-
-        final StableArrayAdapter adapter = new StableArrayAdapter(this, android.R.layout.simple_list_item_1, list);
-        listview.setAdapter(adapter);
-
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-                final int item = position;
-                url = item;
-                ready = true;
-                startActivity();
-            }
-        });
-
-    }
-
-    private class StableArrayAdapter extends ArrayAdapter<String> {
-
-        HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
-
-        public StableArrayAdapter(Context context, int textViewResourceId, List<String> objects) {
-            super(context, textViewResourceId, objects);
-            for (int i = 0; i < objects.size(); ++i) {
-                mIdMap.put(objects.get(i), i);
-            }
-        }
-
-        @Override
-        public long getItemId(int position) {
-            String item = getItem(position);
-            return mIdMap.get(item);
-        }
-
+        NewsAdapter adapter = new NewsAdapter(NewsSelectorActivity.this, list, imageId);
+        final GridView grid = (GridView)findViewById(R.id.gridview);
+        grid.setAdapter(adapter);
+        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
+                    final int item = position;
+                    url = item;
+                    ready = true;
+                    startActivity();
+                }
+            });
     }
 
     public static String getURL() {

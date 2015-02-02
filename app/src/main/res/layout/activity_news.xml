@@ -1,6 +1,6 @@
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+<GridView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/listview"
+    android:id="@+id/gridview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -11,4 +11,4 @@
     android:divider="@drawable/ab_transparent_purdue"
     android:numColumns="2">
 
-</ListView>
+</GridView>
