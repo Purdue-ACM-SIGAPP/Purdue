@@ -7,13 +7,12 @@ import org.xml.sax.helpers.DefaultHandler;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.purdue.app.news.data.RssItem;
+import edu.purdue.app.news.models.RssItem;
 
 /**
  * SAX tag handler
  *
- * @author hughe127
- *
+ * @author hughe12
  */
 public class RssParseHandler extends DefaultHandler {
 

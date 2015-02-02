@@ -32,8 +32,8 @@
                 android:value="edu.purdue.app.activities.MainMenuActivity" />
         </activity>
 
-        <activity android:name=".news.NewsSelectorActivity" />
-        <activity android:name=".news.RSSActivity" />
+        <activity android:name=".news.activities.NewsCategoryActivity" />
+        <activity android:name=".news.activities.NewsFeedActivity" />
 
         <activity
             android:name=".activities.SettingsActivity"

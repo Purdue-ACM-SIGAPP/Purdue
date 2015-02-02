@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.purdue.app.R;
-import edu.purdue.app.news.NewsSelectorActivity;
+import edu.purdue.app.news.activities.NewsCategoryActivity;
 
 /**
  *  The superclass for a set of main menu items which make up the main menu
@@ -59,7 +59,7 @@ public abstract class MainMenuItem {
             add(new WebViewMenuItem(c, r.getString(R.string.menus), r.getDrawable(R.drawable.ic_menus), "http://www.housing.purdue.edu/menus/"));
             add(new WebViewMenuItem(c, r.getString(R.string.mymail), r.getDrawable(R.drawable.ic_mymail), "https://mymail.purdue.edu/"));
             add(new WebViewMenuItem(c, r.getString(R.string.bus_routes), r.getDrawable(R.drawable.ic_bus), "http://citybus.doublemap.com/map/"));
-            add(new ActivityMenuItem(c, r.getString(R.string.news), r.getDrawable(R.drawable.ic_news), NewsSelectorActivity.class));
+            add(new ActivityMenuItem(c, r.getString(R.string.news), r.getDrawable(R.drawable.ic_news), NewsCategoryActivity.class));
             add(new WebViewMenuItem(c, r.getString(R.string.calendar), r.getDrawable(R.drawable.ic_calendar), "https://calendar.purdue.edu/"));
             add(new WebViewMenuItem(c, "Videos", r.getDrawable(R.drawable.ic_videos), "http://www.youtube.com/user/PurdueUniversity"));
             add(new WebViewMenuItem(c, "Photos", r.getDrawable(R.drawable.ic_pictures), "http://purdue.photoshelter.com/gallery-list"));

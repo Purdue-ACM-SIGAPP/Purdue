@@ -6,7 +6,7 @@
     android:background="@drawable/background">
 
     <org.askerov.dynamicgid.DynamicGridView
-        android:id="@+id/dynamic_grid"
+        android:id="@+id/mainmenu_gridview"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"

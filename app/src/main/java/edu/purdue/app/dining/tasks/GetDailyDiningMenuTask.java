@@ -12,7 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import edu.purdue.app.dining.models.DailyMenu;
-import edu.purdue.app.dining.util.DiningLocationName;
+import edu.purdue.app.dining.data.DiningLocationName;
 import edu.purdue.app.util.Logger;
 
 /**

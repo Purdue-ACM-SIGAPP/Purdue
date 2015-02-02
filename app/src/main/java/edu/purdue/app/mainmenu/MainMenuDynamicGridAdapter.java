@@ -31,12 +31,12 @@ public class MainMenuDynamicGridAdapter extends BaseDynamicGridAdapter<MainMenuI
 
         // If cv is available, use it
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_grid, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.mainmenu_item, parent, false);
         }
 
         // Get the textview and image from the inflated view
-        TextView label = (TextView) convertView.findViewById(R.id.item_title);
-        ImageView imageView = (ImageView) convertView.findViewById(R.id.item_img);
+        TextView label = (TextView) convertView.findViewById(R.id.mainmenu_item_textview_title);
+        ImageView imageView = (ImageView) convertView.findViewById(R.id.mainmenu_item_imageview);
 
         // Set the widgets appropriately
         label.setText(item.getName());

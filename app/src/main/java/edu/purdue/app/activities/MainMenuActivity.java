@@ -38,7 +38,7 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_menu);
+        setContentView(R.layout.activity_mainmenu);
 
         // Register a view to this screen on analytics
         Analytics.sendScreenView(Analytics.MAIN_SCREEN);
@@ -57,7 +57,7 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
 
         // Get an instance of the draggable grid view we are using
         // and create our adapter for it
-        gridView = (DynamicGridView) findViewById(R.id.dynamic_grid);
+        gridView = (DynamicGridView) findViewById(R.id.mainmenu_gridview);
         MainMenuDynamicGridAdapter adapter = prepareAdapter();
         gridView.setAdapter(adapter);
 
