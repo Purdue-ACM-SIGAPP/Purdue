@@ -54,19 +54,30 @@ public abstract class MainMenuItem {
 
         ArrayList<MainMenuItem> toReturn = new ArrayList<MainMenuItem>() {{
 
-            // Web view items
-            add(new WebViewMenuItem(c, r.getString(R.string.map), r.getDrawable(R.drawable.ic_map), "http://www.purdue.edu/campus_map/"));
-            add(new WebViewMenuItem(c, r.getString(R.string.menus), r.getDrawable(R.drawable.ic_menus), "http://www.housing.purdue.edu/menus/"));
-            add(new WebViewMenuItem(c, r.getString(R.string.mymail), r.getDrawable(R.drawable.ic_mymail), "https://mymail.purdue.edu/"));
-            add(new WebViewMenuItem(c, r.getString(R.string.bus_routes), r.getDrawable(R.drawable.ic_bus), "http://citybus.doublemap.com/map/"));
-            add(new ActivityMenuItem(c, r.getString(R.string.news), r.getDrawable(R.drawable.ic_news), NewsCategoryActivity.class));
-            add(new WebViewMenuItem(c, r.getString(R.string.calendar), r.getDrawable(R.drawable.ic_calendar), "https://calendar.purdue.edu/"));
-            add(new WebViewMenuItem(c, "Videos", r.getDrawable(R.drawable.ic_videos), "http://www.youtube.com/user/PurdueUniversity"));
-            add(new WebViewMenuItem(c, "Photos", r.getDrawable(R.drawable.ic_pictures), "http://purdue.photoshelter.com/gallery-list"));
-            add(new WebViewMenuItem(c, r.getString(R.string.labs), r.getDrawable(R.drawable.ic_labs), "https://lslab.ics.purdue.edu/icsWeb/AvailableStations"));
-            add(new WebViewMenuItem(c, "Directory", r.getDrawable(R.drawable.ic_directory), "http://itap.purdue.edu/directory"));
-            add(new WebViewMenuItem(c, "Safety", r.getDrawable(R.drawable.ic_safety), "https://www.purdue.edu/emergency_preparedness/flipchart/index.html"));
-            add(new WebViewMenuItem(c, "Store", r.getDrawable(R.drawable.ic_store), "http://www.purdueofficialstore.com/"));
+            add(new WebViewMenuItem(c,
+                    r.getString(R.string.main_menu_item_map), r.getDrawable(R.drawable.ic_map), "http://www.purdue.edu/campus_map/"));
+            add(new WebViewMenuItem(c,
+                    r.getString(R.string.main_menu_item_dining), r.getDrawable(R.drawable.ic_menus), "http://www.housing.purdue.edu/menus/"));
+            add(new WebViewMenuItem(c,
+                    r.getString(R.string.main_menu_item_mail), r.getDrawable(R.drawable.ic_mymail), "https://mymail.purdue.edu/"));
+            add(new WebViewMenuItem(c,
+                    r.getString(R.string.main_menu_item_buses), r.getDrawable(R.drawable.ic_bus), "http://citybus.doublemap.com/map/"));
+            add(new ActivityMenuItem(c,
+                    r.getString(R.string.main_menu_item_news), r.getDrawable(R.drawable.ic_news), NewsCategoryActivity.class));
+            add(new WebViewMenuItem(c,
+                    r.getString(R.string.main_menu_item_calendar), r.getDrawable(R.drawable.ic_calendar), "https://calendar.purdue.edu/"));
+            add(new WebViewMenuItem(c,
+                    r.getString(R.string.main_menu_item_videos), r.getDrawable(R.drawable.ic_videos), "http://www.youtube.com/user/PurdueUniversity"));
+            add(new WebViewMenuItem(c,
+                    r.getString(R.string.main_menu_item_photos), r.getDrawable(R.drawable.ic_pictures), "http://purdue.photoshelter.com/gallery-list"));
+            add(new WebViewMenuItem(c,
+                    r.getString(R.string.main_menu_item_labs), r.getDrawable(R.drawable.ic_labs), "https://lslab.ics.purdue.edu/icsWeb/AvailableStations"));
+            add(new WebViewMenuItem(c,
+                    r.getString(R.string.main_menu_item_directory), r.getDrawable(R.drawable.ic_directory), "http://itap.purdue.edu/directory"));
+            add(new WebViewMenuItem(c,
+                    r.getString(R.string.main_menu_item_safety), r.getDrawable(R.drawable.ic_safety), "https://www.purdue.edu/emergency_preparedness/flipchart/index.html"));
+            add(new WebViewMenuItem(c,
+                    r.getString(R.string.main_menu_item_store), r.getDrawable(R.drawable.ic_store), "http://www.purdueofficialstore.com/"));
 
         }};
 
