@@ -32,8 +32,15 @@
                 android:value=".mainmenu.activities.MainMenuActivity" />
         </activity>
 
-        <activity android:name=".news.activities.NewsCategoryActivity" />
-        <activity android:name=".news.activities.NewsFeedActivity" />
+        <activity
+            android:name=".news.activities.NewsCategoryActivity"
+            android:parentActivityName=".mainmenu.activities.MainMenuActivity"
+            />
+
+        <activity
+            android:name=".news.activities.NewsFeedActivity"
+            android:parentActivityName=".news.activities.NewsCategoryActivity"
+            />
 
         <activity
             android:name=".prefs.activities.SettingsActivity"
