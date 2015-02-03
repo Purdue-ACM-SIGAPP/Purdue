@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Purdue" >
 
         <activity
-            android:name=".activities.MainMenuActivity"
+            android:name=".mainmenu.activities.MainMenuActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -25,23 +25,23 @@
         <activity
             android:name=".activities.WebViewActivity"
             android:label="@string/title_activity_web_view"
-            android:parentActivityName=".activities.MainMenuActivity" >
+            android:parentActivityName=".mainmenu.activities.MainMenuActivity" >
             <!-- The meta-data element is needed for versions lower than 4.1 -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.purdue.app.activities.MainMenuActivity" />
+                android:value=".mainmenu.activities.MainMenuActivity" />
         </activity>
 
-        <activity android:name=".news.NewsSelectorActivity" />
-        <activity android:name=".news.RSSActivity" />
+        <activity android:name=".news.activities.NewsCategoryActivity" />
+        <activity android:name=".news.activities.NewsFeedActivity" />
 
         <activity
-            android:name=".activities.SettingsActivity"
+            android:name=".prefs.activities.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".activities.MainMenuActivity" >
+            android:parentActivityName=".mainmenu.activities.MainMenuActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.MainMenuActivity" />
+                android:value=".mainmenu.activities.MainMenuActivity" />
         </activity>
 
         <service android:name=".dining.services.DiningUpdaterService" />

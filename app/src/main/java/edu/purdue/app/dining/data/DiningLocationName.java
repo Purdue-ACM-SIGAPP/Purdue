@@ -1,4 +1,4 @@
-package edu.purdue.app.dining.util;
+package edu.purdue.app.dining.data;
 
 import org.joda.time.LocalDate;
 

@@ -1,4 +1,4 @@
-package edu.purdue.app.news.data;
+package edu.purdue.app.news.models;
 
 /**
  * This code encapsulates RSS item data.
@@ -9,11 +9,8 @@ package edu.purdue.app.news.data;
  */
 public class RssItem {
 
-    // item title
     private String title;
-    // item link
     private String link;
-    //item description
     private String description;
 
     public String getTitle() {
@@ -30,6 +27,14 @@ public class RssItem {
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override

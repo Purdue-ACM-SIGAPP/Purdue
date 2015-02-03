@@ -1,4 +1,4 @@
-package edu.purdue.app.mainmenu;
+package edu.purdue.app.mainmenu.widgets;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,6 +12,7 @@ import org.askerov.dynamicgid.BaseDynamicGridAdapter;
 import java.util.List;
 
 import edu.purdue.app.R;
+import edu.purdue.app.mainmenu.models.MainMenuItem;
 
 /**
  *  Despite the scary name, this is simply an adapter for main menu items.
@@ -31,12 +32,12 @@ public class MainMenuDynamicGridAdapter extends BaseDynamicGridAdapter<MainMenuI
 
         // If cv is available, use it
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_grid, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.mainmenu_item, parent, false);
         }
 
         // Get the textview and image from the inflated view
-        TextView label = (TextView) convertView.findViewById(R.id.item_title);
-        ImageView imageView = (ImageView) convertView.findViewById(R.id.item_img);
+        TextView label = (TextView) convertView.findViewById(R.id.mainmenu_item_textview_title);
+        ImageView imageView = (ImageView) convertView.findViewById(R.id.mainmenu_item_imageview);
 
         // Set the widgets appropriately
         label.setText(item.getName());

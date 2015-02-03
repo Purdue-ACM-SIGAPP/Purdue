@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.purdue.app.dining.models.DailyMenu;
-import edu.purdue.app.dining.util.DiningLocationName;
+import edu.purdue.app.dining.data.DiningLocationName;
 
 /**
  *  Task which calls GetDailyDiningMenuTask for each recognized dining court on campus

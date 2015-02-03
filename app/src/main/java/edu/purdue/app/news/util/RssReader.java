@@ -5,7 +5,7 @@ import java.util.List;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-import edu.purdue.app.news.data.RssItem;
+import edu.purdue.app.news.models.RssItem;
 
 /**
  * Class reads RSS data.

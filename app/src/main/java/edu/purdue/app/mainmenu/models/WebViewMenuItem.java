@@ -1,4 +1,4 @@
-package edu.purdue.app.mainmenu;
+package edu.purdue.app.mainmenu.models;
 
 import android.content.Context;
 import android.content.Intent;

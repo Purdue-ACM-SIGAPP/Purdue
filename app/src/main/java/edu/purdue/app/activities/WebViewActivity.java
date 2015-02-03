@@ -50,7 +50,7 @@ public class WebViewActivity extends Activity {
         Analytics.sendScreenView(Analytics.WEB_SCREEN, name);
 
         // Create the web view and restore its state if possible
-        webView = (WebView) findViewById(R.id.webView);
+        webView = (WebView) findViewById(R.id.webview_webview);
         if (savedInstanceState != null) {
             webView.restoreState(savedInstanceState);
         }
@@ -147,7 +147,7 @@ public class WebViewActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        WebView webView = (WebView) findViewById(R.id.webView);
+        WebView webView = (WebView) findViewById(R.id.webview_webview);
 
         if(webView.canGoBack()) {
             webView.goBack();

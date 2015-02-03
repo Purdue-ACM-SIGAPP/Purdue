@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Application resources -->
     <string name="app_name">Purdue</string>
+
+    <!-- Main Menu Items -->
+    <string name="main_menu_item_news">News</string>
+    <string name="main_menu_item_calendar">Calendar</string>
+    <string name="main_menu_item_map">Map</string>
+    <string name="main_menu_item_mail">MyMail</string>
+    <string name="main_menu_item_dining">Menus</string>
+    <string name="main_menu_item_labs">Labs</string>
+    <string name="main_menu_item_buses">Bus Routes</string>
+    <string name="main_menu_item_videos">Videos</string>
+    <string name="main_menu_item_photos">Photos</string>
+    <string name="main_menu_item_directory">Directory</string>
+    <string name="main_menu_item_safety">Safety</string>
+    <string name="main_menu_item_store">Store</string>
+
+    <!-- Main Menu Menu Items -->
     <string name="action_settings">Settings</string>
+
+    <!-- Web View Activity -->
     <string name="title_activity_web_view">WebViewActivity</string>
-    <string name="news">News</string>
-    <string name="calendar">Calendar</string>
-    <string name="map">Map</string>
-    <string name="mymail">MyMail</string>
-    <string name="menus">Menus</string>
-    <string name="labs">Labs</string>
-    <string name="bus_routes">Bus Routes</string>
+
+    <!-- Other -->
     <string name="analytics_id" tools:ignore="TypographyDashes">UA-51109974-1</string>
-    <string name="title_activity_test">TestActivity</string>
-    <string name="hello_world">Hello world!</string>
 
 </resources>

@@ -1,4 +1,4 @@
-package edu.purdue.app.activities;
+package edu.purdue.app.mainmenu.activities;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -19,9 +19,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.purdue.app.R;
+import edu.purdue.app.prefs.activities.SettingsActivity;
 import edu.purdue.app.dialogs.NoInternetDialog;
-import edu.purdue.app.mainmenu.MainMenuDynamicGridAdapter;
-import edu.purdue.app.mainmenu.MainMenuItem;
+import edu.purdue.app.mainmenu.widgets.MainMenuDynamicGridAdapter;
+import edu.purdue.app.mainmenu.models.MainMenuItem;
 import edu.purdue.app.util.Analytics;
 import edu.purdue.app.util.Connectivity;
 
@@ -38,7 +39,7 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_menu);
+        setContentView(R.layout.activity_mainmenu);
 
         // Register a view to this screen on analytics
         Analytics.sendScreenView(Analytics.MAIN_SCREEN);
@@ -57,7 +58,7 @@ public class MainMenuActivity extends Activity implements OnItemClickListener {
 
         // Get an instance of the draggable grid view we are using
         // and create our adapter for it
-        gridView = (DynamicGridView) findViewById(R.id.dynamic_grid);
+        gridView = (DynamicGridView) findViewById(R.id.mainmenu_gridview);
         MainMenuDynamicGridAdapter adapter = prepareAdapter();
         gridView.setAdapter(adapter);
 

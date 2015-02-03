@@ -1,4 +1,4 @@
-package edu.purdue.app.activities;
+package edu.purdue.app.prefs.activities;
 
 import android.annotation.TargetApi;
 import android.content.Context;
