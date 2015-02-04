@@ -62,7 +62,7 @@ public class NewsStoryDisplayAdapter extends BaseAdapter{
         // Grabs story time from view
         TextView timeStamp = (TextView) view.findViewById(R.id.news_story_date);
 
-        storyTitle.setText(storyTitleStr);         // Sets first text view to story title
+        storyTitle.setText("      -" + storyTitleStr);         // Sets first text view to story title
         timeStamp.setText(storyDate);   // Sets second text view to the date/time
 
         return view;
