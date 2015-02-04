@@ -20,11 +20,12 @@ public class RssParseHandler extends DefaultHandler {
 	
 	// Used to reference item while parsing
 	private RssItem currentItem;
-	
 	// Parsing title indicator
 	private boolean parsingTitle;
 	// Parsing link indicator
 	private boolean parsingLink;
+    // Parsing date indicator
+    private boolean parsingDate;
 	
 	public RssParseHandler() {
 		rssItems = new ArrayList<RssItem>();
@@ -42,7 +43,9 @@ public class RssParseHandler extends DefaultHandler {
 			parsingTitle = true;
 		} else if ("link".equals(qName)) {
 			parsingLink = true;
-		}
+		} else if ("pubDate".equals(qName)) {
+            parsingDate = true;
+        }
 	}
 	
 	@Override
@@ -54,20 +57,29 @@ public class RssParseHandler extends DefaultHandler {
 			parsingTitle = false;
 		} else if ("link".equals(qName)) {
 			parsingLink = false;
-		}
+		} else if ("pubDate".equals(qName)) {
+            parsingDate = false;
+        }
 	}
 	
 	@Override
 	public void characters(char[] ch, int start, int length) throws SAXException {
 		if (parsingTitle) {
-			if (currentItem != null)
-				currentItem.setTitle(new String(ch, start, length));
+            if (currentItem != null) {
+                currentItem.setTitle(new String(ch, start, length));
+                parsingTitle = false;
+            }
 		} else if (parsingLink) {
 			if (currentItem != null) {
 				currentItem.setLink(new String(ch, start, length));
 				parsingLink = false;
 			}
-		}
+		} else if (parsingDate) {
+            if (currentItem != null) {
+                currentItem.setDate(new String(ch, start, length));
+                parsingDate = false;
+            }
+        }
 	}
 	
 }
