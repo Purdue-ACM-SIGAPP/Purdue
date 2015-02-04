@@ -35,7 +35,7 @@ public class NewsCategoryActivity extends Activity implements AdapterView.OnItem
         String url = DefaultNewsCategories.values()[pos].url();
 
         // Prepare an intent to launch the item
-        Intent intent = new Intent(this, NewsFeedActivity.class);
+        Intent intent = new Intent(this, NewsStoryListActivity.class);
 
         // We use the EXTRA_URL from webview activity here just to save time
         intent.putExtra(WebViewActivity.EXTRA_URL, url);

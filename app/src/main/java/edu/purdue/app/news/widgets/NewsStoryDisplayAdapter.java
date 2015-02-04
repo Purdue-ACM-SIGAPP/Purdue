@@ -18,7 +18,7 @@ import edu.purdue.app.news.models.RssItem;
 import edu.purdue.app.util.Logger;
 
 /**
- * Created by silve_000 on 2/3/2015.
+ * Created by fieldn on 2/3/2015.
  */
 public class NewsStoryDisplayAdapter extends BaseAdapter{
     private Context context;
@@ -62,8 +62,8 @@ public class NewsStoryDisplayAdapter extends BaseAdapter{
         // Grabs story time from view
         TextView timeStamp = (TextView) view.findViewById(R.id.news_story_date);
 
-        storyTitle.setText(storyTitleStr);         // Sets text in view to category title
-        timeStamp.setText(storyDate);   // Sets image in view to appropriate icon
+        storyTitle.setText(storyTitleStr);         // Sets first text view to story title
+        timeStamp.setText(storyDate);   // Sets second text view to the date/time
 
         return view;
     }

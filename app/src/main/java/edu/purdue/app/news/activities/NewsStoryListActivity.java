@@ -21,7 +21,7 @@ import edu.purdue.app.news.widgets.NewsStoryDisplayAdapter;
  * 
  * @author hughe127
  */
-public class NewsFeedActivity extends Activity implements
+public class NewsStoryListActivity extends Activity implements
         RssFeedTask.RssFeedResultListener,
         AdapterView.OnItemClickListener {
 
