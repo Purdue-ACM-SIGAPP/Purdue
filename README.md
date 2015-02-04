@@ -4,6 +4,8 @@ This is the official Purdue Application for Purdue University.
 Developed by 2014-2015 Purdue ACM SIGAPP Members and currently available on the
 [Play Store here](https://play.google.com/store/apps/details?id=edu.purdue.app).
 
+Our Trello board for issues, bugs, and features is [available here](https://trello.com/b/9ktGDjYs/purdue-app). Issues added to the github issues page will be automatically added to trello. 
+
 # Contributing
 
 We follow the Github Flow model of development.
