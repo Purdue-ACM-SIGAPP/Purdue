@@ -12,6 +12,7 @@ public class RssItem {
     private String title;
     private String link;
     private String description;
+    private String date;
 
     public String getTitle() {
         return title;
@@ -36,6 +37,10 @@ public class RssItem {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getDate() { return date;}
+
+    public void setDate(String date) {this.date = date;}
 
     @Override
     public String toString() {
