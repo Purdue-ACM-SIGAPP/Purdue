@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.List;
@@ -15,6 +14,7 @@ import edu.purdue.app.R;
 import edu.purdue.app.activities.WebViewActivity;
 import edu.purdue.app.news.models.RssItem;
 import edu.purdue.app.news.tasks.RssFeedTask;
+import edu.purdue.app.news.widgets.NewsStoryDisplayAdapter;
 
 /**
  * Application activity for the Rss categories view
@@ -32,7 +32,7 @@ public class NewsFeedActivity extends Activity implements
 	public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_news_feed);
+		setContentView(R.layout.activity_news_story_list);
 
         ActionBar actionBar = getActionBar();
         if (actionBar != null) {
@@ -44,7 +44,7 @@ public class NewsFeedActivity extends Activity implements
         // Get the URL we are going to be requesting to
         String url = this.getIntent().getStringExtra(WebViewActivity.EXTRA_URL);
 
-        // Get the ListView from activity_news_feed view
+        // Get the ListView from activity_news_story_list view
         listView = (ListView) findViewById(R.id.news_feed_listview);
 
         // Download RSS data for the url
@@ -60,7 +60,8 @@ public class NewsFeedActivity extends Activity implements
         this.results = results;
 
         // inflate the adapter and display the results
-        ArrayAdapter<RssItem> adapter = new ArrayAdapter<RssItem>(this, android.R.layout.simple_list_item_1, results);
+
+        NewsStoryDisplayAdapter adapter = new NewsStoryDisplayAdapter(this, results);
         listView.setAdapter(adapter);
 
         // Set the on item click listener
