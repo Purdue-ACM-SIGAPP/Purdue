@@ -43,10 +43,10 @@ public class DiningMasterAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.dining_master_item, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.card_item_small, parent, false);
         }
 
-        TextView tvTitle = (TextView) convertView.findViewById(R.id.dining_locations_item_title);
+        TextView tvTitle = (TextView) convertView.findViewById(R.id.card_item_small_textview);
         tvTitle.setText(items.get(position));
 
         return convertView;
