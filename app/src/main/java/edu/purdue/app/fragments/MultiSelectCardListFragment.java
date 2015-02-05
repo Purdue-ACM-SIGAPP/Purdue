@@ -17,10 +17,10 @@ import java.util.Set;
 import edu.purdue.app.R;
 
 /**
- *  A fragment which creates a list of cards (from a list of strings) and
- *  allows you to multiselect items in that list.
- *  To use this, subclass it then override onCreateView to set your items
- *  you want to set an adapter for the GridView
+ *  A fragment which creates a list of cards and allows you to multiselect items in that list.
+ *  To use this, subclass it then override onCreateView() to set your items
+ *  you want to set an adapter for the GridView. The items themselves can be anything, just
+ *  set an adapter in onCreateView()
  *  Created by mike on 2/5/15.
  */
 public abstract class MultiSelectCardListFragment extends Fragment implements AdapterView.OnItemClickListener {
