@@ -1,9 +1,13 @@
 package edu.purdue.app.dining.data;
 
+import android.view.Menu;
+
 import org.joda.time.LocalDate;
 
 import java.util.List;
 
+import edu.purdue.app.dining.listeners.DailyMenusListener;
+import edu.purdue.app.dining.listeners.LocationsListener;
 import edu.purdue.app.dining.models.DailyMenu;
 import edu.purdue.app.dining.models.Location;
 import edu.purdue.app.dining.tasks.GetAllDiningMenusTask;
@@ -23,25 +27,25 @@ public class DiningData {
 
     /** Precache daily menu data for today */
     public static void precache() {
-        new GetAllDiningMenusTask(LocalDate.now(), new GetAllDiningMenusTask.AllMenusListener() {
+        new GetAllDiningMenusTask(LocalDate.now(), new DailyMenusListener() {
             @Override
-            public void onAllMenusResult(List<DailyMenu> menus, Exception ex) {
+            public void onGetDailyMenus(List<DailyMenu> menus, Exception ex) {
                 todaysMenus = menus;
             }
         }).execute();
-        new GetDiningLocationsTask(new GetDiningLocationsTask.GetDiningLocationsListener() {
+        new GetDiningLocationsTask(new LocationsListener() {
             @Override
-            public void onDiningLocationsResult(List<Location> locations, Exception ex) {
+            public void onGetLocations(List<Location> locations, Exception ex) {
                 cachedLocations = locations;
             }
         }).execute();
     }
 
     /** Returns the dining menus for the current day. Accesses cache if available (not yet implemented) */
-    public void getAllDailyMenus(GetAllDiningMenusTask.AllMenusListener listener) {
+    public void getAllDailyMenus(DailyMenusListener listener) {
 
         if (todaysMenus != null) {
-            listener.onAllMenusResult(todaysMenus, null);
+            listener.onGetDailyMenus(todaysMenus, null);
 
         } else {
             GetAllDiningMenusTask task = new GetAllDiningMenusTask(LocalDate.now(), listener);
@@ -51,10 +55,10 @@ public class DiningData {
     }
 
     /** Returns the dining menus for a given day. Accesses cache if available (not yet implemented) */
-    public void getAllDailyMenus(LocalDate date, GetAllDiningMenusTask.AllMenusListener listener) {
+    public void getAllDailyMenus(LocalDate date, DailyMenusListener listener) {
 
         if (todaysMenus != null && date.equals(LocalDate.now())) {
-            listener.onAllMenusResult(todaysMenus, null);
+            listener.onGetDailyMenus(todaysMenus, null);
 
         } else {
             GetAllDiningMenusTask task = new GetAllDiningMenusTask(date, listener);
@@ -64,13 +68,13 @@ public class DiningData {
     }
 
     /** Returns locations. Accesses a cache if available */
-    public void getLocations(GetDiningLocationsTask.GetDiningLocationsListener locationsListener) {
+    public void getLocations(LocationsListener listener) {
 
         if (cachedLocations != null) {
-            locationsListener.onDiningLocationsResult(cachedLocations, null);
+            listener.onGetLocations(cachedLocations, null);
 
         } else {
-            GetDiningLocationsTask task = new GetDiningLocationsTask(locationsListener);
+            GetDiningLocationsTask task = new GetDiningLocationsTask(listener);
             task.execute();
         }
 

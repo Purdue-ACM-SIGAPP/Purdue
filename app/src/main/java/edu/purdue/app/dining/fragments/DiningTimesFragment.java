@@ -15,6 +15,7 @@ import java.util.TreeMap;
 
 import edu.purdue.app.R;
 import edu.purdue.app.dining.data.DiningData;
+import edu.purdue.app.dining.listeners.DailyMenusListener;
 import edu.purdue.app.dining.models.DailyMenu;
 import edu.purdue.app.dining.models.Meal;
 import edu.purdue.app.dining.tasks.GetAllDiningMenusTask;
@@ -23,7 +24,7 @@ import edu.purdue.app.widgets.CardViewListAdapter;
 /**
  * Created by mike on 2/5/15.
  */
-public class DiningTimesFragment extends Fragment implements GetAllDiningMenusTask.AllMenusListener {
+public class DiningTimesFragment extends Fragment implements DailyMenusListener {
 
     private GridView timesGrid;
 
@@ -48,7 +49,7 @@ public class DiningTimesFragment extends Fragment implements GetAllDiningMenusTa
     }
 
     @Override
-    public void onAllMenusResult(List<DailyMenu> menus, Exception ex) {
+    public void onGetDailyMenus(List<DailyMenu> menus, Exception ex) {
 
         // Map the order of the meals to their names so we can paint them on the UI in order
         SortedMap<Integer, String> orderTimeStringMap = new TreeMap<>();

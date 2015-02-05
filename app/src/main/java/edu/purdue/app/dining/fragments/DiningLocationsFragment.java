@@ -13,6 +13,7 @@ import java.util.List;
 
 import edu.purdue.app.R;
 import edu.purdue.app.dining.data.DiningData;
+import edu.purdue.app.dining.listeners.LocationsListener;
 import edu.purdue.app.dining.models.Location;
 import edu.purdue.app.dining.tasks.GetDiningLocationsTask;
 import edu.purdue.app.widgets.CardViewListAdapter;
@@ -20,7 +21,7 @@ import edu.purdue.app.widgets.CardViewListAdapter;
 /**
  * Created by mike on 2/5/15.
  */
-public class DiningLocationsFragment extends Fragment implements GetDiningLocationsTask.GetDiningLocationsListener {
+public class DiningLocationsFragment extends Fragment implements LocationsListener {
 
     private GridView locationsGrid;
 
@@ -45,7 +46,7 @@ public class DiningLocationsFragment extends Fragment implements GetDiningLocati
     }
 
     @Override
-    public void onDiningLocationsResult(List<Location> locations, Exception ex) {
+    public void onGetLocations(List<Location> locations, Exception ex) {
 
         // Compose a list of string locations (for now)
         List<String> locationStrings = new ArrayList<>();

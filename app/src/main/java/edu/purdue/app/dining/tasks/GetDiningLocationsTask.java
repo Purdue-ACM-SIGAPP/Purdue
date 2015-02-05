@@ -12,6 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
+import edu.purdue.app.dining.listeners.LocationsListener;
 import edu.purdue.app.dining.models.Location;
 import edu.purdue.app.util.Logger;
 
@@ -21,18 +22,14 @@ import edu.purdue.app.util.Logger;
  */
 public class GetDiningLocationsTask extends AsyncTask<Void, Void, List<Location>> {
 
-    public interface GetDiningLocationsListener {
-        public void onDiningLocationsResult(List<Location> locations, Exception ex);
-    }
-
     private static final String url = "http://api.hfs.purdue.edu/menus/v2/locations/";
 
-    private GetDiningLocationsListener listener;
+    private LocationsListener listener;
     private Exception exception;
 
     public GetDiningLocationsTask() {}
 
-    public GetDiningLocationsTask(GetDiningLocationsListener listener) {
+    public GetDiningLocationsTask(LocationsListener listener) {
         this.listener = listener;
     }
 
@@ -70,7 +67,7 @@ public class GetDiningLocationsTask extends AsyncTask<Void, Void, List<Location>
     @Override
     protected void onPostExecute(List<Location> locations) {
         if (listener != null) {
-            listener.onDiningLocationsResult(locations, exception);
+            listener.onGetLocations(locations, exception);
         }
     }
 

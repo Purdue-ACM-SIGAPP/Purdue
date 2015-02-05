@@ -10,6 +10,8 @@ import org.joda.time.LocalDate;
 import java.util.List;
 
 import edu.purdue.app.data.Cache;
+import edu.purdue.app.dining.listeners.DailyMenusListener;
+import edu.purdue.app.dining.listeners.LocationsListener;
 import edu.purdue.app.dining.models.DailyMenu;
 import edu.purdue.app.dining.models.Location;
 import edu.purdue.app.dining.tasks.GetAllDiningMenusTask;
@@ -19,8 +21,8 @@ import edu.purdue.app.dining.tasks.GetDiningLocationsTask;
  * Created by mike on 1/24/15.
  */
 public class DiningUpdaterService extends Service implements
-        GetDiningLocationsTask.GetDiningLocationsListener,
-        GetAllDiningMenusTask.AllMenusListener {
+        LocationsListener,
+        DailyMenusListener {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
@@ -42,7 +44,7 @@ public class DiningUpdaterService extends Service implements
     }
 
     @Override
-    public void onDiningLocationsResult(List<Location> locations, Exception ex) {
+    public void onGetLocations(List<Location> locations, Exception ex) {
 
         // Store these in shared preferences
         // TODO: Handle exception
@@ -55,7 +57,7 @@ public class DiningUpdaterService extends Service implements
 
 
     @Override
-    public void onAllMenusResult(List<DailyMenu> menus, Exception ex) {
+    public void onGetDailyMenus(List<DailyMenu> menus, Exception ex) {
 
         // Store in sprefs
         // TODO: Handle exceptions
