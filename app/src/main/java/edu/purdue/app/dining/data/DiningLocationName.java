@@ -45,4 +45,14 @@ public enum DiningLocationName {
         return new URL(urlStr);
     }
 
+    /** Returns a dining location given its name */
+    public static DiningLocationName fromName(String name) {
+        for (DiningLocationName locationName : DiningLocationName.values()) {
+            if (locationName.printableName().equals(name)) {
+                return locationName;
+            }
+        }
+        return null;
+    }
+
 }
