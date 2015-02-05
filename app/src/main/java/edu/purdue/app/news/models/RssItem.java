@@ -2,7 +2,7 @@ package edu.purdue.app.news.models;
 
 /**
  * This code encapsulates RSS item data.
- * Our application needs title and link data.
+ * Our application needs title, link, and date data.
  *
  * @author hughe127
  *

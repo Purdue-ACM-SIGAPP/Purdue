@@ -20,6 +20,7 @@ import edu.purdue.app.news.widgets.NewsStoryDisplayAdapter;
  * Application activity for the Rss categories view
  * 
  * @author hughe127
+ * @author fieldn
  */
 public class NewsStoryListActivity extends Activity implements
         RssFeedTask.RssFeedResultListener,

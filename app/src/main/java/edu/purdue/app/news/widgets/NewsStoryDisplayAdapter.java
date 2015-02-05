@@ -1,23 +1,16 @@
 package edu.purdue.app.news.widgets;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 import java.util.List;
-
 import edu.purdue.app.R;
-import edu.purdue.app.news.data.DefaultNewsCategories;
 import edu.purdue.app.news.models.RssItem;
-import edu.purdue.app.util.Logger;
 
-/**
+/** Adapter for news story list activity (after selecting a news category.)
  * Created by fieldn on 2/3/2015.
  */
 public class NewsStoryDisplayAdapter extends BaseAdapter{
