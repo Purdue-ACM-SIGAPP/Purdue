@@ -1,6 +1,7 @@
 package edu.purdue.app.dining.fragments;
 
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import java.util.List;
 import edu.purdue.app.R;
 import edu.purdue.app.dining.data.DiningData;
 import edu.purdue.app.dining.listeners.LocationsListener;
+import edu.purdue.app.dining.listeners.OnLoadedListener;
 import edu.purdue.app.dining.models.Location;
 import edu.purdue.app.dining.tasks.GetDiningLocationsTask;
 import edu.purdue.app.widgets.CardViewListAdapter;
@@ -24,6 +26,7 @@ import edu.purdue.app.widgets.CardViewListAdapter;
 public class DiningLocationsFragment extends Fragment implements LocationsListener {
 
     private GridView locationsGrid;
+    private OnLoadedListener loadedListener;
 
     @Nullable
     @Override
@@ -38,8 +41,7 @@ public class DiningLocationsFragment extends Fragment implements LocationsListen
         return fragmentView;
     }
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void beginLoad() {
         // Get the list of locations
         DiningData data = new DiningData();
         data.getLocations(this);
@@ -58,6 +60,13 @@ public class DiningLocationsFragment extends Fragment implements LocationsListen
         CardViewListAdapter adapter = new CardViewListAdapter(getActivity(), locationStrings);
         locationsGrid.setAdapter(adapter);
 
+        // Alert that we're loaded
+        loadedListener.onLoaded(this.getClass());
+
+    }
+
+    public void setOnLoadedListener(OnLoadedListener loadedListener) {
+        this.loadedListener = loadedListener;
     }
 
 }

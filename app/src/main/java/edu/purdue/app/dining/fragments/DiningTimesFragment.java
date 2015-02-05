@@ -16,6 +16,7 @@ import java.util.TreeMap;
 import edu.purdue.app.R;
 import edu.purdue.app.dining.data.DiningData;
 import edu.purdue.app.dining.listeners.DailyMenusListener;
+import edu.purdue.app.dining.listeners.OnLoadedListener;
 import edu.purdue.app.dining.models.DailyMenu;
 import edu.purdue.app.dining.models.Meal;
 import edu.purdue.app.dining.tasks.GetAllDiningMenusTask;
@@ -27,6 +28,7 @@ import edu.purdue.app.widgets.CardViewListAdapter;
 public class DiningTimesFragment extends Fragment implements DailyMenusListener {
 
     private GridView timesGrid;
+    private OnLoadedListener loadedListener;
 
     @Nullable
     @Override
@@ -41,9 +43,8 @@ public class DiningTimesFragment extends Fragment implements DailyMenusListener 
         return fragmentView;
     }
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        // Get the list of locations
+    public void beginLoad() {
+        // Get the list of times
         DiningData data = new DiningData();
         data.getAllDailyMenus(this);
     }
@@ -70,6 +71,13 @@ public class DiningTimesFragment extends Fragment implements DailyMenusListener 
         CardViewListAdapter adapter = new CardViewListAdapter(getActivity(), timeStrings);
         timesGrid.setAdapter(adapter);
 
+        // Alert that we're loaded
+        loadedListener.onLoaded(this.getClass());
+
+    }
+
+    public void setOnLoadedListener(OnLoadedListener loadedListener) {
+        this.loadedListener = loadedListener;
     }
 
 }
