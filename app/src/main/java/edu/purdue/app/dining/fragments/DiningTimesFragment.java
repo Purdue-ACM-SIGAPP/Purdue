@@ -9,21 +9,16 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
 import edu.purdue.app.R;
 import edu.purdue.app.dining.data.DiningData;
 import edu.purdue.app.dining.models.DailyMenu;
-import edu.purdue.app.dining.models.Location;
 import edu.purdue.app.dining.models.Meal;
 import edu.purdue.app.dining.tasks.GetAllDiningMenusTask;
-import edu.purdue.app.dining.tasks.GetDiningLocationsTask;
-import edu.purdue.app.dining.widgets.DiningMasterAdapter;
+import edu.purdue.app.widgets.CardViewListAdapter;
 
 /**
  * Created by mike on 2/5/15.
@@ -71,7 +66,7 @@ public class DiningTimesFragment extends Fragment implements GetAllDiningMenusTa
         }
 
         // Create and set the adapter
-        DiningMasterAdapter adapter = new DiningMasterAdapter(getActivity(), timeStrings);
+        CardViewListAdapter adapter = new CardViewListAdapter(getActivity(), timeStrings);
         timesGrid.setAdapter(adapter);
 
     }

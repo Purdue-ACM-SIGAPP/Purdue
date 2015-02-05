@@ -15,7 +15,7 @@ import edu.purdue.app.R;
 import edu.purdue.app.dining.data.DiningData;
 import edu.purdue.app.dining.models.Location;
 import edu.purdue.app.dining.tasks.GetDiningLocationsTask;
-import edu.purdue.app.dining.widgets.DiningMasterAdapter;
+import edu.purdue.app.widgets.CardViewListAdapter;
 
 /**
  * Created by mike on 2/5/15.
@@ -54,7 +54,7 @@ public class DiningLocationsFragment extends Fragment implements GetDiningLocati
         }
 
         // Create the adapter and set it to the gridview
-        DiningMasterAdapter adapter = new DiningMasterAdapter(getActivity(), locationStrings);
+        CardViewListAdapter adapter = new CardViewListAdapter(getActivity(), locationStrings);
         locationsGrid.setAdapter(adapter);
 
     }

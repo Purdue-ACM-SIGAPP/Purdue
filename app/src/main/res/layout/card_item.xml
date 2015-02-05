@@ -1,36 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--    This is a small card item which can be used in different
-        areas of the app to maintain a consistent visual design.
-        This is a small card which is useful in lists of large numbers
-        of items. This is a simple view which only contains a single
-        textview. For anything more complicated, you can copypaste
-        this or... something. Idk.
+<!--    This is a simple card item which you can use in your layouts.
+        It just contains a single textview centered inside the view
+        with a consistent border around it. This view will always take
+        up the full width it is given (minus some padding of course).
 -->
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/card_item_small_container"
+    android:id="@+id/card_item_container"
     android:orientation="vertical"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     >
 
     <android.support.v7.widget.CardView
 
-        android:id="@+id/card_item_small_cardview"
-        android:layout_width="125dp"
-        android:layout_height="60dp"
+        android:id="@+id/card_item_cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="10dp"
         card_view:cardCornerRadius="0dp"
         >
 
         <TextView
-            android:id="@+id/card_item_small_textview"
+            android:id="@+id/card_item_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_margin="20dp"
             android:padding="5dp"
             android:textSize="18dp"
             android:text="Testing"
