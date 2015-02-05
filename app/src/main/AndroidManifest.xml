@@ -43,6 +43,12 @@
             />
 
         <activity
+            android:name=".dining.activities.DiningActivity"
+            android:parentActivityName=".mainmenu.activities.MainMenuActivity"
+            android:label="Dining Menus"
+            />
+
+        <activity
             android:name=".prefs.activities.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:parentActivityName=".mainmenu.activities.MainMenuActivity" >

@@ -38,6 +38,11 @@
         <item name="android:backgroundStacked">@drawable/ab_stacked_solid_purdue</item>
         <item name="android:backgroundSplit">@drawable/ab_bottom_solid_purdue</item>
         <item name="android:progressBarStyle">@style/ProgressBar.Purdue</item>
+        <item name="android:titleTextStyle">@style/ActionBar.Text.Purdue</item>
+    </style>
+
+    <style name="ActionBar.Text.Purdue" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="ActionBar.Transparent.Purdue" parent="@android:style/Widget.Holo.Light.ActionBar">
