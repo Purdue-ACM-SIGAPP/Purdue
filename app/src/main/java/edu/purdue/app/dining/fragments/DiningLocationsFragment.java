@@ -1,7 +1,6 @@
 package edu.purdue.app.dining.fragments;
 
 import android.app.Fragment;
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -20,35 +19,15 @@ import edu.purdue.app.dining.data.DiningData;
 import edu.purdue.app.dining.listeners.LocationsListener;
 import edu.purdue.app.dining.listeners.OnLoadedListener;
 import edu.purdue.app.dining.models.Location;
-import edu.purdue.app.dining.tasks.GetDiningLocationsTask;
+import edu.purdue.app.fragments.MultiSelectCardListFragment;
 import edu.purdue.app.widgets.CardViewListAdapter;
 
 /**
  * Created by mike on 2/5/15.
  */
-public class DiningLocationsFragment extends Fragment implements LocationsListener, AdapterView.OnItemClickListener {
+public class DiningLocationsFragment extends MultiSelectCardListFragment implements LocationsListener {
 
-    private GridView locationsGrid;
-    private Set<Integer> selectedLocations;
     private OnLoadedListener loadedListener;
-
-    public DiningLocationsFragment() {
-        this.selectedLocations = new HashSet<>();
-    }
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        // Inflate the view
-        View fragmentView = inflater.inflate(R.layout.frag_dining_master, container, false);
-
-        // Get elements from the view
-        locationsGrid = (GridView) fragmentView.findViewById(R.id.dining_master_gridview);
-        locationsGrid.setOnItemClickListener(this);
-
-        return fragmentView;
-    }
 
     public void beginLoad() {
         // Get the list of locations
@@ -67,7 +46,7 @@ public class DiningLocationsFragment extends Fragment implements LocationsListen
 
         // Create the adapter and set it to the gridview
         CardViewListAdapter adapter = new CardViewListAdapter(getActivity(), locationStrings);
-        locationsGrid.setAdapter(adapter);
+        gridView.setAdapter(adapter);
 
         // Alert that we're loaded
         loadedListener.onLoaded(this.getClass());
@@ -76,24 +55,6 @@ public class DiningLocationsFragment extends Fragment implements LocationsListen
 
     public void setOnLoadedListener(OnLoadedListener loadedListener) {
         this.loadedListener = loadedListener;
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-        if (selectedLocations.contains(position)) {
-            selectedLocations.remove(position);
-
-            // Remove the highlighting from the view
-            view.setBackgroundColor(getResources().getColor(android.R.color.white));
-
-        } else {
-            selectedLocations.add(position);
-
-            // Add highlighting to the view
-            view.setBackgroundColor(getResources().getColor(R.color.black40));
-        }
-
     }
 
 }
