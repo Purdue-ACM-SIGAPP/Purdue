@@ -27,6 +27,7 @@ public class NewsCategoryActivity extends Activity implements AdapterView.OnItem
         NewsCategoryItemAdapter adapter = new NewsCategoryItemAdapter(this);
         categoryGrid.setAdapter(adapter);
         categoryGrid.setOnItemClickListener(this);
+        getActionBar().setTitle("News");
     }
 
     public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
@@ -39,6 +40,8 @@ public class NewsCategoryActivity extends Activity implements AdapterView.OnItem
 
         // We use the EXTRA_URL from webview activity here just to save time
         intent.putExtra(WebViewActivity.EXTRA_URL, url);
+
+        intent.putExtra("NewsCategoryName", DefaultNewsCategories.values()[pos].printable());
 
         this.startActivity(intent);
 

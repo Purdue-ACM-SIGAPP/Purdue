@@ -1,6 +1,5 @@
 package edu.purdue.app.news.activities;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,12 +34,8 @@ public class NewsStoryListActivity extends Activity implements
         super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_news_story_list);
 
-        ActionBar actionBar = getActionBar();
-        if (actionBar != null) {
-            actionBar.setHomeButtonEnabled(true);
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setDisplayShowHomeEnabled(true);
-        }
+        String categoryName = this.getIntent().getStringExtra("NewsCategoryName");
+        getActionBar().setTitle(categoryName + " News");
 
         // Get the URL we are going to be requesting to
         String url = this.getIntent().getStringExtra(WebViewActivity.EXTRA_URL);
