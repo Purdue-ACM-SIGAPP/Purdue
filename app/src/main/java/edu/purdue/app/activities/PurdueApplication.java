@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import edu.purdue.app.dining.data.DiningData;
 import edu.purdue.app.prefs.CustomOnSharedPreferenceChangeListener;
 import edu.purdue.app.util.Analytics;
 import edu.purdue.app.util.Services;
@@ -28,6 +29,10 @@ public class PurdueApplication extends Application {
 
         // Start background services
         Services.startServices(this);
+
+        // Precache all dining data to memory
+        // This replaces a consistent database for now
+        DiningData.precache();
 
     }
 

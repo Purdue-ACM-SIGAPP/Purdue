@@ -7,6 +7,7 @@ import org.joda.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.purdue.app.dining.listeners.DailyMenusListener;
 import edu.purdue.app.dining.models.DailyMenu;
 import edu.purdue.app.dining.data.DiningLocationName;
 
@@ -17,19 +18,15 @@ import edu.purdue.app.dining.data.DiningLocationName;
  */
 public class GetAllDiningMenusTask extends AsyncTask<Void, Void, List<DailyMenu>> {
 
-    public interface AllMenusListener {
-        public void onAllMenusResult(List<DailyMenu> menus, Exception ex);
-    }
-
     private LocalDate date;
-    private AllMenusListener listener;
+    private DailyMenusListener listener;
     private Exception exception;
 
     public GetAllDiningMenusTask(LocalDate date) {
         this.date = date;
     }
 
-    public GetAllDiningMenusTask(LocalDate date, AllMenusListener listener) {
+    public GetAllDiningMenusTask(LocalDate date, DailyMenusListener listener) {
         this(date);
         this.listener = listener;
     }
@@ -74,7 +71,7 @@ public class GetAllDiningMenusTask extends AsyncTask<Void, Void, List<DailyMenu>
     @Override
     protected void onPostExecute(List<DailyMenu> dailyMenus) {
         if (listener != null) {
-            listener.onAllMenusResult(dailyMenus, exception);
+            listener.onGetDailyMenus(dailyMenus, exception);
         }
     }
 

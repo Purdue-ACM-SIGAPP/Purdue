@@ -10,7 +10,10 @@ import org.joda.time.LocalDate;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
+import edu.purdue.app.dining.listeners.DailyMenusListener;
 import edu.purdue.app.dining.models.DailyMenu;
 import edu.purdue.app.dining.data.DiningLocationName;
 import edu.purdue.app.util.Logger;
@@ -22,14 +25,9 @@ import edu.purdue.app.util.Logger;
  */
 public class GetDailyDiningMenuTask extends AsyncTask<Void, Void, DailyMenu> {
 
-    /** Callback interface for this task */
-    public interface DailyDiningMenuListener {
-        public void onDailyMenuResult(DailyMenu menu, Exception ex);
-    }
-
     private LocalDate date;
     private DiningLocationName locationName;
-    private DailyDiningMenuListener listener;
+    private DailyMenusListener listener;
     private Exception exception;
 
     public GetDailyDiningMenuTask(LocalDate date, DiningLocationName location) {
@@ -37,7 +35,7 @@ public class GetDailyDiningMenuTask extends AsyncTask<Void, Void, DailyMenu> {
         this.locationName = location;
     }
 
-    public GetDailyDiningMenuTask(LocalDate date, DiningLocationName locationName, DailyDiningMenuListener listener) {
+    public GetDailyDiningMenuTask(LocalDate date, DiningLocationName locationName, DailyMenusListener listener) {
         this(date, locationName);
         this.listener = listener;
     }
@@ -84,7 +82,9 @@ public class GetDailyDiningMenuTask extends AsyncTask<Void, Void, DailyMenu> {
     @Override
     protected void onPostExecute(DailyMenu menu) {
         if (listener != null) {
-            listener.onDailyMenuResult(menu, exception);
+            List<DailyMenu> list = new ArrayList<>();
+            list.add(menu);
+            listener.onGetDailyMenus(list, exception);
         }
     }
 

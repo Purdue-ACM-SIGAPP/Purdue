@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--    This is a simple card item which you can use in your layouts.
+        It just contains a single textview centered inside the view
+        with a consistent border around it. This view will always take
+        up the full width it is given (minus some padding of course).
+-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_item_container"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <android.support.v7.widget.CardView
+
+        android:id="@+id/card_item_cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        card_view:cardCornerRadius="0dp"
+        >
+
+        <TextView
+            android:id="@+id/card_item_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:padding="5dp"
+            android:textSize="18dp"
+            android:text="Testing"
+            />
+
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>
+
+
+
