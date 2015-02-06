@@ -1,4 +1,4 @@
-package edu.purdue.app.dining.listeners;
+package edu.purdue.app.listeners;
 
 /**
  *  A generic interface for alerting one object that another object has finished loading.

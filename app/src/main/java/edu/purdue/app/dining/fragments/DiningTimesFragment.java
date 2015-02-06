@@ -1,22 +1,13 @@
 package edu.purdue.app.dining.fragments;
 
-import android.app.Fragment;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.GridView;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-import edu.purdue.app.R;
 import edu.purdue.app.dining.data.DiningData;
 import edu.purdue.app.dining.listeners.DailyMenusListener;
-import edu.purdue.app.dining.listeners.OnLoadedListener;
+import edu.purdue.app.listeners.OnLoadedListener;
 import edu.purdue.app.dining.models.DailyMenu;
 import edu.purdue.app.dining.models.Meal;
 import edu.purdue.app.fragments.MultiSelectCardListFragment;

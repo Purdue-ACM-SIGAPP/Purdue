@@ -14,6 +14,7 @@
         android:numColumns="1"
         android:divider="@null"
         android:dividerHeight="0dp"
+        android:scrollbars="none"
         />
 
 </LinearLayout>

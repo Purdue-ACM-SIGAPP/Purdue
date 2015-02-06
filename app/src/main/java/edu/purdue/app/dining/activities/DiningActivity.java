@@ -4,21 +4,25 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.TextView;
 
 import edu.purdue.app.R;
-import edu.purdue.app.dining.data.DiningLocationName;
 import edu.purdue.app.dining.fragments.DiningLocationsFragment;
 import edu.purdue.app.dining.fragments.DiningTimesFragment;
-import edu.purdue.app.dining.listeners.OnLoadedListener;
+import edu.purdue.app.listeners.OnLoadedListener;
 
 /**
  * Created by mike on 2/4/15.
  */
-public class DiningActivity extends Activity implements OnLoadedListener {
+public class DiningActivity extends Activity
+        implements OnLoadedListener, View.OnClickListener, AdapterView.OnItemClickListener {
 
     private ProgressDialog loadingDialog;
     private DiningLocationsFragment locationsFragment;
     private DiningTimesFragment timesFragment;
+    private TextView selectedItemsDisplay;
 
     // Keep track when children are loaded
     private boolean locationsLoaded = false, timesLoaded = false;
@@ -37,9 +41,16 @@ public class DiningActivity extends Activity implements OnLoadedListener {
         timesFragment =
                 (DiningTimesFragment) manager.findFragmentById(R.id.dining_times_fragment);
 
+        // And the textview at the bottom
+        selectedItemsDisplay = (TextView) findViewById(R.id.dining_bottom_bar);
+        selectedItemsDisplay.setOnClickListener(this);
+
         // Set this activity as a listener for when the data has finished loading
         locationsFragment.setOnLoadedListener(this);
         timesFragment.setOnLoadedListener(this);
+
+        // Set the activity as an onclicklistener for the fragment
+        locationsFragment.setOnItemClickListener(this);
 
         // Start a loading spinner
         startLoadingSpinner();
@@ -78,6 +89,18 @@ public class DiningActivity extends Activity implements OnLoadedListener {
         if (locationsLoaded && timesLoaded) {
             stopLoadingSpinner();
         }
+
+    }
+
+    @Override
+    public void onClick(View v) {
+
+
+
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
     }
 

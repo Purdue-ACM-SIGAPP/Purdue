@@ -23,12 +23,12 @@ import edu.purdue.app.R;
  *  set an adapter in onCreateView()
  *  Created by mike on 2/5/15.
  */
-public abstract class MultiSelectCardListFragment extends Fragment implements AdapterView.OnItemClickListener {
+public abstract class MultiSelectCardListFragment extends CardListFragment
+        implements AdapterView.OnItemClickListener {
 
-    protected GridView gridView;
     protected Set<Integer> selectedItems;
 
-    private int white, highlighted;
+    private int transparent, highlighted;
 
     public MultiSelectCardListFragment() {
         this.selectedItems = new HashSet<>();
@@ -37,15 +37,9 @@ public abstract class MultiSelectCardListFragment extends Fragment implements Ad
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the view
-        View fragmentView = inflater.inflate(R.layout.card_list, container, false);
-
-        // Get elements from the view
-        gridView = (GridView) fragmentView.findViewById(R.id.card_list_gridview);
+        View view = super.onCreateView(inflater, container, savedInstanceState);
         gridView.setOnItemClickListener(this);
-
-        return fragmentView;
-
+        return view;
     }
 
     @Override
@@ -55,7 +49,7 @@ public abstract class MultiSelectCardListFragment extends Fragment implements Ad
         // Prepare the colors that we use to switch the view colors
         // This needs to be done when the fragment is attached to an activity because we
         // need the resources from the activity.
-        white = getResources().getColor(android.R.color.white);
+        transparent = getResources().getColor(android.R.color.transparent);
         highlighted = getResources().getColor(R.color.black40);
 
     }
@@ -65,7 +59,7 @@ public abstract class MultiSelectCardListFragment extends Fragment implements Ad
 
         if (selectedItems.contains(position)) {
             // Remove the highlighting from the view
-            view.setBackgroundColor(white);
+            view.setBackgroundColor(transparent);
 
             selectedItems.remove(position);
 
