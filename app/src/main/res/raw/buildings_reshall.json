@@ -1,0 +1,128 @@
+[
+	{
+		"short_name"	: "CARY",
+		"full_name"	: "Cary Halls",
+		"lat"		: 40.432048,
+		"lng"		: -86.917959
+	},
+	{
+		"short_name"	: "DUHM",
+		"full_name"	: "Duhme Hall",
+		"lat"		: 40.425507,
+		"lng"		: -86.920642
+	},
+	{
+		"short_name"	: "ERHT",
+		"full_name"	: "Earhart Hall",
+		"lat"		: 40.425832,
+		"lng"		: -86.924981
+	},
+	{
+		"short_name"	: "FRST",
+		"full_name"	: "First Street Towers",
+		"lat"		: 40.424933,
+		"lng"		: -86.924563
+	},
+	{
+		"short_name"	: "HARR",
+		"full_name"	: "Harrison Hall",
+		"lat"		: 40.425052,
+		"lng"		: -86.926746
+	},
+	{
+		"short_name"	: "HAWK",
+		"full_name"	: "Hawkins Hall",
+		"lat"		: 40.422811,
+		"lng"		: -86.911393
+	},
+	{
+		"short_name"	: "HILL",
+		"full_name"	: "Hillenbrand Hall",
+		"lat"		: 40.426887,
+		"lng"		: -86.926435
+	},
+	{
+		"short_name"	: "HLTP",
+		"full_name"	: "Hilltop Apartments",
+		"lat"		: 40.4336,
+		"lng"		: -86.920277
+	},
+	{
+		"short_name"	: "MCUT",
+		"full_name"	: "McCutcheon Hall",
+		"lat"		: 40.425052,
+		"lng"		: -86.928028
+	},
+	{
+		"short_name"	: "MRDH",
+		"full_name"	: "Meredith Hall",
+		"lat"		: 40.426281,
+		"lng"		: -86.923297
+	},
+	{
+		"short_name"	: "OWEN",
+		"full_name"	: "Owen Hall",
+		"lat"		: 40.432244,
+		"lng"		: -86.920706
+	},
+	{
+		"short_name"	: "PV",
+		"full_name"	: "Purdue Village",
+		"lat"		: 40.421235,
+		"lng"		: -86.926532
+	},
+	{
+		"short_name"	: "SHLY",
+		"full_name"	: "Shealy Hall",
+		"lat"		: 40.426111,
+		"lng"		: -86.920685
+	},
+	{
+		"short_name"	: "SHRV",
+		"full_name"	: "Shreve Hall",
+		"lat"		: 40.426783,
+		"lng"		: -86.924933
+	},
+	{
+		"short_name"	: "TARK",
+		"full_name"	: "Tarkington Hall",
+		"lat"		: 40.430611,
+		"lng"		: -86.920717
+	},
+	{
+		"short_name"	: "TSS",
+		"full_name"	: "Third Street Suites",
+		"lat"		: 40.427704,
+		"lng"		: -86.920631
+	},
+	{
+		"short_name"	: "VAWT",
+		"full_name"	: "Vawter Hall",
+		"lat"		: 40.427081,
+		"lng"		: -86.920722
+	},
+	{
+		"short_name"	: "WARN",
+		"full_name"	: "Warren Hall",
+		"lat"		: 40.426444,
+		"lng"		: -86.92069
+	},
+	{
+		"short_name"	: "WILY",
+		"full_name"	: "Wiley Hall",
+		"lat"		: 40.429451,
+		"lng"		: -86.920706
+	},
+	{
+		"short_name"	: "WIND",
+		"full_name"	: "Windsor Halls",
+		"lat"		: 40.426277,
+		"lng"		: -86.92099
+	},
+	{
+		"short_name"	: "WOOD",
+		"full_name"	: "Wood Hall",
+		"lat"		: 40.426305,
+		"lng"		: -86.921559
+	}
+]

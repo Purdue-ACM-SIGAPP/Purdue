@@ -1,0 +1,110 @@
+[
+	{
+		"short_name"	: "AQUA",
+		"full_name"	: "Boilermaker Aquatic Center",
+		"lat"		: 40.428096,
+		"lng"		: -86.923292
+	},
+	{
+		"short_name"	: "?",
+		"full_name"	: "Bell Tower",
+		"lat"		: 40.427279,
+		"lng"		: -86.914043
+	},
+	{
+		"short_name"	: "CREC",
+		"full_name"	: "Cordova Recreational Sports Center",
+		"lat"		: 40.428414,
+		"lng"		: -86.922412
+	},
+	{
+		"short_name"	: "DAUC",
+		"full_name"	: "Dick and Sandy Dauch Alumni Center",
+		"lat"		: 40.421839,
+		"lng"		: -86.910836
+	},
+	{
+		"short_name"	: "DMNT",
+		"full_name"	: "DeMent Fire Station",
+		"lat"		: 40.427679,
+		"lng"		: -86.923978
+	},
+	{
+		"short_name"	: "ELLT",
+		"full_name"	: "Elliot Hall of Music",
+		"lat"		: 40.427793,
+		"lng"		: -86.914988
+	},
+	{
+		"short_name"	: "FWLR",
+		"full_name"	: "Fowler Memorial House",
+		"lat"		: 40.424802,
+		"lng"		: -86.922289
+	},
+	{
+		"short_name"	: "?",
+		"full_name"	: "Engineering Fountain",
+		"lat"		: 40.428635,
+		"lng"		: -86.913786
+	},
+	{
+		"short_name"	: "HNLY",
+		"full_name"	: "Hanley Hall",
+		"lat"		: 40.424704,
+		"lng"		: -86.922846
+	},
+	{
+		"short_name"	: "HPN",
+		"full_name"	: "Heating and Power Plant North",
+		"lat"		: 40.427181,
+		"lng"		: -86.913368
+	},
+	{
+		"short_name"	: "IAF",
+		"full_name"	: "Intercollegiate Athletic Facility",
+		"lat"		: 40.434106,
+		"lng"		: -86.916575
+	},
+	{
+		"short_name"	: "LAMB",
+		"full_name"	: "Lambert Fieldhouse and Gymnasium",
+		"lat"		: 40.432228,
+		"lng"		: -86.915921
+	},
+	{
+		"short_name"	: "MACK",
+		"full_name"	: "Mackey Arena",
+		"lat"		: 40.433314,
+		"lng"		: -86.916018
+	},
+	{
+		"short_name"	: "?",
+		"full_name"	: "Memorial Mall",
+		"lat"		: 40.42491,
+		"lng"		: -86.914322
+	},
+	{
+		"short_name"	: "MOL",
+		"full_name"	: "Mollenkopf Athletic Center",
+		"lat"		: 40.435593,
+		"lng"		: -86.916769
+	},
+	{
+		"short_name"	: "?",
+		"full_name"	: "Services Building",
+		"lat"		: 40.421112,
+		"lng"		: -86.916897
+	},
+	{
+		"short_name"	: "?",
+		"full_name"	: "South Fountain",
+		"lat"		: 40.424998,
+		"lng"		: -86.915835
+	},
+	{
+		"short_name"	: "STDM",
+		"full_name"	: "Ross-Ade Stadium",
+		"lat"		: 40.434531,
+		"lng"		: -86.918474
+	}
+]
