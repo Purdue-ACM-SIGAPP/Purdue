@@ -10,6 +10,7 @@ import java.util.List;
 
 import edu.purdue.app.R;
 import edu.purdue.app.dining.activities.DiningActivity;
+import edu.purdue.app.maps.MapsActivity;
 import edu.purdue.app.news.activities.NewsCategoryActivity;
 
 /**
@@ -55,8 +56,8 @@ public abstract class MainMenuItem {
 
         ArrayList<MainMenuItem> toReturn = new ArrayList<MainMenuItem>() {{
 
-            add(new WebViewMenuItem(c,
-                    r.getString(R.string.main_menu_item_map), r.getDrawable(R.drawable.ic_map), "http://www.purdue.edu/campus_map/"));
+            add(new ActivityMenuItem(c,
+                    r.getString(R.string.main_menu_item_map), r.getDrawable(R.drawable.ic_map), MapsActivity.class));
             add(new ActivityMenuItem(c,
                     r.getString(R.string.main_menu_item_dining), r.getDrawable(R.drawable.ic_menus), DiningActivity.class));
             add(new WebViewMenuItem(c,

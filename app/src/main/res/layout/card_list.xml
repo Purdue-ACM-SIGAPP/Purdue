@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+
+<GridView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_list_gridview"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-
-    <GridView
-        android:id="@+id/card_list_gridview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:listSelector="@android:color/transparent"
-        android:cacheColorHint="@android:color/transparent"
-        android:background="@android:color/transparent"
-        android:numColumns="1"
-        android:divider="@null"
-        android:dividerHeight="0dp"
-        android:scrollbars="none"
-        />
-
-</LinearLayout>
+    android:layout_height="match_parent"
+    android:listSelector="@android:color/transparent"
+    android:cacheColorHint="@android:color/transparent"
+    android:background="@android:color/transparent"
+    android:numColumns="1"
+    android:divider="@null"
+    android:dividerHeight="0dp"
+    android:scrollbars="none"
+    />
