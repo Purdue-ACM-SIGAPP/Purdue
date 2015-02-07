@@ -3,6 +3,7 @@ package edu.purdue.app.fragments;
 import android.app.Activity;
 import android.app.Fragment;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -30,7 +31,8 @@ public abstract class MultiSelectCardListFragment extends CardListFragment
 
     protected SortedSet<Integer> selectedItems;
 
-    private int transparent, highlighted;
+    private int transparent;
+    private Drawable highlighted;
 
     public MultiSelectCardListFragment() {
         this.selectedItems = new TreeSet<>();
@@ -52,7 +54,7 @@ public abstract class MultiSelectCardListFragment extends CardListFragment
         // This needs to be done when the fragment is attached to an activity because we
         // need the resources from the activity.
         transparent = getResources().getColor(android.R.color.transparent);
-        highlighted = getResources().getColor(R.color.black40);
+        highlighted = getResources().getDrawable(R.drawable.card_drop_shadow);
 
     }
 
@@ -66,13 +68,13 @@ public abstract class MultiSelectCardListFragment extends CardListFragment
         if (selectedItems.contains(position)) {
             // Remove the highlighting from the view
             view.setBackgroundColor(transparent);
-
+            view.setBackgroundDrawable(null);
             selectedItems.remove(position);
 
         } else {
             // Add highlighting to the view
-            view.setBackgroundColor(highlighted);
-
+            view.setBackgroundColor(transparent);
+            view.setBackgroundDrawable(highlighted);
             selectedItems.add(position);
         }
 

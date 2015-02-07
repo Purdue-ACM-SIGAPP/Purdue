@@ -36,11 +36,10 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:background="@android:color/transparent"
         android:textSize="25dp"
-        android:text=""
+        android:text="Let Us Pick For You"
+        android:background="@color/old_gold"
         android:textColor="@android:color/white"
-        android:visibility="invisible"
         />
 
 </LinearLayout>

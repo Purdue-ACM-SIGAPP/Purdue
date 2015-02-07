@@ -155,11 +155,9 @@ public class DiningActivity extends Activity
         SortedSet<Integer> selectedTimes = timesFragment.getSelectedItems();
         SortedSet<Integer> selectedLocations = locationsFragment.getSelectedItems();
 
-        // If they are both zero, just hide the textview
+        // If they are both zero, display our "rundown"
         if (selectedTimes.size() == 0 && selectedLocations.size() == 0) {
-            selectedItemsDisplay.setText("");
-            selectedItemsDisplay.setVisibility(View.INVISIBLE);
-            selectedItemsDisplay.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+            selectedItemsDisplay.setText("Let Us Pick For You");
             return;
         }
 
@@ -196,6 +194,11 @@ public class DiningActivity extends Activity
             }
         }
 
+        // :)
+        if (selectedLocations.size() == 5 && selectedTimes.size() == 4) {
+            sb = new StringBuilder("Do you really want everything or did you just click them all because it looked like fun?");
+        }
+
         // Set the size of the text
         // We make the text tinier if they have a lot selected so we can fit it all
         // This isnt an exact science lol
@@ -209,10 +212,6 @@ public class DiningActivity extends Activity
 
         // Set it on the textview
         selectedItemsDisplay.setText(sb.toString());
-
-        // Make sure the textview is visible
-        selectedItemsDisplay.setVisibility(View.VISIBLE);
-        selectedItemsDisplay.setBackgroundColor(getResources().getColor(R.color.old_gold));
 
     }
 
