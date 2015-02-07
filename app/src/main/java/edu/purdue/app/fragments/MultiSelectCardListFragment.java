@@ -13,6 +13,8 @@ import android.widget.GridView;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import edu.purdue.app.R;
 
@@ -26,12 +28,12 @@ import edu.purdue.app.R;
 public abstract class MultiSelectCardListFragment extends CardListFragment
         implements AdapterView.OnItemClickListener {
 
-    protected Set<Integer> selectedItems;
+    protected SortedSet<Integer> selectedItems;
 
     private int transparent, highlighted;
 
     public MultiSelectCardListFragment() {
-        this.selectedItems = new HashSet<>();
+        this.selectedItems = new TreeSet<>();
     }
 
     @Nullable
@@ -52,6 +54,10 @@ public abstract class MultiSelectCardListFragment extends CardListFragment
         transparent = getResources().getColor(android.R.color.transparent);
         highlighted = getResources().getColor(R.color.black40);
 
+    }
+
+    public SortedSet<Integer> getSelectedItems() {
+        return new TreeSet<>(this.selectedItems);
     }
 
     @Override
