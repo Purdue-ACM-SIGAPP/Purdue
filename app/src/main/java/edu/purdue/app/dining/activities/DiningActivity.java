@@ -24,6 +24,7 @@ import edu.purdue.app.R;
 import edu.purdue.app.dining.data.DiningData;
 import edu.purdue.app.dining.data.DiningLocationName;
 import edu.purdue.app.dining.data.DiningTime;
+import edu.purdue.app.dining.fragments.DiningItemsListFragment;
 import edu.purdue.app.dining.fragments.DiningLocationsFragment;
 import edu.purdue.app.dining.fragments.DiningTimesFragment;
 import edu.purdue.app.dining.listeners.LocationsListener;
@@ -120,7 +121,10 @@ public class DiningActivity extends Activity
     @Override
     public void onClick(View v) {
 
-
+        FragmentManager manager = getFragmentManager();
+        manager.beginTransaction()
+                .setCustomAnimations(R.anim.slide_up, R.anim.slide_down)
+                .replace(R.id.dining_master_linearlayout, new DiningItemsListFragment());
 
     }
 
