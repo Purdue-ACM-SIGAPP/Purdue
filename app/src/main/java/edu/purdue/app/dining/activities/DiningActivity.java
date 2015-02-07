@@ -56,7 +56,7 @@ public class DiningActivity extends Activity
 
         // Change the title of the activity to the current date
         // And store the current date as the currently selected date
-        setTitle(LocalDate.now().toString());
+        setTitle("Menus Today");
         selectedDate = LocalDate.now();
 
         // Cache copies of the two component fragment's data here
@@ -91,12 +91,24 @@ public class DiningActivity extends Activity
         switch (item.getItemId()) {
             case R.id.dining_menu_yesterday:
                 selectedDate = selectedDate.minusDays(1);
-                setTitle(selectedDate.toString());
                 break;
             case R.id.dining_menu_tomorrow:
                 selectedDate = selectedDate.plusDays(1);
-                setTitle(selectedDate.toString());
                 break;
+        }
+
+        // Reset the title
+        if (selectedDate.equals(LocalDate.now())) {
+            setTitle("Menus Today");
+
+        } else if (selectedDate.equals(LocalDate.now().plusDays(1))) {
+            setTitle("Menus Tomorrow");
+
+        } else if (selectedDate.equals(LocalDate.now().minusDays(1))) {
+            setTitle("Menus Yesterday");
+
+        } else {
+            setTitle("Menus " + selectedDate.toString());
         }
 
         return true;
