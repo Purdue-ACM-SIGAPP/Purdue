@@ -5,6 +5,8 @@ import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.TypedValue;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
@@ -30,17 +32,16 @@ import edu.purdue.app.listeners.OnLoadedListener;
  * Created by mike on 2/4/15.
  */
 public class DiningActivity extends Activity
-        implements OnLoadedListener, View.OnClickListener, AdapterView.OnItemClickListener {
+        implements View.OnClickListener, AdapterView.OnItemClickListener {
 
-    private ProgressDialog loadingDialog;
     private DiningLocationsFragment locationsFragment;
     private DiningTimesFragment timesFragment;
 
+    /** Store the date that we are going to look up */
+    private LocalDate selectedDate;
+
     /** The textview at the bottom which acts as a display for what is selected */
     private TextView selectedItemsDisplay;
-
-    /** Keep track when children are loaded */
-    private boolean locationsLoaded = false, timesLoaded = false;
 
     /** Keep copies of the data the lists are displaying in the context of the activity */
     private List<Location> locationList;
@@ -52,6 +53,11 @@ public class DiningActivity extends Activity
 
         // Set the content view
         setContentView(R.layout.activity_dining);
+
+        // Change the title of the activity to the current date
+        // And store the current date as the currently selected date
+        setTitle(LocalDate.now().toString());
+        selectedDate = LocalDate.now();
 
         // Cache copies of the two component fragment's data here
         getData();
@@ -67,34 +73,35 @@ public class DiningActivity extends Activity
         selectedItemsDisplay = (TextView) findViewById(R.id.dining_bottom_bar);
         selectedItemsDisplay.setOnClickListener(this);
 
-        // Set this activity as a listener for when the data has finished loading
-        locationsFragment.setOnLoadedListener(this);
-        timesFragment.setOnLoadedListener(this);
-
         // Set the activity as an onclicklistener for the fragment
         locationsFragment.setOnItemClickListener(this);
         timesFragment.setOnItemClickListener(this);
 
-        // Start a loading spinner
-        startLoadingSpinner();
-
-        // Tell the fragments to start loading
-        // We move this method out of the onCreateView/onViewCreated call chain because the fragments
-        // absolutely cannot start loading before we've told them to assign the parent activity as a
-        // listener for when they are loaded, or else due to thread scheduling they might finish before
-        // the activity is set
-        locationsFragment.beginLoad();
-        timesFragment.beginLoad();
-
     }
 
-    /** This might seem strange at first, and it kind of is.
-     *  The fragments make a call to DiningData to get the data they need for the UI, and we make
-     *  a separate call here to do the same thing. So why aren't we sharing the same data? We
-     *  actually are. DiningData will maintain an in-memory cache of the data when it is downloaded
-     *  the first time then just return that each time. So the copy of the data in this class
-     *  and the copy in each fragment are actually exactly the same in memory.
-     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.dining, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.dining_menu_yesterday:
+                selectedDate = selectedDate.minusDays(1);
+                setTitle(selectedDate.toString());
+                break;
+            case R.id.dining_menu_tomorrow:
+                selectedDate = selectedDate.plusDays(1);
+                setTitle(selectedDate.toString());
+                break;
+        }
+
+        return true;
+    }
+
     public void getData() {
         DiningData diningData = new DiningData();
         diningData.getLocations(new LocationsListener() {
@@ -109,33 +116,6 @@ public class DiningActivity extends Activity
                 timesList = times;
             }
         });
-    }
-
-    public void startLoadingSpinner() {
-        loadingDialog = new ProgressDialog(this);
-        loadingDialog.setMessage("Please wait...");
-        loadingDialog.setCancelable(false);
-        loadingDialog.show();
-    }
-
-    public void stopLoadingSpinner() {
-        loadingDialog.cancel();
-    }
-
-    @Override
-    public void onLoaded(Class loaded) {
-
-        if (loaded.equals(DiningLocationsFragment.class)) {
-            locationsLoaded = true;
-        }
-        else if (loaded.equals(DiningTimesFragment.class)) {
-            timesLoaded = true;
-        }
-
-        if (locationsLoaded && timesLoaded) {
-            stopLoadingSpinner();
-        }
-
     }
 
     @Override

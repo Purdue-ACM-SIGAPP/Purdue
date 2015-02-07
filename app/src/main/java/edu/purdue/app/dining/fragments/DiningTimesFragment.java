@@ -1,6 +1,10 @@
 package edu.purdue.app.dining.fragments;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import org.joda.time.LocalDate;
@@ -11,6 +15,7 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 import edu.purdue.app.dining.data.DiningData;
+import edu.purdue.app.dining.data.DiningTime;
 import edu.purdue.app.dining.listeners.DailyMenusListener;
 import edu.purdue.app.dining.listeners.MealTimesListener;
 import edu.purdue.app.listeners.OnLoadedListener;
@@ -22,31 +27,25 @@ import edu.purdue.app.widgets.CardViewListAdapter;
 /**
  * Created by mike on 2/5/15.
  */
-public class DiningTimesFragment extends MultiSelectCardListFragment implements MealTimesListener {
+public class DiningTimesFragment extends MultiSelectCardListFragment {
 
     private AdapterView.OnItemClickListener clickListener;
-    private OnLoadedListener loadedListener;
 
-    public void beginLoad() {
-        // Get the list of times
-        DiningData data = new DiningData();
-        data.getMealTimes(LocalDate.now(), this);
-    }
-
+    @Nullable
     @Override
-    public void onGetTimes(List<String> times, Exception ex) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = super.onCreateView(inflater, container, savedInstanceState);
 
-        // Create and set the adapter
+        // Get the list of times from the enum
+        List<String> times = new ArrayList<>();
+        for (DiningTime time : DiningTime.values()) {
+            times.add(time.printable());
+        }
+
         CardViewListAdapter adapter = new CardViewListAdapter(getActivity(), times);
         gridView.setAdapter(adapter);
 
-        // Alert that we're loaded
-        loadedListener.onLoaded(this.getClass());
-
-    }
-
-    public void setOnLoadedListener(OnLoadedListener loadedListener) {
-        this.loadedListener = loadedListener;
+        return view;
     }
 
     public void setOnItemClickListener(AdapterView.OnItemClickListener clickListener) {
