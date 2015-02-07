@@ -14,6 +14,7 @@ import android.widget.TextView;
 import org.joda.time.LocalDate;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.SortedSet;
@@ -21,6 +22,8 @@ import java.util.TreeSet;
 
 import edu.purdue.app.R;
 import edu.purdue.app.dining.data.DiningData;
+import edu.purdue.app.dining.data.DiningLocationName;
+import edu.purdue.app.dining.data.DiningTime;
 import edu.purdue.app.dining.fragments.DiningLocationsFragment;
 import edu.purdue.app.dining.fragments.DiningTimesFragment;
 import edu.purdue.app.dining.listeners.LocationsListener;
@@ -37,8 +40,11 @@ public class DiningActivity extends Activity
     private DiningLocationsFragment locationsFragment;
     private DiningTimesFragment timesFragment;
 
-    /** Store the date that we are going to look up */
+    /** These are the query options the user makes when selecting what menus to see.
+     *  They are set through various actions with the UI elsewhere in this activity. */
     private LocalDate selectedDate;
+    private Set<DiningLocationName> selectedLocations;
+    private Set<DiningTime> selectedTimes;
 
     /** The textview at the bottom which acts as a display for what is selected */
     private TextView selectedItemsDisplay;
@@ -53,6 +59,10 @@ public class DiningActivity extends Activity
 
         // Set the content view
         setContentView(R.layout.activity_dining);
+
+        // Instantiate our selected lists
+        selectedLocations = new HashSet<>();
+        selectedTimes = new HashSet<>();
 
         // Change the title of the activity to the current date
         // And store the current date as the currently selected date
@@ -139,6 +149,25 @@ public class DiningActivity extends Activity
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+        // Rebuild the selected items sets
+        // We could iteratively add and remove from them, but I'm actually not convinced that would
+        // be faster because it would require two additional bits of knowledge we'd have to divine:
+        // 1) Which list was actually clicked?
+        // 2) When the item was clicked, was it selected or deselected?
+        selectedLocations.clear();
+        selectedTimes.clear();
+
+        // This conversion is scary. And expensive as hell.
+        // I might want to rewrite this one day so we don't have to exchange
+        // strings and instead just exchange the enum type. Not today though.
+        for (Integer i : timesFragment.getSelectedItems()) {
+            selectedTimes.add(DiningTime.valueOf(timesList.get(i).toUpperCase().replace(" ", "")));
+        }
+
+        for (Integer i : locationsFragment.getSelectedItems()) {
+            selectedLocations.add(DiningLocationName.valueOf(locationList.get(i).getName().toUpperCase()));
+        }
 
         // Update the text string on the bottom textview with the newly clicked item
         StringBuilder sb = new StringBuilder();

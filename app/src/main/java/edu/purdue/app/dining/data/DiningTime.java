@@ -8,13 +8,13 @@ package edu.purdue.app.dining.data;
  */
 public enum DiningTime {
 
-    breakfast
+    BREAKFAST
             ("Breakfast", 1),
-    lunch
+    LUNCH
             ("Lunch", 2),
-    latelunch
+    LATELUNCH
             ("Late Lunch", 3),
-    dinner
+    DINNER
             ("Dinner", 4);
 
     private String printable;
