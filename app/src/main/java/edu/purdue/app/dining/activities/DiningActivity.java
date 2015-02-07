@@ -49,10 +49,6 @@ public class DiningActivity extends Activity
     /** The textview at the bottom which acts as a display for what is selected */
     private TextView selectedItemsDisplay;
 
-    /** Keep copies of the data the lists are displaying in the context of the activity */
-    private List<Location> locationList;
-    private List<String> timesList;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,9 +64,6 @@ public class DiningActivity extends Activity
         // And store the current date as the currently selected date
         setTitle("Menus Today");
         selectedDate = LocalDate.now();
-
-        // Cache copies of the two component fragment's data here
-        getData();
 
         // Get instances of the two component fragments
         FragmentManager manager = getFragmentManager();
@@ -124,22 +117,6 @@ public class DiningActivity extends Activity
         return true;
     }
 
-    public void getData() {
-        DiningData diningData = new DiningData();
-        diningData.getLocations(new LocationsListener() {
-            @Override
-            public void onGetLocations(List<Location> locations, Exception ex) {
-                locationList = locations;
-            }
-        });
-        diningData.getMealTimes(LocalDate.now(), new MealTimesListener() {
-            @Override
-            public void onGetTimes(List<String> times, Exception ex) {
-                timesList = times;
-            }
-        });
-    }
-
     @Override
     public void onClick(View v) {
 
@@ -162,11 +139,11 @@ public class DiningActivity extends Activity
         // I might want to rewrite this one day so we don't have to exchange
         // strings and instead just exchange the enum type. Not today though.
         for (Integer i : timesFragment.getSelectedItems()) {
-            selectedTimes.add(DiningTime.valueOf(timesList.get(i).toUpperCase().replace(" ", "")));
+            selectedTimes.add(DiningTime.values()[i]);
         }
 
         for (Integer i : locationsFragment.getSelectedItems()) {
-            selectedLocations.add(DiningLocationName.valueOf(locationList.get(i).getName().toUpperCase()));
+            selectedLocations.add(DiningLocationName.values()[i]);
         }
 
         // Update the text string on the bottom textview with the newly clicked item
@@ -188,11 +165,11 @@ public class DiningActivity extends Activity
         } else {
             for (Integer time : selectedTimes) {
                 if (i++ == 0) {
-                    sb.append(timesList.get(time));
+                    sb.append(DiningTime.values()[time].printable());
                 } else if (i == selectedTimes.size()) {
-                    sb.append(" and " + timesList.get(time));
+                    sb.append(" and " + DiningTime.values()[time].printable());
                 } else {
-                    sb.append(", " + timesList.get(time));
+                    sb.append(", " + DiningTime.values()[time].printable());
                 }
             }
         }
@@ -206,11 +183,11 @@ public class DiningActivity extends Activity
             i = 0;
             for (Integer loc : selectedLocations) {
                 if (i++ == 0) {
-                    sb.append(locationList.get(loc).getName());
+                    sb.append(DiningLocationName.values()[loc].printableName());
                 } else if (i == selectedLocations.size()) {
-                    sb.append(" and " + locationList.get(loc).getName());
+                    sb.append(" and " + DiningLocationName.values()[loc].printableName());
                 } else {
-                    sb.append(", " + locationList.get(loc).getName());
+                    sb.append(", " + DiningLocationName.values()[loc].printableName());
                 }
             }
         }
