@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="header">Weather</string>
+    <string name="last_updated">Last Updated</string>
+
+    <!-- - API KEY: Not used as of current but can be used-->
+    <string name="open_weather_maps_app_id">b502d2f791750b65c1d93d95f71fe7dd</string>
+    <string name="weather_sunny"></string>
+    <string name="weather_clear_night"></string>
+    <string name="weather_foggy"></string>
+    <string name="weather_cloudy"></string>
+    <string name="weather_rainy"></string>
+    <string name="weather_snowy"></string>
+    <string name="weather_thunder"></string>
+    <string name="weather_drizzle"></string>
+    <string name="place_not_found">Place not found</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--- Units of measurement -->
+    <string name="celsius_degree">℃</string>
+    <string name="fahrenheit_degree">℉</string>
+    <string name="pressure">°HPA</string>
+
+
+    <!--- Preference Activity -->
+    <string name="units">Temperature Units</string>
+    <string name="celsius">Celsius</string>
+    <string name="fahrenheit">Fahrenheit</string>
+    <string name="temp_key">temp_key</string>
+
+    <string name="location">West Lafayette</string>
+    <string name="temperature">Temperature</string>
+
+    <string name="provider">Data courtesy of open weather map</string>
+
+</resources>
