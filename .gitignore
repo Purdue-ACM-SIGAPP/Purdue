@@ -36,3 +36,6 @@ local.properties
 *~
 *.swp
 build
+
+*.keystore
+*.jks
