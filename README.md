@@ -4,12 +4,10 @@ This is the official Purdue Application for Purdue University.
 Developed by 2014-2015 Purdue ACM SIGAPP Members and currently available on the
 [Play Store here](https://play.google.com/store/apps/details?id=edu.purdue.app).
 
-Our Trello board for issues, bugs, and features is [available here](https://trello.com/b/9ktGDjYs/purdue-app). Issues added to the github issues page will be automatically added to trello. 
-
 # Contributing
 
 We follow the Github Flow model of development.
-If you would like to contribute to this project, just fork it on Github then file a pull request.
+If you would like to contribute to this project and do not have push access, fork it on Github then file a pull request with your changes.
 We'd also love if you'd come by SIGAPP meetings every Thursday at 7pm and Saturday at 4pm in LWSN B148!
 
 # Style
@@ -65,32 +63,3 @@ the application.
 
 `utility` is a general package for primarily static methods which might be used anywhere in
  the project.
-
-# Project Owner
-
-Martin Sickafoose
-Director of Digital Marketing
-
-ENAD, Room 328
-400 Centennial Mall Drive
-West Lafayette, IN 47906-2016
-
-(765) 494-2991 Fax: (765) 494-0401
-mart@purdue.edu
-
-# Division of Labor
-
-### Current as of September 2014
-
-1. Weather                 (Sean, Michael V.)
-2. Safety                  ()
-3. Directory               (Isabel, Michael C.)
-4. Bus Routes              (Michael H.)
-5. Labs                    (David, Aaron)
-6. Menus                   (Tylor, Nicky, Rushan, Gouthami, Jake, Junlan, Joseph, Lucas)
-7. News RSS Feed           (Jeff)
-8. Calendar/PurdueBoard    (Shane, Kristen)
-9. Map                     (Sean, Ryan, Noah, Dimcho)
-10. Videos                  (Adam)
-11. Photos                  (Jordan, Keith)
-12. Mymail                  (Adam, Marty, David)
