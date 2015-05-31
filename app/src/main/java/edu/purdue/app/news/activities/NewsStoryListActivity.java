@@ -10,7 +10,7 @@ import android.widget.ListView;
 import java.util.List;
 
 import edu.purdue.app.R;
-import edu.purdue.app.activities.WebViewActivity;
+import edu.purdue.app.main.activities.WebViewActivity;
 import edu.purdue.app.news.models.RssItem;
 import edu.purdue.app.news.tasks.RssFeedTask;
 import edu.purdue.app.news.widgets.NewsStoryDisplayAdapter;

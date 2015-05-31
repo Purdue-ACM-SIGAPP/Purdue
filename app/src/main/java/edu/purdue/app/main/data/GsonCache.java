@@ -1,4 +1,4 @@
-package edu.purdue.app.data;
+package edu.purdue.app.main.data;
 
 import android.content.Context;
 import android.content.SharedPreferences;

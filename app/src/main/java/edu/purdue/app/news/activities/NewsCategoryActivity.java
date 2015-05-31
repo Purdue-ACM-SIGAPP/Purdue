@@ -8,7 +8,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 
 import edu.purdue.app.R;
-import edu.purdue.app.activities.WebViewActivity;
+import edu.purdue.app.main.activities.WebViewActivity;
 import edu.purdue.app.news.widgets.NewsCategoryItemAdapter;
 import edu.purdue.app.news.data.DefaultNewsCategories;
 

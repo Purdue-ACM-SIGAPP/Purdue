@@ -1,6 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="edu.purdue.app.activities.WebViewActivity" >
+    tools:context="edu.purdue.app.main.activities.WebViewActivity" >
 
 
     <item

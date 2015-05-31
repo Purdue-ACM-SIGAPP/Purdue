@@ -9,15 +9,10 @@ import android.widget.AdapterView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-import edu.purdue.app.dining.data.DiningData;
 import edu.purdue.app.dining.data.DiningLocationName;
-import edu.purdue.app.dining.listeners.LocationsListener;
-import edu.purdue.app.listeners.OnLoadedListener;
-import edu.purdue.app.dining.models.Location;
-import edu.purdue.app.fragments.MultiSelectCardListFragment;
-import edu.purdue.app.widgets.CardViewListAdapter;
+import edu.purdue.app.main.fragments.MultiSelectCardListFragment;
+import edu.purdue.app.main.widgets.CardViewListAdapter;
 
 /**
  * Created by mike on 2/5/15.

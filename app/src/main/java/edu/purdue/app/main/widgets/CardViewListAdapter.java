@@ -1,4 +1,4 @@
-package edu.purdue.app.widgets;
+package edu.purdue.app.main.widgets;
 
 import android.content.Context;
 import android.view.LayoutInflater;

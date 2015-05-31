@@ -1,4 +1,4 @@
-package edu.purdue.app.mainmenu.activities;
+package edu.purdue.app.main.activities;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -20,9 +20,9 @@ import java.util.List;
 
 import edu.purdue.app.R;
 import edu.purdue.app.prefs.activities.SettingsActivity;
-import edu.purdue.app.dialogs.NoInternetDialog;
-import edu.purdue.app.mainmenu.widgets.MainMenuDynamicGridAdapter;
-import edu.purdue.app.mainmenu.models.MainMenuItem;
+import edu.purdue.app.main.widgets.NoInternetDialog;
+import edu.purdue.app.main.widgets.MainMenuDynamicGridAdapter;
+import edu.purdue.app.main.models.MainMenuItem;
 import edu.purdue.app.util.Analytics;
 import edu.purdue.app.util.Connectivity;
 

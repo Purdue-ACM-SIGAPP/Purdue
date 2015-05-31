@@ -9,7 +9,7 @@ import org.joda.time.LocalDate;
 
 import java.util.List;
 
-import edu.purdue.app.data.Cache;
+import edu.purdue.app.main.data.Cache;
 import edu.purdue.app.dining.listeners.DailyMenusListener;
 import edu.purdue.app.dining.listeners.LocationsListener;
 import edu.purdue.app.dining.models.DailyMenu;

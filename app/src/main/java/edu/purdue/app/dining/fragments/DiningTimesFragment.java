@@ -7,22 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
-import org.joda.time.LocalDate;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.SortedMap;
-import java.util.TreeMap;
 
-import edu.purdue.app.dining.data.DiningData;
 import edu.purdue.app.dining.data.DiningTime;
-import edu.purdue.app.dining.listeners.DailyMenusListener;
-import edu.purdue.app.dining.listeners.MealTimesListener;
-import edu.purdue.app.listeners.OnLoadedListener;
-import edu.purdue.app.dining.models.DailyMenu;
-import edu.purdue.app.dining.models.Meal;
-import edu.purdue.app.fragments.MultiSelectCardListFragment;
-import edu.purdue.app.widgets.CardViewListAdapter;
+import edu.purdue.app.main.fragments.MultiSelectCardListFragment;
+import edu.purdue.app.main.widgets.CardViewListAdapter;
 
 /**
  * Created by mike on 2/5/15.

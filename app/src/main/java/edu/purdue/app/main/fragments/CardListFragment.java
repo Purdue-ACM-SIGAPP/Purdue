@@ -1,4 +1,4 @@
-package edu.purdue.app.fragments;
+package edu.purdue.app.main.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;

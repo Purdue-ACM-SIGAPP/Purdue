@@ -1,4 +1,4 @@
-package edu.purdue.app.activities;
+package edu.purdue.app.main.activities;
 
 import android.app.ActionBar;
 import android.app.Activity;

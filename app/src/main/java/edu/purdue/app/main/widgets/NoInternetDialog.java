@@ -1,4 +1,4 @@
-package edu.purdue.app.dialogs;
+package edu.purdue.app.main.widgets;
 
 import android.app.AlertDialog;
 import android.content.Context;

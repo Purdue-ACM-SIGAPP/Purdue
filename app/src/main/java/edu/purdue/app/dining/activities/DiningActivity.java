@@ -2,7 +2,6 @@ package edu.purdue.app.dining.activities;
 
 import android.app.Activity;
 import android.app.FragmentManager;
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.Menu;
@@ -13,24 +12,16 @@ import android.widget.TextView;
 
 import org.joda.time.LocalDate;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.SortedSet;
-import java.util.TreeSet;
 
 import edu.purdue.app.R;
-import edu.purdue.app.dining.data.DiningData;
 import edu.purdue.app.dining.data.DiningLocationName;
 import edu.purdue.app.dining.data.DiningTime;
 import edu.purdue.app.dining.fragments.DiningItemsListFragment;
 import edu.purdue.app.dining.fragments.DiningLocationsFragment;
 import edu.purdue.app.dining.fragments.DiningTimesFragment;
-import edu.purdue.app.dining.listeners.LocationsListener;
-import edu.purdue.app.dining.listeners.MealTimesListener;
-import edu.purdue.app.dining.models.Location;
-import edu.purdue.app.listeners.OnLoadedListener;
 
 /**
  * Created by mike on 2/4/15.

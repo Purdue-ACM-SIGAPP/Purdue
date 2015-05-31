@@ -1,4 +1,4 @@
-package edu.purdue.app.listeners;
+package edu.purdue.app.main.listeners;
 
 /**
  *  A generic interface for alerting one object that another object has finished loading.
