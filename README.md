@@ -4,8 +4,6 @@ This is the official Purdue Application for Purdue University.
 Developed by 2014-2015 Purdue ACM SIGAPP Members and currently available on the
 [Play Store here](https://play.google.com/store/apps/details?id=edu.purdue.app).
 
-We have over 5000 users, great success!!!
-
 # Contributing
 
 We follow the Github Flow model of development.
