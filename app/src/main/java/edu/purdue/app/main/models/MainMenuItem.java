@@ -61,7 +61,7 @@ public abstract class MainMenuItem {
             add(new ActivityMenuItem(c,
                     r.getString(R.string.main_menu_item_dining), r.getDrawable(R.drawable.ic_menus), DiningActivity.class));
             add(new WebViewMenuItem(c,
-                    r.getString(R.string.main_menu_item_mail), r.getDrawable(R.drawable.ic_mymail), "https://mymail.purdue.edu/"));
+                    r.getString(R.string.main_menu_item_mail), r.getDrawable(R.drawable.ic_mymail), "https://outlook.office365.com"));
             add(new WebViewMenuItem(c,
                     r.getString(R.string.main_menu_item_buses), r.getDrawable(R.drawable.ic_bus), "http://citybus.doublemap.com/map/"));
             add(new ActivityMenuItem(c,
