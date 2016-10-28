@@ -1,10 +1,11 @@
 # Purdue App
 
-This is the official Purdue Application for Purdue University.
-Developed by 2014-2015 Purdue ACM SIGAPP Members and currently available on the
-[Play Store here](https://play.google.com/store/apps/details?id=edu.purdue.app).
+This was previously the official Purdue app released under the Purdue University Google Play account. 
+It will be released again under the SIGAPP developer account in the coming months. 
 
-We have over 5000 users, great success!!!
+Developed by 2014-2015 Purdue ACM SIGAPP Members.
+
+At our peak, we had over 5000 users, great success!!!
 
 # Contributing
 
